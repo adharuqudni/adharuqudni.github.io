@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Annas Adharuqudni — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 10.5pt;
+    color: #1a1a1a;
+    background: #f5f5f5;
+    line-height: 1.45;
+  }
+
+  /* Print trigger button */
+  .print-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 12px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+  }
+  .print-bar span { opacity: 0.6; }
+  .print-btn {
+    background: #ff6b35;
+    color: #fff;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .print-btn:hover { background: #e55a25; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 60px auto 40px;
+    background: #fff;
+    padding: 18mm 18mm 16mm;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+  }
+
+  /* HEADER */
+  .header { margin-bottom: 18px; padding-bottom: 14px; border-bottom: 2px solid #1a1a1a; }
+  .name { font-size: 26pt; font-weight: 700; letter-spacing: -0.02em; color: #1a1a1a; line-height: 1; }
+  .headline { font-size: 11pt; color: #444; margin-top: 4px; font-weight: 500; }
+  .contact-row {
+    display: flex; flex-wrap: wrap; gap: 4px 20px;
+    margin-top: 10px;
+    font-size: 9pt;
+    color: #555;
+  }
+  .contact-row a { color: #1a1a1a; text-decoration: none; }
+
+  /* SECTIONS */
+  .section { margin-bottom: 16px; }
+  .section-title {
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #1a1a1a;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+  }
+
+  /* EXPERIENCE */
+  .exp-entry { margin-bottom: 13px; }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; }
+  .exp-title-company { }
+  .exp-role { font-size: 10.5pt; font-weight: 700; color: #1a1a1a; }
+  .exp-company { font-size: 10pt; color: #444; font-weight: 500; }
+  .exp-period { font-size: 9pt; color: #666; white-space: nowrap; margin-top: 2px; text-align: right; }
+  .exp-sub { font-size: 9.5pt; font-weight: 600; color: #333; margin: 5px 0 3px; }
+  ul.bullets { margin-left: 14px; margin-top: 3px; }
+  ul.bullets li {
+    font-size: 9.5pt;
+    color: #333;
+    margin-bottom: 2px;
+    line-height: 1.4;
+  }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
+  .skill-row { font-size: 9.5pt; color: #333; }
+  .skill-label { font-weight: 600; color: #1a1a1a; }
+
+  /* CERTS */
+  .certs-grid { columns: 2; column-gap: 24px; }
+  .cert-entry { font-size: 9.5pt; color: #333; margin-bottom: 5px; break-inside: avoid; }
+  .cert-entry strong { color: #1a1a1a; font-weight: 600; }
+
+  /* EDUCATION */
+  .edu-entry { margin-bottom: 8px; display: flex; justify-content: space-between; }
+  .edu-left .edu-degree { font-size: 10.5pt; font-weight: 700; }
+  .edu-left .edu-school { font-size: 9.5pt; color: #444; }
+  .edu-period { font-size: 9pt; color: #666; }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .print-bar { display: none; }
+    .page { margin: 0; box-shadow: none; padding: 15mm 18mm; }
+  }
+
+  @page { size: A4; margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <span>ATS-Optimized Resume — Annas Adharuqudni</span>
+  <button class="print-btn" onclick="window.print()">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Save as PDF
+  </button>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="name">Annas Adharuqudni</div>
+    <div class="headline">Software Engineer — Node.js · Laravel · React · Vue · GCP · Docker</div>
+    <div class="contact-row">
+      <span>📍 West Jakarta, Indonesia</span>
+      <span>📞 +62 821-3683-7847</span>
+      <a href="mailto:annas.adharuqudni@gmail.com">annas.adharuqudni@gmail.com</a>
+      <a href="https://linkedin.com/in/adharuqudni" target="_blank">linkedin.com/in/adharuqudni</a>
+      <a href="https://github.com/adharuqudni" target="_blank">github.com/adharuqudni</a>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section">
+    <div class="section-title">Summary</div>
+    <p style="font-size:9.5pt;color:#333;line-height:1.55;">
+      Fullstack Software Engineer with 5+ years of experience building scalable distributed systems using Node.js, Laravel, React, and Vue. Proven expertise in data pipeline engineering on GCP (BigQuery, Cloud Storage, Terraform, Docker), reverse engineering anti-bot systems, and leading cross-functional teams. Currently at Samsung R&amp;D Indonesia; previously 4 years at tiket.com delivering high-impact features across data infrastructure and frontend. Winner — CIP Forum Elnusa 2021 (Gold, ~100 participants).
+    </p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+
+    <div class="exp-entry">
+      <div class="exp-header">
+        <div class="exp-title-company">
+          <div class="exp-role">Software Engineer</div>
+          <div class="exp-company">Samsung R&amp;D Institute Indonesia · Jakarta</div>
+        </div>
+        <div class="exp-period">Feb 2026 – Present</div>
+      </div>
+      <ul class="bullets" style="margin-top:5px;">
+        <li>Building scalable software systems at Samsung's Indonesian R&amp;D division.</li>
+      </ul>
+    </div>
+
+    <div class="exp-entry">
+      <div class="exp-header">
+        <div class="exp-title-company">
+          <div class="exp-role">Software Engineer — tiket.com (PT Global Tiket Network)</div>
+          <div class="exp-company">Jakarta · 4 years 1 month total</div>
+        </div>
+        <div class="exp-period">Feb 2022 – Feb 2026</div>
+      </div>
+      <div class="exp-sub">Software Engineer I · Feb 2023 – Feb 2026</div>
+      <ul class="bullets">
+        <li>Built modular Next.js + TypeScript UI components for real-time dashboards, cutting dev time by <strong>30%</strong>.</li>
+        <li>Developed distributed ad-hoc data mining system, improving data exploration speed by <strong>2×</strong>.</li>
+        <li>Architected backend services with Docker, Terraform &amp; GCP maintaining <strong>99.9% uptime</strong> across deployments.</li>
+        <li>Reverse-engineered third-party data sources; achieved <strong>95% success rate</strong> bypassing anti-bot protections.</li>
+        <li>Orchestrated ETL pipelines to Google Cloud Storage &amp; BigQuery for hotel/flight pricing algorithms.</li>
+        <li>Collaborated cross-functionally to deliver features <strong>20% ahead of schedule</strong>.</li>
+      </ul>
+      <div class="exp-sub">Software Engineer Internship · Feb 2022 – Jan 2023</div>
+      <ul class="bullets">
+        <li>Built PWA with Next.js increasing mobile return visits by <strong>15%</strong>.</li>
+        <li>Created living design system with Storybook; implemented Cypress E2E achieving <strong>95%+ test coverage</strong>.</li>
+        <li>Engineered hotel scraping framework via reverse engineering, saving <strong>&gt;90%</strong> in data acquisition costs.</li>
+      </ul>
+    </div>
+
+    <div class="exp-entry">
+      <div class="exp-header">
+        <div class="exp-title-company">
+          <div class="exp-role">Founder &amp; Product Manager — decorps</div>
+          <div class="exp-company">Yogyakarta, Indonesia</div>
+        </div>
+        <div class="exp-period">Aug 2022 – Apr 2024</div>
+      </div>
+      <ul class="bullets" style="margin-top:5px;">
+        <li>Managed 20+ personnel (product managers + developers); mentored members to land internships and full-time roles.</li>
+        <li>Architected and shipped task management, inventory management, and POS SaaS applications.</li>
+      </ul>
+    </div>
+
+    <div class="exp-entry">
+      <div class="exp-header">
+        <div class="exp-title-company">
+          <div class="exp-role">Software Engineer — PT Elnusa Tbk</div>
+          <div class="exp-company">Jakarta Selatan, Indonesia</div>
+        </div>
+        <div class="exp-period">Apr 2021 – Feb 2023</div>
+      </div>
+      <ul class="bullets" style="margin-top:5px;">
+        <li>Solely built enterprise risk management system using React Redux Saga (frontend) + Laravel (backend).</li>
+        <li>Managed 1,000+ physical asset records across the company using VueJS + Express + Node.js.</li>
+        <li>Won <strong>Gold (1st place)</strong> among ~100 participants at CIP Forum Elnusa 2021.</li>
+      </ul>
+    </div>
+
+    <div class="exp-entry">
+      <div class="exp-header">
+        <div class="exp-title-company">
+          <div class="exp-role">Software Engineer — PT Agni</div>
+          <div class="exp-company">Jakarta, Indonesia</div>
+        </div>
+        <div class="exp-period">Oct 2021 – Dec 2021</div>
+      </div>
+      <ul class="bullets" style="margin-top:5px;">
+        <li>Built responsive UI with VueJS 3.0 Composition API and backend APIs with Express.js.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row"><span class="skill-label">Frontend:</span> React.js, Next.js, Vue.js 3, TypeScript, JavaScript, Storybook, Figma</div>
+      <div class="skill-row"><span class="skill-label">Backend:</span> Node.js, Express.js, PHP, Laravel, REST APIs</div>
+      <div class="skill-row"><span class="skill-label">Data / Cloud:</span> BigQuery, GCP, Docker, Terraform, ETL Pipelines, Web Scraping</div>
+      <div class="skill-row"><span class="skill-label">Databases:</span> MySQL, PostgreSQL, Firebase, MongoDB</div>
+      <div class="skill-row"><span class="skill-label">Testing:</span> Cypress E2E, Unit Testing</div>
+      <div class="skill-row"><span class="skill-label">Languages:</span> English (Professional), Indonesian (Native), Japanese (Elementary)</div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-title">Licenses &amp; Certifications</div>
+    <div class="certs-grid">
+      <div class="cert-entry"><strong>Android Dev with Kotlin (Beginners)</strong> — LinkedIn · Mar 2026</div>
+      <div class="cert-entry"><strong>Spring Boot 2.0 Essential Training</strong> — LinkedIn · Feb 2026</div>
+      <div class="cert-entry"><strong>Python — Data Science</strong> — SanberCode · Sep 2021</div>
+      <div class="cert-entry"><strong>Javascript &amp; NodeJS Super Bootcamp</strong> — SanberCode · Feb 2021</div>
+      <div class="cert-entry"><strong>Managing Cloud Infrastructure with Terraform</strong> — Qwiklabs · Mar 2021</div>
+      <div class="cert-entry"><strong>Anthos: Service Mesh</strong> — Qwiklabs · Mar 2021</div>
+      <div class="cert-entry"><strong>Build Apps &amp; Websites with Firebase</strong> — Qwiklabs · Mar 2021</div>
+      <div class="cert-entry"><strong>Serverless Firebase Development</strong> — Qwiklabs · Mar 2021</div>
+      <div class="cert-entry"><strong>Kubernetes in Google Cloud</strong> — Qwiklabs · Dec 2019</div>
+      <div class="cert-entry"><strong>Google Cloud Essentials</strong> — Qwiklabs · Nov 2019</div>
+      <div class="cert-entry"><strong>Memulai Pemrograman Dengan Python</strong> — Dicoding Indonesia · Oct 2020</div>
+      <div class="cert-entry"><strong>Path Pengembangan Web (Node.js)</strong> — Progate · Jun 2020</div>
+      <div class="cert-entry"><strong>Kursus SQL, JavaScript, React, Node.JS, HTML&amp;CSS, GIT</strong> — Progate · Jun 2020</div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-entry">
+      <div class="edu-left">
+        <div class="edu-degree">S1 Informatics (Computer Science)</div>
+        <div class="edu-school">Universitas Pembangunan Nasional Veteran Yogyakarta</div>
+      </div>
+      <div class="edu-period">Aug 2019 – Mar 2024</div>
+    </div>
+    <div class="edu-entry">
+      <div class="edu-left">
+        <div class="edu-degree">SMA — IPA (Science)</div>
+        <div class="edu-school">SMA Negeri 4 Semarang</div>
+      </div>
+      <div class="edu-period">2016 – 2019</div>
+    </div>
+  </div>
+
+  <!-- PUBLICATION -->
+  <div class="section">
+    <div class="section-title">Publication</div>
+    <p style="font-size:9.5pt;color:#333;">"<strong>Is PWA still relevant in 2022?</strong>" — Annas Adharuqudni</p>
+  </div>
+
+</div>
+
+</body>
+</html>
