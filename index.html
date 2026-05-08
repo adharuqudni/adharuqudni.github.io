@@ -118,6 +118,7 @@
 <body>
 
 <a class="skip-link" href="#about">Skip to content</a>
+<button id="back-top" class="back-top" aria-label="Back to top">↑</button>
 
 <div id="cursor" aria-hidden="true"></div>
 <div id="cursor-ring" aria-hidden="true"></div>
@@ -141,10 +142,10 @@
 <!-- MOBILE MENU OVERLAY -->
 <div class="nav-mobile-menu" id="nav-mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <nav aria-label="Mobile navigation">
-    <a href="#experience">Journey</a>
-    <a href="#skills">Stack</a>
-    <a href="#projects">Work</a>
-    <a href="#contact">Contact</a>
+    <a href="#experience"><em>01</em>Journey</a>
+    <a href="#skills"><em>02</em>Stack</a>
+    <a href="#projects"><em>03</em>Work</a>
+    <a href="#contact"><em>04</em>Contact</a>
   </nav>
   <div class="nav-mobile-social">
     <a href="https://github.com/adharuqudni" target="_blank" rel="noopener">GitHub</a>
@@ -563,7 +564,7 @@
       <h2 class="section-title">Selected<br/><em>Projects</em></h2>
     </div>
     <p class="section-sub reveal reveal-d1">
-      Data engineering and AI solutions built to solve real-world problems at scale.
+      Fullstack, data, mobile, and infrastructure — built for the real world.
     </p>
   </div>
 
@@ -656,7 +657,11 @@
     </article>
   </div>
 
-  <div class="project-featured reveal" style="margin-top:64px;">
+  <div class="projects-divider reveal">
+    <span class="projects-divider-label">Featured Case Studies</span>
+  </div>
+
+  <div class="project-featured reveal" style="margin-top:0;">
     <div>
       <div class="feat-eyebrow">Featured — tiket.com · 2022–2026</div>
       <h3 class="feat-title">Hotel Pricing<br/><em>Intelligence</em> System</h3>
@@ -791,9 +796,7 @@
         <div>&nbsp;&nbsp;&nbsp;&nbsp;startActivity(blockerIntent)</div>
         <div>}</div>
       </div>
-      <a href="https://github.com/adharuqudni/Chaching" target="_blank" rel="noopener"
-         style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-family:var(--ff-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,240,232,0.5);text-decoration:none;transition:color 0.2s;"
-         onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='rgba(245,240,232,0.5)'">
+      <a href="https://github.com/adharuqudni/Chaching" target="_blank" rel="noopener" class="feat-gh-link">
         ✦ View on GitHub
       </a>
     </div>
