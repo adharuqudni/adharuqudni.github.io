@@ -1,19 +1,28 @@
-// CURSOR
+// JS-ENABLED MARKER (lets CSS reveal/animation rules opt in)
+document.documentElement.classList.add('js');
+
+// REDUCED-MOTION + COARSE-POINTER GUARDS
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const coarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+// CURSOR (skip on touch devices and when reduced-motion is requested)
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursor-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px';
-  cursor.style.top  = my + 'px';
-});
-(function animRing() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
-  requestAnimationFrame(animRing);
-})();
+if (cursor && ring && !reduceMotion && !coarsePointer) {
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top  = my + 'px';
+  });
+  (function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animRing);
+  })();
+}
 
 // NAV SCROLL
 const nav = document.getElementById('nav');
@@ -21,23 +30,63 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
-// HAMBURGER MENU
+// HAMBURGER MENU — accessible: Escape closes, focus is trapped while open,
+// focus returns to the toggle on close.
 const navToggle = document.getElementById('nav-toggle');
 const mobileMenu = document.getElementById('nav-mobile-menu');
 if (navToggle && mobileMenu) {
+  let lastFocus = null;
+  const focusables = () => mobileMenu.querySelectorAll('a, button');
+
+  function openMenu() {
+    lastFocus = document.activeElement;
+    navToggle.classList.add('open');
+    mobileMenu.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    const first = focusables()[0];
+    if (first) first.focus();
+  }
+  function closeMenu() {
+    navToggle.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (lastFocus && typeof lastFocus.focus === 'function') {
+      lastFocus.focus();
+    } else {
+      navToggle.focus();
+    }
+  }
+
   navToggle.addEventListener('click', () => {
-    const isOpen = navToggle.classList.toggle('open');
-    mobileMenu.classList.toggle('open', isOpen);
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    if (navToggle.classList.contains('open')) closeMenu();
+    else openMenu();
   });
   mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navToggle.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!mobileMenu.classList.contains('open')) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeMenu();
+      return;
+    }
+    if (e.key === 'Tab') {
+      const list = focusables();
+      if (!list.length) return;
+      const first = list[0];
+      const last  = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 }
 
@@ -71,9 +120,27 @@ ajnSections.forEach(el => ajnIntroObs.observe(el));
   const N       = slides.length;
   let lastIdx   = -1, raf = false;
 
+  // Make every slide visible up-front when reduced-motion is requested
+  if (reduceMotion) {
+    slides.forEach(s => s.classList.add('s-active'));
+  }
+
+  // Dot buttons → scroll to the matching chapter
+  dots.forEach((d, i) => {
+    d.addEventListener('click', () => {
+      if (window.matchMedia('(max-width: 1024px)').matches || reduceMotion) {
+        slides[i].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        return;
+      }
+      const total  = stage.offsetHeight - window.innerHeight;
+      const target = stage.offsetTop + (i / Math.max(1, N - 1)) * total;
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    });
+  });
+
   function update() {
     raf = false;
-    if (window.matchMedia('(max-width: 1024px)').matches) {
+    if (window.matchMedia('(max-width: 1024px)').matches || reduceMotion) {
       track.style.transform = '';
       return;
     }
@@ -170,6 +237,10 @@ const certsRev = [...CERTS].reverse();
 
 // COUNTERS
 function animCounter(el, target, suffix) {
+  if (reduceMotion) {
+    el.innerHTML = target + `<sup>${suffix}</sup>`;
+    return;
+  }
   let start = 0;
   const dur = 1800, t0 = performance.now();
   (function tick(now) {
@@ -192,12 +263,14 @@ const ctrObs = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 document.querySelectorAll('[data-target]').forEach(el => ctrObs.observe(el));
 
-// HERO PARALLAX
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  const img = document.querySelector('.hero-img-container');
-  if (img) img.style.transform = `translateY(${y * 0.04}px)`;
-}, { passive: true });
+// HERO PARALLAX (disabled when user prefers reduced motion)
+if (!reduceMotion) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const img = document.querySelector('.hero-img-container');
+    if (img) img.style.transform = `translateY(${y * 0.04}px)`;
+  }, { passive: true });
+}
 
 // ACTIVE NAV LINK
 const navAnchors = document.querySelectorAll('.nav-links a');
