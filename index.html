@@ -107,11 +107,11 @@
 <!-- ═══════════════════════════════════════
      PERFORMANCE & BROWSER HINTS
      ═══════════════════════════════════════ -->
-<meta name="theme-color" content="#0d0c0a" />
-<meta name="color-scheme" content="dark light" />
+<meta name="theme-color" content="#FFF4DC" />
+<meta name="color-scheme" content="light" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Baloo+2:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 
 </head>
@@ -120,18 +120,15 @@
 <a class="skip-link" href="#about">Skip to content</a>
 <button id="back-top" class="back-top" aria-label="Back to top">↑</button>
 
-<div id="cursor" aria-hidden="true"></div>
-<div id="cursor-ring" aria-hidden="true"></div>
-
 <!-- NAV -->
 <header>
 <nav id="nav" aria-label="Primary navigation">
-  <a href="#" class="nav-logo" aria-label="Annas Adharuqudni — Home">ANNAS<span>.</span>DEV</a>
+  <a href="#" class="nav-logo" aria-label="Annas Adharuqudni — Home">ANNAS<span>.DEV</span></a>
   <ul class="nav-links" role="list">
-    <li><a href="#experience">Journey</a></li>
-    <li><a href="#skills">Stack</a></li>
-    <li><a href="#projects">Work</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#skills">Toolbox</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact" class="nav-cta">Say hi!</a></li>
   </ul>
   <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -142,10 +139,10 @@
 <!-- MOBILE MENU OVERLAY -->
 <div class="nav-mobile-menu" id="nav-mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <nav aria-label="Mobile navigation">
-    <a href="#experience"><em>01</em>Journey</a>
-    <a href="#skills"><em>02</em>Stack</a>
-    <a href="#projects"><em>03</em>Work</a>
-    <a href="#contact"><em>04</em>Contact</a>
+    <a href="#journey"><em>01</em>Journey</a>
+    <a href="#skills"><em>02</em>Toolbox</a>
+    <a href="#projects"><em>03</em>Projects</a>
+    <a href="#contact"><em>04</em>Say hi!</a>
   </nav>
   <div class="nav-mobile-social">
     <a href="https://github.com/adharuqudni" target="_blank" rel="noopener">GitHub</a>
@@ -154,732 +151,368 @@
 </div>
 
 <main>
-<!-- HERO -->
+
+<!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="about" aria-label="Introduction">
-  <div class="hero-bg-number" aria-hidden="true">5+</div>
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
-  <div class="hero-content">
-    <div class="hero-left">
-      <div class="hero-eyebrow">Open to new challenges</div>
-      <h1 class="hero-name">
-        Annas
-        <em>Adharuqudni</em>
-      </h1>
-      <div class="hero-divider"></div>
-      <div class="hero-meta">
-        <div class="hero-meta-item">
-          <div class="hero-meta-label">Current</div>
-          <div class="hero-meta-value">Software Engineer<br/>Samsung R&amp;D Indonesia</div>
-        </div>
-        <div class="hero-meta-item">
-          <div class="hero-meta-label">Previously</div>
-          <div class="hero-meta-value">tiket.com · 4 yrs<br/>Founder, decorps</div>
-        </div>
+  <div class="hero-inner">
+    <div class="hero-badge reveal-now">
+      <span class="hero-badge-star" id="lottie-star" aria-hidden="true"></span>
+      Open to new challenges!
+    </div>
+
+    <h1 class="hero-title">
+      <span class="hero-hi">Hi! I'm</span>
+      <span class="hero-name">ANNAS</span>
+      <span class="hero-name hero-name-2">ADHARUQUDNI</span>
+    </h1>
+
+    <div class="hero-bubble-row">
+      <div class="hero-portrait">
+        <img src="static/profile.png" alt="Annas Adharuqudni" />
+        <div class="hero-portrait-tag">that's me!</div>
+      </div>
+      <div class="speech-bubble hero-bubble">
+        <p>Fullstack engineer at <strong>Samsung R&amp;D Indonesia</strong> — I build scalable systems with Node, Laravel, React &amp; Vue, wrangle <strong>data pipelines</strong>, and out-smart <strong>anti-bot systems</strong> for breakfast. 5+ years across Samsung, tiket.com &amp; Elnusa.</p>
       </div>
     </div>
 
-    <div class="hero-right">
-      <p class="hero-bio">
-        Fullstack engineer building scalable systems with Node, Laravel, React &amp; Vue. Expert in distributed data pipelines, reverse engineering &amp; anti-bot systems. 5+ years across Samsung, tiket.com, and Elnusa.
-      </p>
-      <div class="hero-cta">
-        <a href="#contact" class="btn-primary">
-          <svg aria-hidden="true" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Get in Touch
-        </a>
-        <a href="Annas Resume.html" target="_blank" class="btn-ghost">
-          View Resume →
-        </a>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-yellow">👋 Say hello</a>
+      <a href="Annas Resume.html" target="_blank" class="btn btn-white">📄 View resume</a>
+    </div>
+
+    <div class="hero-stats" role="list">
+      <div class="stat-card stat-tilt-l reveal" role="listitem">
+        <div class="stat-num" data-target="5" data-suffix="+">5+</div>
+        <div class="stat-label">years of experience</div>
+      </div>
+      <div class="stat-card stat-tilt-r reveal reveal-d1" role="listitem">
+        <div class="stat-num" data-target="20" data-suffix="+">20+</div>
+        <div class="stat-label">team members led</div>
+      </div>
+      <div class="stat-card stat-tilt-l reveal reveal-d2" role="listitem">
+        <div class="stat-num" data-target="18" data-suffix="+">18+</div>
+        <div class="stat-label">certifications</div>
+      </div>
+      <div class="stat-card stat-tilt-r reveal reveal-d3" role="listitem">
+        <div class="stat-num">🥇</div>
+        <div class="stat-label">CIP Forum Elnusa gold</div>
       </div>
     </div>
   </div>
 
-  <div class="hero-img-row">
-    <div class="hero-img-container">
-      <img src="static/profile.png" alt="Annas Adharuqudni" class="hero-img" />
-      <div class="hero-img-overlay"></div>
+  <div class="hero-scroll" id="lottie-scroll" aria-hidden="true"></div>
+</section>
+
+<!-- ═══════════ MARQUEE STRIP ═══════════ -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span>Fullstack Engineer ✦ Data Pipelines ✦ Anti-Bot Systems ✦ Cloud Infra ✦ Team Lead ✦ Founder ✦&nbsp;</span><span>Fullstack Engineer ✦ Data Pipelines ✦ Anti-Bot Systems ✦ Cloud Infra ✦ Team Lead ✦ Founder ✦&nbsp;</span>
+  </div>
+</div>
+
+<!-- ═══════════ JOURNEY ═══════════ -->
+<section id="journey" class="section section-journey" aria-label="Professional journey">
+  <div class="section-head">
+    <div class="section-kicker reveal">★ The adventure so far</div>
+    <h2 class="section-title reveal reveal-d1">Five years.<br/>Five companies.<br/><em>One epic quest.</em></h2>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-line" aria-hidden="true"></div>
+
+    <!-- 01 SAMSUNG -->
+    <article class="tl-card tl-left reveal">
+      <div class="tl-pin" aria-hidden="true">01</div>
+      <div class="tl-year pill pill-green">Feb 2026 — Present</div>
+      <div class="tl-logo"><img src="static/journey-samsung.png" alt="Samsung R&D" /></div>
+      <h3 class="tl-title">Samsung R&amp;D <span class="badge badge-green">NOW!</span></h3>
+      <div class="tl-role">Software Engineer · Jakarta</div>
+      <p class="tl-desc">Building scalable software systems at one of the world's most influential research labs. Jakarta-based, global-scale impact.</p>
+      <div class="tl-pow">⚡ Research meets reality</div>
+    </article>
+
+    <!-- 02 TIKET -->
+    <article class="tl-card tl-right reveal">
+      <div class="tl-pin" aria-hidden="true">02</div>
+      <div class="tl-year pill pill-blue">Feb 2022 — Feb 2026 · 4 yrs</div>
+      <div class="tl-logo"><img src="static/journey-tiket.png" alt="tiket.com" /></div>
+      <h3 class="tl-title">tiket.com</h3>
+      <div class="tl-role">Intern → Software Engineer I</div>
+      <p class="tl-desc">Four years powering Indonesia's biggest travel platform — data pipelines, anti-bot bypasses with a 95% success rate, and pricing algorithms moving millions of transactions at 99.9% uptime.</p>
+      <div class="tl-pow">💥 Cut hotel scraping costs by 90% while doubling data freshness</div>
+    </article>
+
+    <!-- 03 DECORPS -->
+    <article class="tl-card tl-left reveal">
+      <div class="tl-pin" aria-hidden="true">03</div>
+      <div class="tl-year pill pill-purple">Aug 2022 — Apr 2024</div>
+      <div class="tl-logo"><img src="static/journey-decorps.png" alt="decorps" /></div>
+      <h3 class="tl-title">decorps <span class="badge badge-purple">FOUNDER</span></h3>
+      <div class="tl-role">Founder &amp; Lead Engineer · Yogyakarta</div>
+      <p class="tl-desc">Founded a software studio and mentored 20+ PMs and developers. Shipped task-management, inventory, and POS SaaS products.</p>
+      <div class="tl-pow">🚀 100% of mentees landed internships or full-time roles</div>
+    </article>
+
+    <!-- 04 ELNUSA -->
+    <article class="tl-card tl-right reveal">
+      <div class="tl-pin" aria-hidden="true">04</div>
+      <div class="tl-year pill pill-orange">Apr 2021 — Feb 2023</div>
+      <div class="tl-logo"><img src="static/journey-elnusa.png" alt="PT Elnusa Tbk" /></div>
+      <h3 class="tl-title">PT Elnusa Tbk <span class="badge badge-yellow">🥇 GOLD</span></h3>
+      <div class="tl-role">Fullstack Engineer · Oil &amp; Gas</div>
+      <p class="tl-desc">Solo-built the enterprise risk management system with React Redux Saga + Laravel, tracking 1,000+ physical assets across the organisation.</p>
+      <div class="tl-pow">🏆 First place at CIP Forum Elnusa 2021 — out of ~100 competitors</div>
+    </article>
+
+    <!-- 05 AGNI -->
+    <article class="tl-card tl-left reveal">
+      <div class="tl-pin" aria-hidden="true">05</div>
+      <div class="tl-year pill pill-pink">Oct 2021 — Dec 2021</div>
+      <div class="tl-logo"><img src="static/journey-agni.png" alt="PT Agni" /></div>
+      <h3 class="tl-title">PT Agni</h3>
+      <div class="tl-role">Frontend Engineer · 3-month sprint</div>
+      <p class="tl-desc">A short &amp; sharp engagement: efficient website routing architecture and a clean UI layer with Vue 3 Composition API on Express.js.</p>
+      <div class="tl-pow">✨ Clean routing + Composition API UI in a single sprint</div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════ SKILLS / TOOLBOX ═══════════ -->
+<section id="skills" class="section section-skills" aria-label="Skills and technologies">
+  <div class="section-head">
+    <div class="section-kicker reveal">★ The toolbox</div>
+    <h2 class="section-title reveal reveal-d1">Stuff I'm<br/><em>really good at.</em></h2>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-panel panel-yellow reveal">
+      <h3 class="skill-panel-title">🎨 Frontend</h3>
+      <div class="chips">
+        <span class="chip chip-hot">React.js</span>
+        <span class="chip">Next.js</span>
+        <span class="chip">Vue.js 3</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">Figma</span>
+      </div>
     </div>
-    <div class="hero-stats-row">
-      <div class="hero-stat reveal">
-        <div class="hero-stat-num" data-target="5" data-suffix="+">5<sup>+</sup></div>
-        <div class="hero-stat-label">Years of<br/>experience</div>
+    <div class="skill-panel panel-blue reveal reveal-d1">
+      <h3 class="skill-panel-title">⚙️ Backend &amp; Data</h3>
+      <div class="chips">
+        <span class="chip chip-hot">Node.js</span>
+        <span class="chip chip-hot">Web Scraping / Anti-bot</span>
+        <span class="chip">Laravel / PHP</span>
+        <span class="chip">Express.js</span>
+        <span class="chip">BigQuery</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Terraform</span>
+        <span class="chip">GCP</span>
       </div>
-      <div class="hero-stat reveal reveal-d1">
-        <div class="hero-stat-num" data-target="20" data-suffix="+">20<sup>+</sup></div>
-        <div class="hero-stat-label">Team members<br/>led</div>
-      </div>
-      <div class="hero-stat reveal reveal-d2">
-        <div class="hero-stat-num" data-target="18" data-suffix="+">18<sup>+</sup></div>
-        <div class="hero-stat-label">Professional<br/>certifications</div>
-      </div>
-      <div class="hero-stat reveal reveal-d3">
-        <div class="hero-stat-num">#1</div>
-        <div class="hero-stat-label">CIP Forum<br/>Elnusa Gold</div>
+    </div>
+    <div class="skill-panel panel-pink reveal reveal-d2">
+      <h3 class="skill-panel-title">🧰 Languages &amp; Tools</h3>
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">MySQL / PostgreSQL</span>
+        <span class="chip">Cypress</span>
+        <span class="chip">English · Indonesian · 日本語</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE: CINEMATIC HORIZONTAL SCROLL -->
-<div class="ajn-section-intro" data-ajn id="experience">
-  <div class="ajn-intro-bg" aria-hidden="true">EXP</div>
-  <div class="ajn-intro-spine"></div>
-  <div class="ajn-intro-spine-dots">
-    <div class="ajn-intro-spine-dot active"></div>
-    <div class="ajn-intro-spine-dot"></div>
-    <div class="ajn-intro-spine-dot"></div>
-    <div class="ajn-intro-spine-dot"></div>
-    <div class="ajn-intro-spine-dot"></div>
-  </div>
-  <div class="ajn-intro-content">
-    <div class="section-index reveal">The Professional Journey</div>
-    <h2 class="section-title reveal reveal-d1">
-      Five years.<br/>Five companies.<br/><em>One craft.</em>
-    </h2>
-    <p class="section-sub reveal reveal-d2">
-      From enterprise oil &amp; gas to Indonesia's biggest travel platform — and now to Samsung R&amp;D. A career built on shipping systems that scale, leading teams that deliver, and chasing work that matters.
-    </p>
-    <div class="ajn-intro-companies reveal reveal-d3">
-      <span class="ajn-intro-co now">
-        <span class="ajn-intro-co-dot"></span>Samsung R&amp;D — Present
-      </span>
-      <span class="ajn-intro-co">
-        <span class="ajn-intro-co-dot"></span>tiket.com — 4 yrs
-      </span>
-      <span class="ajn-intro-co">
-        <span class="ajn-intro-co-dot"></span>decorps — Founder
-      </span>
-      <span class="ajn-intro-co">
-        <span class="ajn-intro-co-dot"></span>PT Elnusa Tbk
-      </span>
-      <span class="ajn-intro-co">
-        <span class="ajn-intro-co-dot"></span>PT Agni
-      </span>
-    </div>
-  </div>
-  <div class="ajn-intro-hint" aria-hidden="true">
-    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    <span>Scroll to explore</span>
-  </div>
-</div>
-
-<div class="ajn-stage" id="ajn-stage">
-  <div class="ajn-pin" id="ajn-pin">
-
-    <!-- Progress bar -->
-    <div class="ajn-progressbar">
-      <div class="ajn-progressbar-fill" id="ajn-fill"></div>
-    </div>
-
-    <!-- Chapter label -->
-    <div class="ajn-chapter-lbl" id="ajn-chapter-lbl">
-      <span class="r">01</span><span class="name">Samsung R&amp;D</span>
-    </div>
-
-    <!-- Slide counter -->
-    <div class="ajn-slide-counter" id="ajn-counter">01 / 05</div>
-
-    <div class="ajn-track" id="ajn-track">
-
-      <!-- ── 01 SAMSUNG ── -->
-      <article class="ajn-slide slide-01 s-active">
-        <div class="ajn-slide-inner">
-          <div class="ajn-left">
-            <div class="ajn-top">
-              <div class="ajn-year-pill">Feb 2026 — Present</div>
-              <div class="ajn-chapter">Now playing</div>
-              <h3 class="ajn-title">Samsung<br/>R&amp;D.<br/><em>Research meets reality.</em></h3>
-              <p class="ajn-desc">Building scalable software systems at Samsung R&amp;D Institute Indonesia — one of the world's most influential research labs. Jakarta-based, global-scale impact.</p>
-            </div>
-            <div class="ajn-bottom">
-              <div class="ajn-stats">
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>R&amp;D</em></div>
-                  <div class="ajn-stat-label">Division</div>
-                </div>
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num">Jakarta</div>
-                  <div class="ajn-stat-label">Location</div>
-                </div>
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>SE</em></div>
-                  <div class="ajn-stat-label">Role</div>
-                </div>
-              </div>
-              <div class="ajn-achievement">Developing production-grade software systems at global research scale</div>
-            </div>
-          </div>
-          <div class="ajn-right">
-            <div class="ajn-bg-num" aria-hidden="true">01</div>
-            <div class="ajn-img-frame">
-              <img src="static/journey-samsung.png" alt="Samsung R&D" />
-            </div>
-            <div class="ajn-img-meta">
-              <span class="ajn-img-meta-label">Company</span>
-              <span class="ajn-img-meta-value">Samsung Electronics</span>
-              <span class="ajn-img-meta-pill">Current</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ── 02 TIKET.COM ── -->
-      <article class="ajn-slide slide-02">
-        <div class="ajn-slide-inner">
-          <div class="ajn-left">
-            <div class="ajn-top">
-              <div class="ajn-year-pill">Feb 2022 — Feb 2026 · 4 years</div>
-              <div class="ajn-chapter">The big chapter</div>
-              <h3 class="ajn-title">tiket<br/>.com.<br/><em>Built for scale.</em></h3>
-              <p class="ajn-desc">Four years powering Indonesia's biggest travel platform. From intern to Software Engineer I — building data pipelines, defeating anti-bot systems, and shipping pricing algorithms that moved millions of transactions.</p>
-            </div>
-            <div class="ajn-bottom">
-              <div class="ajn-stats">
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>99.9%</em></div>
-                  <div class="ajn-stat-label">Uptime SLA</div>
-                </div>
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>95%</em></div>
-                  <div class="ajn-stat-label">Bot bypass rate</div>
-                </div>
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>&gt;90%</em></div>
-                  <div class="ajn-stat-label">Cost saved</div>
-                </div>
-              </div>
-              <div class="ajn-achievement">Data pipeline cutting hotel scraping costs by 90% while doubling freshness</div>
-            </div>
-          </div>
-          <div class="ajn-right">
-            <div class="ajn-bg-num" aria-hidden="true">02</div>
-            <div class="ajn-img-frame">
-              <img src="static/journey-tiket.png" alt="tiket.com" />
-            </div>
-            <div class="ajn-img-meta">
-              <span class="ajn-img-meta-label">Industry</span>
-              <span class="ajn-img-meta-value">Travel &amp; E-Commerce</span>
-              <span class="ajn-img-meta-pill">4 years</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ── 03 DECORPS ── -->
-      <article class="ajn-slide slide-03">
-        <div class="ajn-slide-inner">
-          <div class="ajn-left">
-            <div class="ajn-top">
-              <div class="ajn-year-pill">Aug 2022 — Apr 2024 · 1 yr 9 mos</div>
-              <div class="ajn-chapter">Side quest — Founder</div>
-              <h3 class="ajn-title">decorps.<br/><em>I built the team.</em></h3>
-              <p class="ajn-desc">Founded a software studio in Yogyakarta. Mentored 20+ product managers and developers — landed every single one into internships and full-time roles. Shipped task management, inventory, and POS SaaS products.</p>
-            </div>
-            <div class="ajn-bottom">
-              <div class="ajn-stats">
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>20+</em></div>
-                  <div class="ajn-stat-label">Members led</div>
-                </div>
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>100%</em></div>
-                  <div class="ajn-stat-label">Placement rate</div>
-                </div>
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>3</em></div>
-                  <div class="ajn-stat-label">SaaS shipped</div>
-                </div>
-              </div>
-              <div class="ajn-achievement">Every mentee landed a role — 100% placement, zero exceptions</div>
-            </div>
-          </div>
-          <div class="ajn-right">
-            <div class="ajn-bg-num" aria-hidden="true">03</div>
-            <div class="ajn-img-frame">
-              <img src="static/journey-decorps.png" alt="decorps" />
-            </div>
-            <div class="ajn-img-meta">
-              <span class="ajn-img-meta-label">Role</span>
-              <span class="ajn-img-meta-value">Founder &amp; Lead Engineer</span>
-              <span class="ajn-img-meta-pill">Yogyakarta</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ── 04 ELNUSA ── -->
-      <article class="ajn-slide slide-04">
-        <div class="ajn-slide-inner">
-          <div class="ajn-left">
-            <div class="ajn-top">
-              <div class="ajn-year-pill">Apr 2021 — Feb 2023 · 1 yr 11 mos</div>
-              <div class="ajn-chapter">Where it started</div>
-              <h3 class="ajn-title">PT Elnusa<br/>Tbk.<br/><em>Gold from a hundred.</em></h3>
-              <p class="ajn-desc">Solo-built Elnusa's enterprise risk management system using React Redux Saga + Laravel. Tracked 1,000+ physical assets across the organisation. Took home gold at CIP Forum Elnusa 2021 — first place from ~100 participants.</p>
-            </div>
-            <div class="ajn-bottom">
-              <div class="ajn-stats">
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>#1</em></div>
-                  <div class="ajn-stat-label">Gold medal</div>
-                </div>
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>1,000+</em></div>
-                  <div class="ajn-stat-label">Assets tracked</div>
-                </div>
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>~100</em></div>
-                  <div class="ajn-stat-label">Competitors</div>
-                </div>
-              </div>
-              <div class="ajn-achievement">First place at CIP Forum Elnusa 2021 — solo-built, end-to-end</div>
-            </div>
-          </div>
-          <div class="ajn-right">
-            <div class="ajn-bg-num" aria-hidden="true">04</div>
-            <div class="ajn-img-frame">
-              <img src="static/journey-elnusa.png" alt="PT Elnusa Tbk" />
-            </div>
-            <div class="ajn-img-meta">
-              <span class="ajn-img-meta-label">Industry</span>
-              <span class="ajn-img-meta-value">Oil &amp; Gas Enterprise</span>
-              <span class="ajn-img-meta-pill">Gold 🥇</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ── 05 PT AGNI ── -->
-      <article class="ajn-slide slide-05">
-        <div class="ajn-slide-inner">
-          <div class="ajn-left">
-            <div class="ajn-top">
-              <div class="ajn-year-pill">Oct 2021 — Dec 2021 · 3 months</div>
-              <div class="ajn-chapter">Short &amp; sharp</div>
-              <h3 class="ajn-title">PT Agni.<br/><em>Routes, refined.</em></h3>
-              <p class="ajn-desc">A focused 3-month engagement designing efficient website routing architecture and building a clean UI layer with VueJS 3.0 Composition API on top of an Express.js backend.</p>
-            </div>
-            <div class="ajn-bottom">
-              <div class="ajn-stats">
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>Vue 3</em></div>
-                  <div class="ajn-stat-label">Composition API</div>
-                </div>
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>Express</em></div>
-                  <div class="ajn-stat-label">Backend</div>
-                </div>
-                <div class="ajn-stat">
-                  <div class="ajn-stat-num"><em>3 mos</em></div>
-                  <div class="ajn-stat-label">Sprint</div>
-                </div>
-              </div>
-              <div class="ajn-achievement">Delivered clean routing architecture and Composition API UI in a single sprint</div>
-            </div>
-          </div>
-          <div class="ajn-right">
-            <div class="ajn-bg-num" aria-hidden="true">05</div>
-            <div class="ajn-img-frame">
-              <img src="static/journey-agni.png" alt="PT Agni" />
-            </div>
-            <div class="ajn-img-meta">
-              <span class="ajn-img-meta-label">Stack</span>
-              <span class="ajn-img-meta-value">Vue 3 + Express.js</span>
-              <span class="ajn-img-meta-pill">Sprint</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-    </div><!-- /ajn-track -->
-
-    <div class="ajn-progress" id="ajn-progress" role="group" aria-label="Journey chapters">
-      <button type="button" class="ajn-dot active" aria-label="Chapter 1: Samsung R&amp;D"></button>
-      <button type="button" class="ajn-dot" aria-label="Chapter 2: tiket.com"></button>
-      <button type="button" class="ajn-dot" aria-label="Chapter 3: decorps"></button>
-      <button type="button" class="ajn-dot" aria-label="Chapter 4: PT Elnusa Tbk"></button>
-      <button type="button" class="ajn-dot" aria-label="Chapter 5: PT Agni"></button>
-    </div>
-
-  </div><!-- /ajn-pin -->
-</div><!-- /ajn-stage -->
-
-<div class="ajn-strip">
-  <div class="ajn-strip-inner reveal">
-    <h3>Five chapters.<br/><span>One throughline.</span></h3>
-    <p>Build the system. Ship the pipeline. Lead the team. Win the room. Repeat.</p>
-  </div>
-</div>
-
-<!-- SKILLS -->
-<section id="skills" aria-label="Skills and Technologies">
-  <div class="section-header">
-    <div class="reveal">
-      <div class="section-index">Stack</div>
-      <h2 class="section-title">Technologies<br/>&amp; <em>Tools</em></h2>
-    </div>
-    <p class="section-sub reveal reveal-d1">
-      Full-spectrum engineering from pixel to pipeline — frontend polish, backend muscle, and cloud infrastructure that scales without mercy.
-    </p>
-  </div>
-  <div class="skills-layout">
-    <div class="skills-sticky">
-      <div class="skill-group reveal">
-        <div class="skill-group-label">Frontend</div>
-        <div class="skill-row"><span class="skill-name">React.js</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot active"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Next.js</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Vue.js 3</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">TypeScript</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot active"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Figma</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
-      </div>
-    </div>
-    <div>
-      <div class="skill-group reveal reveal-d1">
-        <div class="skill-group-label">Backend &amp; Data</div>
-        <div class="skill-row"><span class="skill-name">Node.js</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot active"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Laravel / PHP</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Express.js</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">BigQuery</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Docker</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot active"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Terraform</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">GCP</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot active"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Web Scraping / Anti-bot</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div></div></div>
-      </div>
-      <div class="skill-group reveal reveal-d2">
-        <div class="skill-group-label">Languages &amp; Tools</div>
-        <div class="skill-row"><span class="skill-name">Python</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">MySQL / PostgreSQL</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">Cypress</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
-        <div class="skill-row"><span class="skill-name">English / Indonesian / Japanese</span><div class="skill-level"><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot accent"></div><div class="skill-dot"></div><div class="skill-dot"></div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" aria-label="Selected Projects">
-  <div class="section-header">
-    <div class="reveal">
-      <div class="section-index">Work</div>
-      <h2 class="section-title">Selected<br/><em>Projects</em></h2>
-    </div>
-    <p class="section-sub reveal reveal-d1">
-      Fullstack, data, mobile, and infrastructure — built for the real world.
-    </p>
+<!-- ═══════════ PROJECTS ═══════════ -->
+<section id="projects" class="section section-projects" aria-label="Selected projects">
+  <div class="section-head">
+    <div class="section-kicker reveal">★ Built with love (and caffeine)</div>
+    <h2 class="section-title reveal reveal-d1">Projects that<br/><em>actually shipped.</em></h2>
   </div>
 
   <div class="projects-grid">
     <article class="project-card reveal">
-      <div class="project-num">01</div>
-      <div class="project-title">Road Hole Detection</div>
+      <div class="project-emoji" aria-hidden="true">🕳️</div>
+      <h3 class="project-title">Road Hole Detection</h3>
       <p class="project-desc">Computer vision model using YOLOv8 to detect and classify potholes in road imagery — streamlining inspection and reducing manual labour.</p>
-      <div class="project-card-footer">
-        <div class="project-tags">
-          <span class="project-tag">YOLOv8</span>
-          <span class="project-tag">OpenCV</span>
-          <span class="project-tag">TensorFlow</span>
-        </div>
-        <span class="project-arrow" aria-hidden="true">↗</span>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">TensorFlow</span></div>
       </div>
     </article>
 
     <article class="project-card reveal reveal-d1">
-      <div class="project-num">02</div>
-      <div class="project-title">Hotel &amp; Flight Pricing Pipeline</div>
+      <div class="project-emoji" aria-hidden="true">🏨</div>
+      <h3 class="project-title">Hotel &amp; Flight Pricing Pipeline</h3>
       <p class="project-desc">Scalable GCP data pipeline capturing, transforming, and serving hotel and flight pricing data to business dashboards at tiket.com.</p>
-      <div class="project-card-footer">
-        <div class="project-tags">
-          <span class="project-tag">BigQuery</span>
-          <span class="project-tag">GCP</span>
-          <span class="project-tag">Terraform</span>
-        </div>
-        <span class="project-arrow" aria-hidden="true">↗</span>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">BigQuery</span><span class="tag">GCP</span><span class="tag">Terraform</span></div>
       </div>
     </article>
 
     <article class="project-card reveal reveal-d2">
-      <div class="project-num">03</div>
-      <div class="project-title">Enterprise Risk Management System</div>
-      <p class="project-desc">Solo-built Elnusa's ERM platform with React Redux Saga + Laravel — tracking 1,000+ physical assets, winning Gold at CIP Forum 2021.</p>
-      <div class="project-card-footer">
-        <div class="project-tags">
-          <span class="project-tag">React</span>
-          <span class="project-tag">Laravel</span>
-          <span class="project-tag">Redux Saga</span>
-        </div>
-        <span class="project-arrow" aria-hidden="true">↗</span>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d3">
-      <div class="project-num">04</div>
-      <div class="project-title">Merchadiser Attendance System</div>
-      <p class="project-desc">Field MD attendance validation for PT Sari Boga Flour Mill. GPS + live camera, server-side geofencing (50–100m), offline IndexedDB queue, three-layer anti-fraud.</p>
-      <div class="project-card-footer">
-        <div class="project-tags">
-          <span class="project-tag">Next.js</span>
-          <span class="project-tag">Express.js</span>
-          <span class="project-tag">PostgreSQL</span>
-          <span class="project-tag">Docker</span>
-        </div>
-        <a href="https://github.com/adharuqudni/merchadiser" target="_blank" rel="noopener" class="project-arrow" aria-label="View merchadiser on GitHub">↗</a>
+      <div class="project-emoji" aria-hidden="true">🛡️</div>
+      <h3 class="project-title">Enterprise Risk Management</h3>
+      <p class="project-desc">Solo-built Elnusa's ERM platform with React Redux Saga + Laravel — tracking 1,000+ physical assets and winning Gold at CIP Forum 2021.</p>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">React</span><span class="tag">Laravel</span><span class="tag">Redux Saga</span></div>
       </div>
     </article>
 
     <article class="project-card reveal">
-      <div class="project-num">05</div>
-      <div class="project-title">Android Emulator Farm &amp; Frida Service</div>
-      <p class="project-desc">Docker Compose orchestrating 8 KVM-accelerated Android emulators with a Node.js Frida service — built for app instrumentation and anti-bot research at tiket.com.</p>
-      <div class="project-card-footer">
-        <div class="project-tags">
-          <span class="project-tag">Frida</span>
-          <span class="project-tag">Docker</span>
-          <span class="project-tag">Node.js</span>
-          <span class="project-tag">Selenium</span>
-        </div>
-        <a href="https://github.com/adharuqudni/frida-service" target="_blank" rel="noopener" class="project-arrow" aria-label="View frida-service on GitHub">↗</a>
+      <div class="project-emoji" aria-hidden="true">📍</div>
+      <h3 class="project-title">Merchandiser Attendance System</h3>
+      <p class="project-desc">Field attendance validation for PT Sari Boga Flour Mill — GPS + live camera, server-side geofencing, offline IndexedDB queue, three-layer anti-fraud.</p>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span></div>
+        <a href="https://github.com/adharuqudni/merchadiser" target="_blank" rel="noopener" class="project-link" aria-label="View merchadiser on GitHub">→</a>
       </div>
     </article>
 
     <article class="project-card reveal reveal-d1">
-      <div class="project-num">06</div>
-      <div class="project-title">Autonomous Ship Ground Control</div>
-      <p class="project-desc">WPF desktop GCS in VB.NET — real-time telemetry over serial (heading, servo, GPS), Google Satellite map with waypoint placement, Arduino command relay.</p>
-      <div class="project-card-footer">
-        <div class="project-tags">
-          <span class="project-tag">VB.NET</span>
-          <span class="project-tag">WPF</span>
-          <span class="project-tag">GMap.NET</span>
-          <span class="project-tag">Arduino</span>
-        </div>
-        <a href="https://github.com/adharuqudni/ship_dosen" target="_blank" rel="noopener" class="project-arrow" aria-label="View ship_dosen on GitHub">↗</a>
+      <div class="project-emoji" aria-hidden="true">🤖</div>
+      <h3 class="project-title">Android Emulator Farm &amp; Frida</h3>
+      <p class="project-desc">Docker Compose orchestrating 8 KVM-accelerated Android emulators with a Node.js Frida service — built for app instrumentation and anti-bot research.</p>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">Frida</span><span class="tag">Docker</span><span class="tag">Node.js</span></div>
+        <a href="https://github.com/adharuqudni/frida-service" target="_blank" rel="noopener" class="project-link" aria-label="View frida-service on GitHub">→</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal reveal-d2">
+      <div class="project-emoji" aria-hidden="true">🚢</div>
+      <h3 class="project-title">Autonomous Ship Ground Control</h3>
+      <p class="project-desc">WPF desktop GCS in VB.NET — real-time telemetry over serial, Google Satellite map with waypoint placement, Arduino command relay.</p>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">VB.NET</span><span class="tag">WPF</span><span class="tag">Arduino</span></div>
+        <a href="https://github.com/adharuqudni/ship_dosen" target="_blank" rel="noopener" class="project-link" aria-label="View ship_dosen on GitHub">→</a>
       </div>
     </article>
   </div>
 
-  <div class="projects-divider reveal">
-    <span class="projects-divider-label">Featured Case Studies</span>
-  </div>
+  <!-- FEATURED -->
+  <div class="featured-list">
+    <article class="featured panel-blue reveal">
+      <div class="featured-text">
+        <div class="badge badge-yellow">⭐ Featured · tiket.com</div>
+        <h3 class="featured-title">Hotel Pricing Intelligence System</h3>
+        <p>A distributed web-scraping and data-pipeline infrastructure that transformed how tiket.com collected competitive hotel pricing — <strong>90% cheaper</strong>, <strong>2× fresher</strong>, <strong>99.9% uptime</strong>.</p>
+        <div class="tags"><span class="tag">Node.js</span><span class="tag">BigQuery</span><span class="tag">GCP</span><span class="tag">Terraform</span><span class="tag">Docker</span></div>
+      </div>
+      <div class="featured-visual">
+        <div class="code-sticker" aria-hidden="true">
+          <div class="code-sticker-bar"><span></span><span></span><span></span></div>
+          <pre>// Anti-bot bypass layer
+async function scrapeWithEvasion(url) {
+  const browser = await puppeteer
+    .launch({ stealth: true });
+  await page.setUserAgent(rotate());
+  return await page.evaluate(extract);
+}</pre>
+        </div>
+      </div>
+    </article>
 
-  <div class="project-featured reveal" style="margin-top:0;">
-    <div>
-      <div class="feat-eyebrow">Featured — tiket.com · 2022–2026</div>
-      <h3 class="feat-title">Hotel Pricing<br/><em>Intelligence</em> System</h3>
-      <p class="feat-desc">A distributed web scraping and data pipeline infrastructure that transformed how tiket.com collected competitive hotel pricing data — reducing costs by 90% while increasing data freshness 2× over.</p>
-      <div class="feat-metrics">
-        <div>
-          <div class="feat-metric-num">90<span>%</span></div>
-          <div class="feat-metric-label">Cost reduction</div>
-        </div>
-        <div>
-          <div class="feat-metric-num">2<span>×</span></div>
-          <div class="feat-metric-label">Data speed</div>
-        </div>
-        <div>
-          <div class="feat-metric-num">99<span>.9%</span></div>
-          <div class="feat-metric-label">Uptime SLA</div>
-        </div>
+    <article class="featured panel-green reveal">
+      <div class="featured-text">
+        <div class="badge badge-yellow">⭐ Personal · 2025</div>
+        <h3 class="featured-title">Real-Time CCTV People Tracking</h3>
+        <p>Live HLS CCTV feed processed with <strong>YOLO v11</strong> + BoT-SORT tracking. Counts people entering and exiting a polygon zone in real time, streaming to a Next.js + FastAPI dashboard over WebSocket.</p>
+        <div class="tags"><span class="tag">YOLO v11</span><span class="tag">BoT-SORT</span><span class="tag">FastAPI</span><span class="tag">Next.js</span><span class="tag">WebSocket</span></div>
       </div>
-    </div>
-    <div class="feat-visual">
-      <div class="feat-tags" style="margin-bottom:16px;">
-        <span class="feat-tag">Node.js</span>
-        <span class="feat-tag">BigQuery</span>
-        <span class="feat-tag">GCP</span>
-        <span class="feat-tag">Terraform</span>
-        <span class="feat-tag">Docker</span>
+      <div class="featured-visual">
+        <img class="featured-img" src="static/dashboard.jpeg" alt="CCTV monitoring dashboard with live people counting" />
       </div>
-      <div class="feat-visual-block">
-        <div><strong>// Anti-bot bypass layer</strong></div>
-        <div>async function scrapeWithEvasion(url) {</div>
-        <div>&nbsp;&nbsp;const browser = await puppeteer</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;.launch({ stealth: true });</div>
-        <div>&nbsp;&nbsp;await page.setUserAgent(rotate());</div>
-        <div>&nbsp;&nbsp;// residential proxy rotation</div>
-        <div>&nbsp;&nbsp;return await page.evaluate(extract);</div>
-        <div>}</div>
-        <br/>
-        <div><strong>// Pipeline ingestion to BigQuery</strong></div>
-        <div>INSERT INTO pricing.hotels_raw</div>
-        <div>SELECT hotel_id, price, source,</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CURRENT_TIMESTAMP() AS scraped_at</div>
-        <div>FROM UNNEST(@batch) AS batch;</div>
-      </div>
-    </div>
-  </div>
+    </article>
 
-  <div class="project-featured reveal" style="margin-top:48px;">
-    <div>
-      <div class="feat-eyebrow">Personal Project · 2025</div>
-      <h3 class="feat-title">Real-Time CCTV<br/><em>People Tracking</em></h3>
-      <p class="feat-desc">Live-streamed HLS CCTV feed processed with YOLO v11 detection and BoT-SORT multi-object tracking. Counts people entering and exiting a configurable polygon area in real time, streaming frames and metadata over WebSocket to a Next.js + FastAPI dashboard. Containerised for ARM64 and x86 with Docker Compose.</p>
-      <div class="feat-metrics">
-        <div>
-          <div class="feat-metric-num">25<span>↑</span></div>
-          <div class="feat-metric-label">Entering</div>
-        </div>
-        <div>
-          <div class="feat-metric-num">23<span>↓</span></div>
-          <div class="feat-metric-label">Exiting</div>
-        </div>
-        <div>
-          <div class="feat-metric-num">7<span> ●</span></div>
-          <div class="feat-metric-label">Inside area</div>
-        </div>
+    <article class="featured panel-pink reveal">
+      <div class="featured-text">
+        <div class="badge badge-yellow">⭐ Android · 2025</div>
+        <h3 class="featured-title">ChaChing — Financial Pause</h3>
+        <p>Android app that intercepts BCA, GoPay, OVO &amp; ShopeePay launches via AccessibilityService — a pause screen with a budget rule engine, daily limits, streaks &amp; insights. <strong>52+ unit tests, zero server calls.</strong></p>
+        <div class="tags"><span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">MVVM</span><span class="tag">Room</span></div>
+        <a href="https://github.com/adharuqudni/Chaching" target="_blank" rel="noopener" class="btn btn-white btn-sm">View on GitHub →</a>
       </div>
-    </div>
-    <div class="feat-visual">
-      <div class="feat-tags" style="margin-bottom:16px;">
-        <span class="feat-tag">YOLO v11</span>
-        <span class="feat-tag">BoT-SORT</span>
-        <span class="feat-tag">FastAPI</span>
-        <span class="feat-tag">Next.js</span>
-        <span class="feat-tag">WebSocket</span>
-        <span class="feat-tag">Docker</span>
-      </div>
-      <img class="feat-img" src="static/dashboard.jpeg" alt="CCTV Monitoring System — live feed with bounding boxes and people count dashboard" />
-      <div class="feat-visual-block">
-        <div><strong># Entry / exit detection</strong></div>
-        <div>def check_crossing(prev, curr, zone):</div>
-        <div>&nbsp;&nbsp;was_in = zone.contains(prev)</div>
-        <div>&nbsp;&nbsp;is_in&nbsp; = zone.contains(curr)</div>
-        <div>&nbsp;&nbsp;if not was_in and is_in:</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;counters["entering"] += 1</div>
-        <div>&nbsp;&nbsp;elif was_in and not is_in:</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;counters["exiting"] += 1</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="project-featured reveal" style="margin-top:48px;">
-    <div>
-      <div class="feat-eyebrow">Personal Project · Android · 2025</div>
-      <h3 class="feat-title">ChaChing<br/><em>Financial Pause</em></h3>
-      <p class="feat-desc">Android app that intercepts BCA, GoPay, OVO, and ShopeePay launches via AccessibilityService — presenting a pause screen with a three-state budget rule engine, spending categories, daily limits, streaks, and spending insights. Zero server calls. All data local.</p>
-      <div class="feat-metrics">
-        <div>
-          <div class="feat-metric-num">52<span>+</span></div>
-          <div class="feat-metric-label">Unit tests</div>
-        </div>
-        <div>
-          <div class="feat-metric-num">&lt;500<span>ms</span></div>
-          <div class="feat-metric-label">Intercept SLA</div>
-        </div>
-        <div>
-          <div class="feat-metric-num">0<span> ☁</span></div>
-          <div class="feat-metric-label">Server calls</div>
+      <div class="featured-visual">
+        <div class="code-sticker" aria-hidden="true">
+          <div class="code-sticker-bar"><span></span><span></span><span></span></div>
+          <pre>// Budget rule engine — 3 states
+fun evaluate(input, spent, limit) =
+  when {
+    spent >= limit        -> HARD_BLOCK
+    input > limit - spent -> SOFT_WARNING
+    else                  -> ALLOWED
+  }</pre>
         </div>
       </div>
-    </div>
-    <div class="feat-visual">
-      <div class="feat-tags" style="margin-bottom:16px;">
-        <span class="feat-tag">Kotlin</span>
-        <span class="feat-tag">Jetpack Compose</span>
-        <span class="feat-tag">MVVM</span>
-        <span class="feat-tag">Hilt</span>
-        <span class="feat-tag">Room</span>
-        <span class="feat-tag">AccessibilityService</span>
-      </div>
-      <div class="feat-visual-block">
-        <div><strong>// Budget rule engine — 3 states</strong></div>
-        <div>fun evaluate(input: Long,</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spent: Long, limit: Long) =</div>
-        <div>&nbsp;&nbsp;when {</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;spent >= limit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> HARD_BLOCK</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;input > limit - spent -> SOFT_WARNING</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -> ALLOWED</div>
-        <div>&nbsp;&nbsp;}</div>
-        <br/>
-        <div><strong>// AccessibilityService intercept</strong></div>
-        <div>override fun onAccessibilityEvent(e: Event) {</div>
-        <div>&nbsp;&nbsp;if (e.packageName in watchedApps)</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;startActivity(blockerIntent)</div>
-        <div>}</div>
-      </div>
-      <a href="https://github.com/adharuqudni/Chaching" target="_blank" rel="noopener" class="feat-gh-link">
-        ✦ View on GitHub
-      </a>
-    </div>
+    </article>
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
-<section id="certifications">
-  <div class="certs-header">
-    <div class="reveal">
-      <div class="section-index">Licenses</div>
-      <h2 class="section-title" style="font-size:clamp(32px,4vw,56px);">Professional<br/><em>Certifications</em></h2>
-    </div>
-    <div class="certs-count reveal reveal-d2">18+</div>
+<!-- ═══════════ CERTIFICATIONS ═══════════ -->
+<section id="certifications" class="section section-certs" aria-label="Certifications">
+  <div class="section-head">
+    <div class="section-kicker reveal">★ Proof I did the homework</div>
+    <h2 class="section-title reveal reveal-d1"><em>18+ certificates</em><br/>and counting.</h2>
   </div>
-  <div style="overflow:hidden;" class="marquee-wrapper">
+  <div class="marquee-wrapper">
     <div class="marquee-track" id="marquee"></div>
     <div class="marquee-track reverse" id="marquee2"></div>
   </div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education">
-  <div class="section-header">
-    <div class="reveal">
-      <div class="section-index">Education</div>
-      <h2 class="section-title">Academic<br/><em>Background</em></h2>
-    </div>
-    <p class="section-sub reveal reveal-d1">Foundation built on computer science. Sharpened by industry.</p>
+<!-- ═══════════ EDUCATION ═══════════ -->
+<section id="education" class="section section-edu" aria-label="Education">
+  <div class="section-head">
+    <div class="section-kicker reveal">★ Where the brain got trained</div>
+    <h2 class="section-title reveal reveal-d1">School<br/><em>stories.</em></h2>
   </div>
   <div class="edu-grid">
-    <div class="edu-card reveal">
-      <div class="edu-year">Aug 2019 — Mar 2024</div>
-      <div class="edu-degree">S1 Informatics<br/>Computer Science</div>
-      <div class="edu-school">Universitas Pembangunan Nasional<br/>Veteran Yogyakarta</div>
+    <div class="edu-card panel-yellow reveal">
+      <div class="edu-emoji" aria-hidden="true">🎓</div>
+      <div class="edu-year pill pill-blue">2019 — 2024</div>
+      <h3 class="edu-degree">S1 Informatics — Computer Science</h3>
+      <div class="edu-school">UPN Veteran Yogyakarta</div>
     </div>
-    <div class="edu-card reveal reveal-d1">
-      <div class="edu-year">2016 — 2019</div>
-      <div class="edu-degree">SMA — IPA<br/>Science Stream</div>
-      <div class="edu-school">SMA Negeri 4<br/>Semarang</div>
+    <div class="edu-card panel-blue reveal reveal-d1">
+      <div class="edu-emoji" aria-hidden="true">🔬</div>
+      <div class="edu-year pill pill-pink">2016 — 2019</div>
+      <h3 class="edu-degree">SMA — Science Stream</h3>
+      <div class="edu-school">SMA Negeri 4 Semarang</div>
     </div>
-    <div class="edu-card edu-pub reveal reveal-d2">
-      <div class="edu-year">Publication</div>
-      <div class="edu-degree">"Is PWA still relevant in 2022?"</div>
-      <div class="edu-school">Annas Adharuqudni<br/>Academic Research</div>
+    <div class="edu-card panel-pink reveal reveal-d2">
+      <div class="edu-emoji" aria-hidden="true">📚</div>
+      <div class="edu-year pill pill-green">Publication</div>
+      <h3 class="edu-degree">"Is PWA still relevant in 2022?"</h3>
+      <div class="edu-school">Academic research</div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-bg"></div>
-  <div class="contact-eyebrow reveal">Open to new opportunities</div>
-  <h2 class="contact-title reveal reveal-d1">
-    Let's build<br/>something
-    <em>great.</em>
-  </h2>
-  <a href="mailto:annas.adharuqudni@gmail.com" class="contact-email reveal reveal-d2">
-    annas.adharuqudni@gmail.com
-    <svg aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </a>
-  <div class="contact-links reveal reveal-d3">
-    <a href="https://linkedin.com/in/adharuqudni" class="contact-link" target="_blank" rel="noopener">
-      <svg aria-hidden="true" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-      LinkedIn
-    </a>
-    <a href="https://github.com/adharuqudni" class="contact-link" target="_blank" rel="noopener">
-      <svg aria-hidden="true" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-      GitHub
-    </a>
-    <a href="Annas Resume.html" target="_blank" class="contact-link" rel="noopener">
-      <svg aria-hidden="true" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-      Resume
-    </a>
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact" class="section section-contact" aria-label="Contact">
+  <canvas id="contact-canvas" aria-hidden="true"></canvas>
+  <div class="contact-inner">
+    <div class="section-kicker kicker-light reveal">★ Open to new opportunities</div>
+    <h2 class="contact-title reveal reveal-d1">Let's build<br/>something <em>great!</em></h2>
+    <a href="mailto:annas.adharuqudni@gmail.com" class="btn btn-yellow btn-big reveal reveal-d2">✉️ annas.adharuqudni@gmail.com</a>
+    <div class="contact-links reveal reveal-d3">
+      <a href="https://linkedin.com/in/adharuqudni" class="btn btn-white" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/adharuqudni" class="btn btn-white" target="_blank" rel="noopener">GitHub</a>
+      <a href="Annas Resume.html" target="_blank" class="btn btn-white" rel="noopener">Resume</a>
+    </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-l">© 2026 <span>Annas Adharuqudni</span> — Built with passion.</div>
+  <div class="footer-l">© 2026 <span>Annas Adharuqudni</span> — drawn &amp; coded with 💛</div>
   <div class="footer-r">SOFTWARE ENGINEER · FULLSTACK · FOUNDER</div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie_light.min.js" defer></script>
 <script src="app.js" defer></script>
+<script type="module" src="three-scene.js"></script>
 </body>
 </html>

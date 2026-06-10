@@ -1,28 +1,8 @@
 // JS-ENABLED MARKER (lets CSS reveal/animation rules opt in)
 document.documentElement.classList.add('js');
 
-// REDUCED-MOTION + COARSE-POINTER GUARDS
+// REDUCED-MOTION GUARD
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const coarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-
-// CURSOR (skip on touch devices and when reduced-motion is requested)
-const cursor = document.getElementById('cursor');
-const ring   = document.getElementById('cursor-ring');
-if (cursor && ring && !reduceMotion && !coarsePointer) {
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top  = my + 'px';
-  });
-  (function animRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(animRing);
-  })();
-}
 
 // NAV SCROLL
 const nav = document.getElementById('nav');
@@ -99,103 +79,6 @@ const revObs = new IntersectionObserver(entries => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 reveals.forEach(el => revObs.observe(el));
 
-// AJN INTRO
-const ajnSections = document.querySelectorAll('[data-ajn]');
-const ajnIntroObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.15 });
-ajnSections.forEach(el => ajnIntroObs.observe(el));
-
-// CINEMATIC HORIZONTAL TIMELINE
-(function() {
-  const stage    = document.getElementById('ajn-stage');
-  const track    = document.getElementById('ajn-track');
-  const progress = document.getElementById('ajn-progress');
-  const lbl      = document.getElementById('ajn-chapter-lbl');
-  const counter  = document.getElementById('ajn-counter');
-  const fill     = document.getElementById('ajn-fill');
-  if (!stage || !track) return;
-
-  const slides  = Array.from(track.querySelectorAll('.ajn-slide'));
-  const dots    = progress ? Array.from(progress.querySelectorAll('.ajn-dot')) : [];
-  const names   = ['Samsung R&D', 'tiket.com', 'decorps', 'PT Elnusa Tbk', 'PT Agni'];
-  const N       = slides.length;
-  let lastIdx   = -1, raf = false;
-
-  // Make every slide visible up-front when reduced-motion is requested
-  if (reduceMotion) {
-    slides.forEach(s => s.classList.add('s-active'));
-  }
-
-  // Dot buttons → scroll to the matching chapter
-  dots.forEach((d, i) => {
-    d.addEventListener('click', () => {
-      if (window.matchMedia('(max-width: 1024px)').matches || reduceMotion) {
-        slides[i].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-        return;
-      }
-      const total  = stage.offsetHeight - window.innerHeight;
-      const target = stage.offsetTop + (i / Math.max(1, N - 1)) * total;
-      window.scrollTo({ top: target, behavior: 'smooth' });
-    });
-  });
-
-  function update() {
-    raf = false;
-    if (window.matchMedia('(max-width: 1024px)').matches || reduceMotion) {
-      track.style.transform = '';
-      return;
-    }
-    const rect     = stage.getBoundingClientRect();
-    const vh       = window.innerHeight;
-    const total    = stage.offsetHeight - vh;
-    const scrolled = Math.min(total, Math.max(0, -rect.top));
-    const p01      = total > 0 ? scrolled / total : 0;
-    const shift    = p01 * (N - 1) * window.innerWidth;
-
-    track.style.transform = `translate3d(${-shift}px,0,0)`;
-
-    if (fill) fill.style.width = (p01 * 100) + '%';
-
-    const idx = Math.min(N - 1, Math.round(p01 * (N - 1)));
-    if (idx !== lastIdx) {
-      lastIdx = idx;
-
-      dots.forEach((d, i) => {
-        d.classList.toggle('active',  i === idx);
-        d.classList.toggle('passed',  i < idx);
-      });
-
-      if (lbl) {
-        const nameEl = lbl.querySelector('.name');
-        const numEl  = lbl.querySelector('.r');
-        if (nameEl) {
-          nameEl.style.opacity = '0';
-          nameEl.style.transform = 'translateY(-8px)';
-          setTimeout(() => {
-            nameEl.textContent = names[idx];
-            nameEl.style.opacity = '';
-            nameEl.style.transform = '';
-          }, 180);
-        }
-        if (numEl) numEl.textContent = String(idx + 1).padStart(2, '0');
-      }
-
-      if (counter) counter.textContent = `${String(idx + 1).padStart(2,'0')} / ${String(N).padStart(2,'0')}`;
-
-      slides.forEach((s, i) => s.classList.toggle('s-active', i === idx));
-    }
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!raf) { raf = true; requestAnimationFrame(update); }
-  }, { passive: true });
-  window.addEventListener('resize', update);
-
-  update();
-  slides[0].classList.add('s-active');
-})();
-
 // CERTS MARQUEE
 const CERTS = [
   { logo: 'static/linkedin_logo.png',   name: 'Android Dev with Kotlin',            issuer: 'LinkedIn · Mar 2026' },
@@ -233,23 +116,23 @@ function buildMarqueeCard(c) {
 
 const marqEl = document.getElementById('marquee');
 const marqEl2 = document.getElementById('marquee2');
-[...CERTS, ...CERTS].forEach(c => marqEl.appendChild(buildMarqueeCard(c)));
-const certsRev = [...CERTS].reverse();
-[...certsRev, ...certsRev].forEach(c => marqEl2.appendChild(buildMarqueeCard(c)));
+if (marqEl && marqEl2) {
+  [...CERTS, ...CERTS].forEach(c => marqEl.appendChild(buildMarqueeCard(c)));
+  const certsRev = [...CERTS].reverse();
+  [...certsRev, ...certsRev].forEach(c => marqEl2.appendChild(buildMarqueeCard(c)));
+}
 
 // COUNTERS
 function animCounter(el, target, suffix) {
   if (reduceMotion) {
-    el.innerHTML = target + `<sup>${suffix}</sup>`;
+    el.textContent = target + suffix;
     return;
   }
-  let start = 0;
-  const dur = 1800, t0 = performance.now();
+  const dur = 1600, t0 = performance.now();
   (function tick(now) {
     const p = Math.min((now - t0) / dur, 1);
     const e = 1 - Math.pow(1 - p, 3);
-    const v = Math.round(start + (target - start) * e);
-    el.innerHTML = v + `<sup>${suffix}</sup>`;
+    el.textContent = Math.round(target * e) + suffix;
     if (p < 1) requestAnimationFrame(tick);
   })(t0);
 }
@@ -257,22 +140,11 @@ const ctrObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting && !e.target.dataset.done) {
       e.target.dataset.done = '1';
-      const target = parseInt(e.target.dataset.target);
-      const suffix = e.target.dataset.suffix || '';
-      animCounter(e.target, target, suffix);
+      animCounter(e.target, parseInt(e.target.dataset.target), e.target.dataset.suffix || '');
     }
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('[data-target]').forEach(el => ctrObs.observe(el));
-
-// HERO PARALLAX (disabled when user prefers reduced motion)
-if (!reduceMotion) {
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    const img = document.querySelector('.hero-img-container');
-    if (img) img.style.transform = `translateY(${y * 0.04}px)`;
-  }, { passive: true });
-}
 
 // BACK TO TOP
 const backTop = document.getElementById('back-top');
@@ -285,17 +157,93 @@ if (backTop) {
   });
 }
 
-// ACTIVE NAV LINK
-const navAnchors = document.querySelectorAll('.nav-links a');
-const sections = ['about','experience','skills','projects','contact'].map(id => document.getElementById(id)).filter(Boolean);
-window.addEventListener('scroll', () => {
-  const y = window.scrollY + 120;
-  let current = sections[0];
-  sections.forEach(s => { if (s.offsetTop <= y) current = s; });
-  navAnchors.forEach(a => {
-    a.style.color = '';
-    if (a.getAttribute('href') === '#' + (current ? current.id : '')) {
-      a.style.color = 'var(--ink)';
-    }
+// ══════════════════════════════════════════════
+// LOTTIE — hand-authored cartoon animations
+// (spinning star badge + bouncy scroll arrow)
+// ══════════════════════════════════════════════
+(function () {
+  if (reduceMotion || typeof lottie === 'undefined') return;
+
+  const YELLOW = [1, 0.788, 0.235, 1];   // #FFC93C
+  const INK    = [0.137, 0.137, 0.231, 1]; // #23233B
+  const lin = { i: { x: [0.45], y: [1] }, o: { x: [0.45], y: [0] } };
+
+  // — 4-point star, spinning with a gentle pulse —
+  const starData = {
+    v: '5.7.4', fr: 30, ip: 0, op: 120, w: 32, h: 32, nm: 'star', ddd: 0, assets: [],
+    layers: [{
+      ddd: 0, ind: 1, ty: 4, sr: 1, ao: 0, ip: 0, op: 120, st: 0, bm: 0,
+      ks: {
+        p: { a: 0, k: [16, 16] }, a: { a: 0, k: [0, 0] },
+        s: { a: 1, k: [{ t: 0, s: [100, 100], e: [115, 115], ...lin }, { t: 60, s: [115, 115], e: [100, 100], ...lin }, { t: 120 }] },
+        r: { a: 1, k: [{ t: 0, s: [0], e: [360], i: { x: [0.6], y: [1] }, o: { x: [0.4], y: [0] } }, { t: 120 }] },
+        o: { a: 0, k: 100 },
+      },
+      shapes: [{
+        ty: 'gr',
+        it: [
+          {
+            ty: 'sh',
+            ks: { a: 0, k: {
+              c: true,
+              v: [[0, -12], [3, -3], [12, 0], [3, 3], [0, 12], [-3, 3], [-12, 0], [-3, -3]],
+              i: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
+              o: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
+            } },
+          },
+          { ty: 'fl', c: { a: 0, k: YELLOW }, o: { a: 0, k: 100 } },
+          { ty: 'st', c: { a: 0, k: INK }, o: { a: 0, k: 100 }, w: { a: 0, k: 2.5 }, lc: 2, lj: 2 },
+          { ty: 'tr', p: { a: 0, k: [0, 0] }, a: { a: 0, k: [0, 0] }, s: { a: 0, k: [100, 100] }, r: { a: 0, k: 0 }, o: { a: 0, k: 100 } },
+        ],
+      }],
+    }],
+  };
+
+  // — chunky chevrons bouncing downward —
+  const chevron = (oKeys, pKeys) => ({
+    ddd: 0, ind: 1, ty: 4, sr: 1, ao: 0, ip: 0, op: 60, st: 0, bm: 0,
+    ks: {
+      p: { a: 1, k: pKeys },
+      a: { a: 0, k: [0, 0] }, s: { a: 0, k: [100, 100] }, r: { a: 0, k: 0 },
+      o: { a: 1, k: oKeys },
+    },
+    shapes: [{
+      ty: 'gr',
+      it: [
+        {
+          ty: 'sh',
+          ks: { a: 0, k: { c: false, v: [[-8, -3.5], [0, 4.5], [8, -3.5]], i: [[0,0],[0,0],[0,0]], o: [[0,0],[0,0],[0,0]] } },
+        },
+        { ty: 'st', c: { a: 0, k: INK }, o: { a: 0, k: 100 }, w: { a: 0, k: 4 }, lc: 2, lj: 2 },
+        { ty: 'tr', p: { a: 0, k: [0, 0] }, a: { a: 0, k: [0, 0] }, s: { a: 0, k: [100, 100] }, r: { a: 0, k: 0 }, o: { a: 0, k: 100 } },
+      ],
+    }],
   });
-}, { passive: true });
+  const scrollData = {
+    v: '5.7.4', fr: 30, ip: 0, op: 60, w: 46, h: 46, nm: 'scroll', ddd: 0, assets: [],
+    layers: [
+      chevron(
+        [{ t: 0, s: [0], e: [95], ...lin }, { t: 10, s: [95], e: [0], ...lin }, { t: 45 }],
+        [{ t: 0, s: [23, 12], e: [23, 32], ...lin }, { t: 45 }]
+      ),
+      chevron(
+        [{ t: 15, s: [0], e: [95], ...lin }, { t: 25, s: [95], e: [0], ...lin }, { t: 60 }],
+        [{ t: 15, s: [23, 12], e: [23, 32], ...lin }, { t: 60 }]
+      ),
+    ],
+  };
+
+  const mount = (id, data) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    lottie.loadAnimation({
+      container: el,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: data,
+    });
+  };
+  mount('lottie-star', starData);
+  mount('lottie-scroll', scrollData);
+})();
