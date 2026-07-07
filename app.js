@@ -158,6 +158,121 @@ if (backTop) {
 }
 
 // ══════════════════════════════════════════════
+// QUEST GAMIFICATION — coins + final boss
+// ══════════════════════════════════════════════
+(function () {
+  const toast = document.getElementById('quest-toast');
+  let toastTimer = null;
+  function showToast(msg, ms = 3200) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), ms);
+  }
+
+  function confettiBurst(x, y) {
+    if (reduceMotion) return;
+    const bits = ['🪙', '✦', '⭐', '💛'];
+    for (let i = 0; i < 18; i++) {
+      const b = document.createElement('span');
+      b.className = 'confetti-bit';
+      b.textContent = bits[i % bits.length];
+      b.style.left = x + 'px';
+      b.style.top = y + 'px';
+      const a = Math.random() * Math.PI * 2;
+      const d = 60 + Math.random() * 90;
+      b.style.setProperty('--cx', Math.cos(a) * d + 'px');
+      b.style.setProperty('--cy', Math.sin(a) * d - 40 + 'px');
+      b.style.setProperty('--cr', (Math.random() * 360 - 180) + 'deg');
+      document.body.appendChild(b);
+      setTimeout(() => b.remove(), 950);
+    }
+  }
+
+  // ── COINS ──
+  const COIN_KEY = 'quest-coins';
+  const coins = [...document.querySelectorAll('.quest-coin')];
+  const hud = document.getElementById('coin-hud');
+  const countEl = document.getElementById('coin-count');
+  if (coins.length && hud && countEl) {
+    let found;
+    try { found = new Set(JSON.parse(localStorage.getItem(COIN_KEY) || '[]')); }
+    catch { found = new Set(); }
+
+    function syncHud() {
+      countEl.textContent = found.size;
+      hud.classList.toggle('show', found.size > 0);
+    }
+    coins.forEach(c => {
+      if (found.has(c.dataset.coin)) c.style.display = 'none';   // already looted
+      c.addEventListener('click', () => {
+        if (found.has(c.dataset.coin)) return;
+        found.add(c.dataset.coin);
+        try { localStorage.setItem(COIN_KEY, JSON.stringify([...found])); } catch {}
+        c.classList.add('collected');
+        const r = c.getBoundingClientRect();
+        confettiBurst(r.left + r.width / 2, r.top + r.height / 2);
+        syncHud();
+        if (found.size === coins.length) {
+          showToast('🏆 ACHIEVEMENT UNLOCKED — all 5 coins collected! Cha-ching!');
+        } else {
+          showToast(`🪙 Coin found! ${found.size}/${coins.length}`, 1600);
+        }
+      });
+    });
+    syncHud();
+  }
+
+  // ── SIDE-QUEST FILTERS ──
+  const filterChips = [...document.querySelectorAll('.filter-chip')];
+  const projectCards = [...document.querySelectorAll('.project-card[data-cat]')];
+  filterChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const f = chip.dataset.filter;
+      filterChips.forEach(c => {
+        c.classList.toggle('active', c === chip);
+        c.setAttribute('aria-pressed', c === chip ? 'true' : 'false');
+      });
+      projectCards.forEach(card => {
+        card.classList.toggle('filtered-out', f !== 'all' && card.dataset.cat !== f);
+      });
+    });
+  });
+
+  // ── FINAL BOSS ──
+  const bossFill = document.getElementById('boss-hp');
+  const bossName = document.getElementById('boss-name');
+  const bossHint = document.getElementById('boss-hint');
+  const bossUi = document.querySelector('.boss-ui');
+  if (bossFill && bossName && bossHint && bossUi) {
+    let hp = 100;
+    document.querySelectorAll('#contact .btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (hp <= 0) return;
+        const isEmail = (btn.getAttribute('href') || '').startsWith('mailto:');
+        hp = isEmail ? 0 : Math.max(hp - 34, 1);   // only the email lands the killing blow
+        bossFill.style.width = hp + '%';
+        if (!reduceMotion) {
+          bossUi.classList.remove('boss-shake');
+          void bossUi.offsetWidth;                 // restart animation
+          bossUi.classList.add('boss-shake');
+        }
+        if (hp <= 0) {
+          bossFill.classList.add('dead');
+          bossName.textContent = '💥 BOSS DEFEATED — QUEST COMPLETE!';
+          bossHint.textContent = 'critical hit: one email sent ⚔️🏆';
+          const r = bossFill.getBoundingClientRect();
+          confettiBurst(r.left + r.width / 2, r.top);
+        } else {
+          bossHint.textContent = `it's super effective! boss HP ${hp}/100 — an email would finish it ⚔️`;
+        }
+      });
+    });
+  }
+})();
+
+// ══════════════════════════════════════════════
 // LOTTIE — hand-authored cartoon animations
 // (spinning star badge + bouncy scroll arrow)
 // ══════════════════════════════════════════════

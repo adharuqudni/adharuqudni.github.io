@@ -110,7 +110,7 @@ function initHero() {
 const questCanvas = document.getElementById('journey-canvas');
 const questHost = document.getElementById('journey');
 const lowGPU = (navigator.hardwareConcurrency || 8) <= 4;
-let qRenderer, qScene, qCamera, qFlags = [], qClouds = [], questVisible = false;
+let qRenderer, qScene, qCamera, qFlags = [], qClouds = [], qDots = [], questVisible = false;
 let qGroundCurve, qCamCurve, qU = 0;
 const qLook = new THREE.Vector3();
 
@@ -160,7 +160,7 @@ function initQuest() {
   qRenderer.setSize(window.innerWidth, window.innerHeight);
 
   qScene = new THREE.Scene();
-  qScene.fog = new THREE.Fog(0xfff4dc, 12, 34);   // fade to paper cream
+  qScene.fog = new THREE.Fog(0xfff4dc, 9, 24);    // fog of war: ahead stays hidden in cream
   qCamera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
   addLights(qScene);
 
@@ -178,13 +178,16 @@ function initQuest() {
     groundPts.map(p => p.clone().add(new THREE.Vector3(0, 3.6, 6.5)))
   );
 
-  /* dashed dot trail along the path */
+  /* dashed dot trail — uncovered fog-of-war style as the camera explores */
   const dotGeo = new THREE.SphereGeometry(0.1, 8, 6);
   const dotMat = new THREE.MeshBasicMaterial({ color: INK, transparent: true, opacity: 0.4 });
   for (let i = 0; i <= 90; i += 2) {
     const dot = new THREE.Mesh(dotGeo, dotMat);
     dot.position.copy(qGroundCurve.getPointAt(i / 90));
     dot.position.y = 0.05;
+    dot.userData.u = i / 90;
+    dot.scale.setScalar(0.001);
+    qDots.push(dot);
     qScene.add(dot);
   }
 
@@ -249,6 +252,12 @@ function updateQuest(s, delta) {
     f.rotation.y = Math.sin(s * 0.8 + f.userData.u * 10) * 0.12;
   });
 
+  // fog of war: trail only exists where you've explored (small scouting lead)
+  qDots.forEach(d => {
+    const seen = d.userData.u <= qU + 0.05;
+    d.scale.setScalar(THREE.MathUtils.damp(d.scale.x, seen ? 1 : 0.001, 7, delta));
+  });
+
   qClouds.forEach(c => {
     c.position.x = c.userData.baseX + Math.sin(s * c.userData.speed + c.userData.phase) * 1.5;
   });
@@ -263,6 +272,7 @@ function renderQuestStatic() {
   qCamera.position.copy(qCamCurve.getPointAt(qU));
   qCamera.lookAt(qGroundCurve.getPointAt(qU + 0.06));
   qFlags.forEach(f => f.scale.setScalar(0.85));
+  qDots.forEach(d => d.scale.setScalar(1));   // no fog of war without motion
   qRenderer.render(qScene, qCamera);
 }
 

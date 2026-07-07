@@ -1139,3 +1139,200 @@ html:not(.js) .reveal { opacity: 1 !important; transform: none !important; }
   .marquee-track { animation: none !important; flex-wrap: wrap; width: 100%; }
   .hero-scroll, .hero-badge-star { display: none !important; }
 }
+
+/* ══════════════════════════════════════════════
+   QUEST GAMIFICATION — coins, HUD, boss fight
+   ══════════════════════════════════════════════ */
+.quest-coin {
+  position: absolute;
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--yellow2), var(--yellow));
+  border: 3px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink), inset -3px -3px 0 rgba(35,35,59,0.18);
+  font-family: var(--ff-display);
+  font-size: 21px;
+  line-height: 1;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: coinBob 2.4s ease-in-out infinite;
+  transition: filter 0.15s;
+}
+.quest-coin:hover { filter: brightness(1.12) drop-shadow(0 0 6px var(--yellow)); }
+.quest-coin.collected { animation: coinPop 0.5s ease forwards; pointer-events: none; }
+@keyframes coinBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes coinPop {
+  40% { transform: scale(1.45) rotate(20deg); opacity: 1; }
+  100% { transform: scale(0) rotate(60deg); opacity: 0; }
+}
+
+#coin-hud {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 60;
+  background: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-family: var(--ff-display);
+  font-size: 18px;
+  box-shadow: 3px 3px 0 var(--ink);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+#coin-hud.show { opacity: 1; transform: none; }
+
+#quest-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translate(-50%, 140%);
+  z-index: 70;
+  background: var(--ink);
+  color: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  padding: 12px 22px;
+  font-family: var(--ff-display);
+  font-size: 17px;
+  box-shadow: 4px 4px 0 rgba(35,35,59,0.35);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  max-width: 90vw;
+  text-align: center;
+}
+#quest-toast.show { transform: translate(-50%, 0); }
+
+.confetti-bit {
+  position: fixed;
+  z-index: 80;
+  font-size: 18px;
+  pointer-events: none;
+  animation: confettiFly 0.9s ease-out forwards;
+}
+@keyframes confettiFly {
+  to {
+    transform: translate(var(--cx), var(--cy)) rotate(var(--cr));
+    opacity: 0;
+  }
+}
+
+/* BOSS FIGHT — contact CTA */
+.boss-ui { max-width: 430px; margin: 20px auto 6px; }
+.boss-name {
+  font-family: var(--ff-mono);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 0 rgba(35,35,59,0.4);
+}
+.boss-hp {
+  height: 20px;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  background: var(--white);
+  overflow: hidden;
+  box-shadow: 3px 3px 0 rgba(35,35,59,0.3);
+}
+.boss-hp-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--coral), var(--pink));
+  transition: width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.35s;
+}
+.boss-hp-fill.dead { background: var(--green); }
+.boss-hint {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.8);
+  margin-top: 7px;
+}
+.boss-shake { animation: bossShake 0.35s ease; }
+@keyframes bossShake {
+  20% { transform: translateX(-6px) rotate(-1deg); }
+  50% { transform: translateX(5px) rotate(1deg); }
+  80% { transform: translateX(-3px); }
+}
+
+@media (max-width: 640px) {
+  .quest-coin { width: 38px; height: 38px; font-size: 18px; }
+  #coin-hud { left: 12px; bottom: 12px; font-size: 15px; padding: 6px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quest-coin { animation: none; }
+  .quest-coin.collected { animation: none; opacity: 0; }
+  .confetti-bit { display: none; }
+  .boss-shake { animation: none; }
+  .boss-hp-fill { transition: none; }
+  #quest-toast { transition: none; }
+}
+
+/* ══════════════════════════════════════════════
+   PROJECTS — quest tiers, filters, pow lines
+   ══════════════════════════════════════════════ */
+.tier-label {
+  max-width: 1080px;
+  margin: 0 auto 22px;
+  font-family: var(--ff-display);
+  font-size: clamp(22px, 2.6vw, 30px);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.tier-label::after {
+  content: '';
+  flex: 1;
+  border-top: 3px dashed var(--ink);
+  opacity: 0.3;
+}
+.featured-list { margin-top: 0; }
+.featured-list + .tier-label { margin-top: 72px; }
+
+.filter-chips {
+  max-width: 1080px;
+  margin: 0 auto 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.filter-chip {
+  font-family: var(--ff-body);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--white);
+  border: var(--line);
+  border-radius: 999px;
+  padding: 7px 16px;
+  box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer;
+  transition: transform 0.2s var(--bounce), background 0.2s;
+}
+.filter-chip:hover { transform: translateY(-3px) rotate(-2deg); }
+.filter-chip.active { background: var(--yellow); transform: rotate(-1deg); }
+
+.project-card.filtered-out { display: none; }
+
+.project-pow {
+  font-family: var(--ff-body);
+  font-weight: 800;
+  font-size: 13px;
+  background: var(--paper);
+  border: 2px dashed var(--ink);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin-top: auto;
+}
+.tag-lock { background: var(--yellow2); }

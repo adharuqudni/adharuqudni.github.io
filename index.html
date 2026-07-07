@@ -205,6 +205,7 @@
     </div>
   </div>
 
+  <button class="quest-coin" data-coin="hero" aria-label="Collect hidden coin" style="top:24%;right:7%">A</button>
   <div class="hero-scroll" id="lottie-scroll" aria-hidden="true"></div>
 </section>
 
@@ -281,6 +282,7 @@
       <div class="tl-pow">✨ Clean routing + Composition API UI in a single sprint</div>
     </article>
   </div>
+  <button class="quest-coin" data-coin="journey" aria-label="Collect hidden coin" style="top:42%;left:6%">A</button>
 </section>
 
 <!-- ═══════════ SKILLS / TOOLBOX ═══════════ -->
@@ -335,118 +337,17 @@
       </div>
     </div>
   </div>
+  <button class="quest-coin" data-coin="skills" aria-label="Collect hidden coin" style="top:110px;right:5%">A</button>
 </section>
 
 <!-- ═══════════ PROJECTS ═══════════ -->
 <section id="projects" class="section section-projects" aria-label="Selected projects">
   <div class="section-head">
-    <div class="section-kicker reveal">★ Built with love (and caffeine)</div>
+    <div class="section-kicker reveal">★ Loot collected along the way — with love (and caffeine)</div>
     <h2 class="section-title reveal reveal-d1">Projects that<br/><em>actually shipped.</em></h2>
   </div>
 
-  <div class="projects-grid">
-    <article class="project-card reveal">
-      <div class="project-emoji" aria-hidden="true">💬</div>
-      <h3 class="project-title">Notula — WhatsApp Team-Intel</h3>
-      <p class="project-desc">Multi-tenant SaaS turning WhatsApp group activity into searchable team intelligence — WAHA capture → LLM summaries → Obsidian memory → RAG Q&amp;A, one generic n8n workflow resolving per-tenant config at runtime.</p>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">n8n</span><span class="tag">WAHA</span><span class="tag">SvelteKit</span><span class="tag">Supabase</span></div>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d1">
-      <div class="project-emoji" aria-hidden="true">⚔️</div>
-      <h3 class="project-title">Artle — "Art of Battle"</h3>
-      <p class="project-desc">Realtime tactical auto-battler built on one framework-agnostic deterministic engine driving two frontends — local PvE and an authoritative Colyseus PvP server with full client/server parity plus replays. Android via Capacitor.</p>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">Next.js</span><span class="tag">Colyseus</span><span class="tag">Capacitor</span></div>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d2">
-      <div class="project-emoji" aria-hidden="true">📒</div>
-      <h3 class="project-title">AKTUDINUS Ledger</h3>
-      <p class="project-desc">Legacy VB6 accounting system modernized into a web general ledger — 9 transaction types, 8 financial reports, monthly/member closing, and 52,700+ real posted transactions across 10 branches balancing to 0.00.</p>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">React 18</span><span class="tag">Spring Boot 3</span><span class="tag">PostgreSQL 16</span></div>
-      </div>
-    </article>
-
-    <article class="project-card reveal">
-      <div class="project-emoji" aria-hidden="true">🧠</div>
-      <h3 class="project-title">AI Development Platform</h3>
-      <p class="project-desc">AI-assisted development platform integrating LLMs, MCP, and spec-driven development — automating the cycle from requirements to implementation: code gen, architecture gen, automated docs.</p>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">TypeScript</span><span class="tag">MCP</span><span class="tag">OpenAI</span></div>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d1">
-      <div class="project-emoji" aria-hidden="true">🎮</div>
-      <h3 class="project-title">ComfyUI Game Asset Pipeline</h3>
-      <p class="project-desc">Automated pipeline producing consistent 2D pixel-art game assets — characters across races, equipment, poses, animations &amp; sprite sheets — without losing character identity.</p>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">ComfyUI</span><span class="tag">Stable Diffusion</span><span class="tag">LoRA · ControlNet</span></div>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d2">
-      <div class="project-emoji" aria-hidden="true">🕳️</div>
-      <h3 class="project-title">Road Hole Detection</h3>
-      <p class="project-desc">Computer vision model using YOLOv8 to detect and classify potholes in road imagery — streamlining inspection and reducing manual labour.</p>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">TensorFlow</span></div>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d1">
-      <div class="project-emoji" aria-hidden="true">🏨</div>
-      <h3 class="project-title">Hotel &amp; Flight Pricing Pipeline</h3>
-      <p class="project-desc">Scalable GCP data pipeline capturing, transforming, and serving hotel and flight pricing data to business dashboards at tiket.com.</p>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">BigQuery</span><span class="tag">GCP</span><span class="tag">Terraform</span></div>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d2">
-      <div class="project-emoji" aria-hidden="true">🛡️</div>
-      <h3 class="project-title">Enterprise Risk Management</h3>
-      <p class="project-desc">Solo-built Elnusa's ERM platform with React Redux Saga + Laravel — tracking 1,000+ physical assets and winning Gold at CIP Forum 2021.</p>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">React</span><span class="tag">Laravel</span><span class="tag">Redux Saga</span></div>
-      </div>
-    </article>
-
-    <article class="project-card reveal">
-      <div class="project-emoji" aria-hidden="true">📍</div>
-      <h3 class="project-title">Merchandiser Attendance System</h3>
-      <p class="project-desc">Field attendance validation for PT Sari Boga Flour Mill — GPS + live camera, server-side geofencing, offline IndexedDB queue, three-layer anti-fraud.</p>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">Next.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span></div>
-        <a href="https://github.com/adharuqudni/merchadiser" target="_blank" rel="noopener" class="project-link" aria-label="View merchadiser on GitHub">→</a>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d1">
-      <div class="project-emoji" aria-hidden="true">🤖</div>
-      <h3 class="project-title">Android Emulator Farm &amp; Frida</h3>
-      <p class="project-desc">Docker Compose orchestrating 8 KVM-accelerated Android emulators with a Node.js Frida service — built for app instrumentation and anti-bot research.</p>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">Frida</span><span class="tag">Docker</span><span class="tag">Node.js</span></div>
-        <a href="https://github.com/adharuqudni/frida-service" target="_blank" rel="noopener" class="project-link" aria-label="View frida-service on GitHub">→</a>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d2">
-      <div class="project-emoji" aria-hidden="true">🚢</div>
-      <h3 class="project-title">Autonomous Ship Ground Control</h3>
-      <p class="project-desc">WPF desktop GCS in VB.NET — real-time telemetry over serial, Google Satellite map with waypoint placement, Arduino command relay.</p>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">VB.NET</span><span class="tag">WPF</span><span class="tag">Arduino</span></div>
-        <a href="https://github.com/adharuqudni/ship_dosen" target="_blank" rel="noopener" class="project-link" aria-label="View ship_dosen on GitHub">→</a>
-      </div>
-    </article>
-  </div>
+  <div class="tier-label reveal">⭐ Main quests</div>
 
   <!-- FEATURED -->
   <div class="featured-list">
@@ -455,7 +356,7 @@
         <div class="badge badge-yellow">⭐ Featured · tiket.com</div>
         <h3 class="featured-title">Distributed Data-Mining Platform</h3>
         <p>Distributed platform acquiring hotel &amp; flight data from multiple external sources, directly feeding tiket.com's pricing algorithms — enterprise-scale ETL through <strong>GCS &amp; BigQuery</strong>, sustained by <strong>reverse-engineering</strong> and resilient scraping, plus an ad-hoc exploration service that <strong>doubled data-exploration speed</strong>.</p>
-        <div class="tags"><span class="tag">Node.js</span><span class="tag">BigQuery</span><span class="tag">GCP</span><span class="tag">Terraform</span><span class="tag">Docker</span></div>
+        <div class="tags"><span class="tag">Node.js</span><span class="tag">BigQuery</span><span class="tag">GCP</span><span class="tag">Terraform</span><span class="tag">Docker</span><span class="tag tag-lock">🔒 proprietary · tiket.com</span></div>
       </div>
       <div class="featured-visual">
         <div class="code-sticker" aria-hidden="true">
@@ -505,6 +406,117 @@ fun evaluate(input, spent, limit) =
       </div>
     </article>
   </div>
+
+  <div class="tier-label reveal">🗡️ Side quests</div>
+
+  <div class="filter-chips reveal" role="group" aria-label="Filter side-quest projects">
+    <button class="filter-chip active" data-filter="all" aria-pressed="true">All</button>
+    <button class="filter-chip" data-filter="ai" aria-pressed="false">🤖 AI &amp; Vision</button>
+    <button class="filter-chip" data-filter="platform" aria-pressed="false">⚙️ Platform &amp; Data</button>
+    <button class="filter-chip" data-filter="games" aria-pressed="false">🎮 Games &amp; Creative</button>
+  </div>
+
+  <div class="projects-grid">
+    <article class="project-card reveal" data-cat="ai">
+      <div class="project-emoji" aria-hidden="true">💬</div>
+      <h3 class="project-title">Notula — WhatsApp Team-Intel</h3>
+      <p class="project-desc">Multi-tenant SaaS turning WhatsApp group activity into searchable team intelligence — WAHA capture → LLM summaries → Obsidian memory → RAG Q&amp;A, orchestrated in n8n.</p>
+      <div class="project-pow">🧠 One generic workflow, every tenant — true multi-tenancy</div>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">n8n</span><span class="tag">WAHA</span><span class="tag">SvelteKit</span><span class="tag">Supabase</span></div>
+        <a href="#contact" class="project-link" aria-label="Ask me about Notula">💬</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal reveal-d1" data-cat="ai">
+      <div class="project-emoji" aria-hidden="true">🧠</div>
+      <h3 class="project-title">AI Development Platform</h3>
+      <p class="project-desc">AI-assisted development platform integrating LLMs, MCP, and spec-driven development — automating the cycle from requirements to implementation.</p>
+      <div class="project-pow">🤖 Requirements in, code + architecture + docs out</div>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">TypeScript</span><span class="tag">MCP</span><span class="tag">OpenAI</span></div>
+        <a href="#contact" class="project-link" aria-label="Ask me about the AI Development Platform">💬</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal reveal-d2" data-cat="games">
+      <div class="project-emoji" aria-hidden="true">⚔️</div>
+      <h3 class="project-title">Artle — "Art of Battle"</h3>
+      <p class="project-desc">Realtime tactical auto-battler built on one framework-agnostic deterministic engine — local PvE and an authoritative Colyseus PvP server, plus replays. Android via Capacitor.</p>
+      <div class="project-pow">⚔️ One deterministic engine, two frontends, full parity</div>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">Colyseus</span><span class="tag">Capacitor</span></div>
+        <a href="#contact" class="project-link" aria-label="Ask me about Artle">💬</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal" data-cat="platform">
+      <div class="project-emoji" aria-hidden="true">📒</div>
+      <h3 class="project-title">AKTUDINUS Ledger</h3>
+      <p class="project-desc">Legacy VB6 accounting system modernized into a web general ledger — 9 transaction types, 8 financial reports, monthly/member closing, role-based access.</p>
+      <div class="project-pow">📊 52,700+ real transactions, 10 branches, balancing to 0.00</div>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">React 18</span><span class="tag">Spring Boot 3</span><span class="tag">PostgreSQL 16</span></div>
+        <a href="#contact" class="project-link" aria-label="Ask me about AKTUDINUS Ledger">💬</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal reveal-d1" data-cat="games">
+      <div class="project-emoji" aria-hidden="true">🎮</div>
+      <h3 class="project-title">ComfyUI Game Asset Pipeline</h3>
+      <p class="project-desc">Automated pipeline producing consistent 2D pixel-art game assets — characters across races, equipment, poses, animations &amp; sprite sheets.</p>
+      <div class="project-pow">🎨 Same character, every pose — identity never drifts</div>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">ComfyUI</span><span class="tag">Stable Diffusion</span><span class="tag">LoRA · ControlNet</span></div>
+        <a href="#contact" class="project-link" aria-label="Ask me about the asset pipeline">💬</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal reveal-d2" data-cat="platform">
+      <div class="project-emoji" aria-hidden="true">📍</div>
+      <h3 class="project-title">Merchandiser Attendance System</h3>
+      <p class="project-desc">Field attendance validation for PT Sari Boga Flour Mill — GPS + live camera, server-side geofencing, offline IndexedDB queue.</p>
+      <div class="project-pow">🛡️ Three-layer anti-fraud, offline-first in the field</div>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span></div>
+        <a href="https://github.com/adharuqudni/merchadiser" target="_blank" rel="noopener" class="project-link" aria-label="View merchadiser on GitHub">→</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal" data-cat="platform">
+      <div class="project-emoji" aria-hidden="true">🤖</div>
+      <h3 class="project-title">Android Emulator Farm &amp; Frida</h3>
+      <p class="project-desc">Docker Compose orchestrating KVM-accelerated Android emulators with a Node.js Frida service — built for app instrumentation and anti-bot research.</p>
+      <div class="project-pow">📱 8 emulators, one compose file, full instrumentation</div>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">Frida</span><span class="tag">Docker</span><span class="tag">Node.js</span></div>
+        <a href="https://github.com/adharuqudni/frida-service" target="_blank" rel="noopener" class="project-link" aria-label="View frida-service on GitHub">→</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal reveal-d1" data-cat="platform">
+      <div class="project-emoji" aria-hidden="true">🚢</div>
+      <h3 class="project-title">Autonomous Ship Ground Control</h3>
+      <p class="project-desc">WPF desktop GCS in VB.NET — Google Satellite map with waypoint placement, Arduino command relay.</p>
+      <div class="project-pow">🛰️ Real-time telemetry over serial, click-to-set waypoints</div>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">VB.NET</span><span class="tag">WPF</span><span class="tag">Arduino</span></div>
+        <a href="https://github.com/adharuqudni/ship_dosen" target="_blank" rel="noopener" class="project-link" aria-label="View ship_dosen on GitHub">→</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal reveal-d2" data-cat="ai">
+      <div class="project-emoji" aria-hidden="true">🕳️</div>
+      <h3 class="project-title">Road Hole Detection</h3>
+      <p class="project-desc">Computer vision model using YOLOv8 to detect and classify potholes in road imagery.</p>
+      <div class="project-pow">🕳️ Manual road inspection → automated computer vision</div>
+      <div class="project-foot">
+        <div class="tags"><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">TensorFlow</span></div>
+        <a href="#contact" class="project-link" aria-label="Ask me about Road Hole Detection">💬</a>
+      </div>
+    </article>
+  </div>
+  <button class="quest-coin" data-coin="projects" aria-label="Collect hidden coin" style="top:70px;left:4%">A</button>
 </section>
 
 <!-- ═══════════ CERTIFICATIONS ═══════════ -->
@@ -517,6 +529,7 @@ fun evaluate(input, spent, limit) =
     <div class="marquee-track" id="marquee"></div>
     <div class="marquee-track reverse" id="marquee2"></div>
   </div>
+  <button class="quest-coin" data-coin="certs" aria-label="Collect hidden coin" style="bottom:26px;right:8%">A</button>
 </section>
 
 <!-- ═══════════ EDUCATION ═══════════ -->
@@ -553,6 +566,11 @@ fun evaluate(input, spent, limit) =
   <div class="contact-inner">
     <div class="section-kicker kicker-light reveal">★ Open to new opportunities</div>
     <h2 class="contact-title reveal reveal-d1">Let's build<br/>something <em>great!</em></h2>
+    <div class="boss-ui reveal reveal-d2" aria-hidden="true">
+      <div class="boss-name" id="boss-name">☠️ FINAL BOSS — "The Job Hunt"</div>
+      <div class="boss-hp"><div class="boss-hp-fill" id="boss-hp"></div></div>
+      <div class="boss-hint" id="boss-hint">every click is an attack — finish it with an email ⚔️</div>
+    </div>
     <a href="mailto:annas.adharuqudni@gmail.com" class="btn btn-yellow btn-big reveal reveal-d2">✉️ annas.adharuqudni@gmail.com</a>
     <div class="contact-links reveal reveal-d3">
       <a href="https://linkedin.com/in/adharuqudni" class="btn btn-white" target="_blank" rel="noopener">LinkedIn</a>
@@ -563,6 +581,10 @@ fun evaluate(input, spent, limit) =
 </section>
 
 </main>
+
+<!-- QUEST HUD -->
+<div id="coin-hud" aria-live="polite">🪙 <span id="coin-count">0</span>/5</div>
+<div id="quest-toast" role="status"></div>
 
 <!-- FOOTER -->
 <footer>
