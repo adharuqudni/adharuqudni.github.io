@@ -83,11 +83,9 @@
   /* EXPERIENCE */
   .exp-entry { margin-bottom: 13px; }
   .exp-header { display: flex; justify-content: space-between; align-items: flex-start; }
-  .exp-title-company { }
   .exp-role { font-size: 10.5pt; font-weight: 700; color: #1a1a1a; }
   .exp-company { font-size: 10pt; color: #444; font-weight: 500; }
   .exp-period { font-size: 9pt; color: #666; white-space: nowrap; margin-top: 2px; text-align: right; }
-  .exp-sub { font-size: 9.5pt; font-weight: 600; color: #333; margin: 5px 0 3px; }
   ul.bullets { margin-left: 14px; margin-top: 3px; }
   ul.bullets li {
     font-size: 9.5pt;
@@ -97,14 +95,14 @@
   }
 
   /* SKILLS */
-  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
-  .skill-row { font-size: 9.5pt; color: #333; }
+  .skill-row { font-size: 9.5pt; color: #333; margin-bottom: 4px; }
   .skill-label { font-weight: 600; color: #1a1a1a; }
 
-  /* CERTS */
-  .certs-grid { columns: 2; column-gap: 24px; }
-  .cert-entry { font-size: 9.5pt; color: #333; margin-bottom: 5px; break-inside: avoid; }
-  .cert-entry strong { color: #1a1a1a; font-weight: 600; }
+  /* PROJECTS */
+  .proj-entry { margin-bottom: 9px; break-inside: avoid; }
+  .proj-title { font-size: 10pt; font-weight: 700; color: #1a1a1a; }
+  .proj-desc { font-size: 9.5pt; color: #333; line-height: 1.45; margin-top: 1px; }
+  .proj-tech { font-size: 8.5pt; color: #666; font-style: italic; margin-top: 1px; }
 
   /* EDUCATION */
   .edu-entry { margin-bottom: 8px; display: flex; justify-content: space-between; }
@@ -137,22 +135,41 @@
   <!-- HEADER -->
   <div class="header">
     <div class="name">Annas Adharuqudni</div>
-    <div class="headline">Software Engineer — Node.js · Laravel · React · Vue · GCP · Docker</div>
+    <div class="headline">Platform Software Engineer — Developer Tooling · Distributed Systems · Cross-Platform Architecture</div>
     <div class="contact-row">
-      <span>📍 West Jakarta, Indonesia</span>
+      <span>📍 Jakarta, Indonesia</span>
       <span>📞 +62 821-3683-7847</span>
       <a href="mailto:annas.adharuqudni@gmail.com">annas.adharuqudni@gmail.com</a>
       <a href="https://linkedin.com/in/adharuqudni" target="_blank">linkedin.com/in/adharuqudni</a>
       <a href="https://github.com/adharuqudni" target="_blank">github.com/adharuqudni</a>
+      <a href="https://adharuqudni.github.io" target="_blank">adharuqudni.github.io</a>
     </div>
   </div>
 
   <!-- SUMMARY -->
   <div class="section">
-    <div class="section-title">Summary</div>
+    <div class="section-title">Professional Summary</div>
     <p style="font-size:9.5pt;color:#333;line-height:1.55;">
-      Fullstack Software Engineer with 5+ years of experience building scalable distributed systems using Node.js, Laravel, React, and Vue. Proven expertise in data pipeline engineering on GCP (BigQuery, Cloud Storage, Terraform, Docker), reverse engineering anti-bot systems, and leading cross-functional teams. Currently at Samsung R&amp;D Indonesia; previously 4 years at tiket.com delivering high-impact features across data infrastructure and frontend. Winner — CIP Forum Elnusa 2021 (Gold, ~100 participants).
+      Platform Software Engineer focused on developer tooling, distributed systems, and cross-platform architecture. I build the reusable frameworks and data infrastructure that other engineers depend on — from cross-platform (Android / iOS / WebView) abstractions at Samsung to distributed data-mining pipelines powering pricing systems at tiket.com. Increasingly working at the intersection of applied AI and engineering: MCP-based agent tooling, spec-driven development, and automated content and asset pipelines.
     </p>
+  </div>
+
+  <!-- CORE COMPETENCIES -->
+  <div class="section">
+    <div class="section-title">Core Competencies</div>
+    <p style="font-size:9.5pt;color:#333;">
+      Platform Engineering · Developer Tooling · Distributed Systems · Cross-Platform Architecture · Reverse Engineering · Applied AI / LLM Tooling · Data Pipelines (ETL)
+    </p>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skill-row"><span class="skill-label">Languages:</span> TypeScript, JavaScript, Java, Kotlin, Python, C++, SQL</div>
+    <div class="skill-row"><span class="skill-label">Frontend &amp; Mobile:</span> Next.js, React, Zustand, Jetpack Compose, Vue.js, Capacitor, Progressive Web Apps, Framer Motion</div>
+    <div class="skill-row"><span class="skill-label">Backend &amp; Data:</span> Node.js, Express.js, Spring Boot, Prisma, PostgreSQL, Flyway, Room, Coroutines, Hilt</div>
+    <div class="skill-row"><span class="skill-label">Cloud &amp; Infrastructure:</span> Google Cloud Platform (BigQuery, GCS), Firebase, Supabase, Docker, Terraform, Colyseus, n8n</div>
+    <div class="skill-row"><span class="skill-label">AI &amp; Tooling:</span> MCP, LLMs (OpenAI), Spec-Driven Development, ComfyUI, Stable Diffusion (LoRA, ControlNet), Cypress, Git</div>
   </div>
 
   <!-- EXPERIENCE -->
@@ -161,115 +178,98 @@
 
     <div class="exp-entry">
       <div class="exp-header">
-        <div class="exp-title-company">
-          <div class="exp-role">Software Engineer</div>
-          <div class="exp-company">Samsung R&amp;D Institute Indonesia · Jakarta</div>
+        <div>
+          <div class="exp-role">Software Engineer — Samsung R&amp;D Indonesia</div>
+          <div class="exp-company">Jakarta, Indonesia</div>
         </div>
         <div class="exp-period">Feb 2026 – Present</div>
       </div>
-      <ul class="bullets" style="margin-top:5px;">
-        <li>Building scalable software systems at Samsung's Indonesian R&amp;D division.</li>
-      </ul>
-    </div>
-
-    <div class="exp-entry">
-      <div class="exp-header">
-        <div class="exp-title-company">
-          <div class="exp-role">Software Engineer — tiket.com (PT Global Tiket Network)</div>
-          <div class="exp-company">Jakarta · 4 years 1 month total</div>
-        </div>
-        <div class="exp-period">Feb 2022 – Feb 2026</div>
-      </div>
-      <div class="exp-sub">Software Engineer I · Feb 2023 – Feb 2026</div>
       <ul class="bullets">
-        <li>Built modular Next.js + TypeScript UI components for real-time dashboards, cutting dev time by <strong>30%</strong>.</li>
-        <li>Developed distributed ad-hoc data mining system, improving data exploration speed by <strong>2×</strong>.</li>
-        <li>Architected backend services with Docker, Terraform &amp; GCP maintaining <strong>99.9% uptime</strong> across deployments.</li>
-        <li>Reverse-engineered third-party data sources; achieved <strong>95% success rate</strong> bypassing anti-bot protections.</li>
-        <li>Orchestrated ETL pipelines to Google Cloud Storage &amp; BigQuery for hotel/flight pricing algorithms.</li>
-        <li>Collaborated cross-functionally to deliver features <strong>20% ahead of schedule</strong>.</li>
-      </ul>
-      <div class="exp-sub">Software Engineer Internship · Feb 2022 – Jan 2023</div>
-      <ul class="bullets">
-        <li>Built PWA with Next.js increasing mobile return visits by <strong>15%</strong>.</li>
-        <li>Created living design system with Storybook; implemented Cypress E2E achieving <strong>95%+ test coverage</strong>.</li>
-        <li>Engineered hotel scraping framework via reverse engineering, saving <strong>&gt;90%</strong> in data acquisition costs.</li>
+        <li>Build a reusable cross-platform framework consumed by multiple Samsung applications, maintaining strict feature parity across Android, iOS, and WebView.</li>
+        <li>Analyze native Android implementations and port their behavior — including End-to-End Encryption (E2EE) security features — into iOS and WebView environments.</li>
+        <li>Resolve architectural bottlenecks spanning native mobile and WebView layers, improving framework stability, maintainability, and feature-delivery speed.</li>
       </ul>
     </div>
 
     <div class="exp-entry">
       <div class="exp-header">
-        <div class="exp-title-company">
-          <div class="exp-role">Founder &amp; Product Manager — decorps</div>
-          <div class="exp-company">Yogyakarta, Indonesia</div>
+        <div>
+          <div class="exp-role">Software Engineer I — tiket.com</div>
+          <div class="exp-company">Jakarta, Indonesia</div>
         </div>
-        <div class="exp-period">Aug 2022 – Apr 2024</div>
+        <div class="exp-period">Feb 2023 – Feb 2026</div>
       </div>
-      <ul class="bullets" style="margin-top:5px;">
-        <li>Managed 20+ personnel (product managers + developers); mentored members to land internships and full-time roles.</li>
-        <li>Architected and shipped task management, inventory management, and POS SaaS applications.</li>
+      <ul class="bullets">
+        <li>Built and operated a distributed data-mining platform acquiring hotel and flight data from multiple external sources, directly feeding pricing algorithms across key business verticals.</li>
+        <li>Designed ETL pipelines that moved and processed data through Google Cloud Storage and BigQuery at enterprise scale, backed by Docker and Terraform.</li>
+        <li>Applied reverse-engineering and resilient-scraping techniques to sustain reliable data acquisition from dynamic, frequently changing sources.</li>
+        <li>Delivered an ad-hoc data-exploration service that roughly doubled data-exploration speed for internal product and analytics teams.</li>
       </ul>
     </div>
 
     <div class="exp-entry">
       <div class="exp-header">
-        <div class="exp-title-company">
-          <div class="exp-role">Software Engineer — PT Elnusa Tbk</div>
-          <div class="exp-company">Jakarta Selatan, Indonesia</div>
+        <div>
+          <div class="exp-role">Software Engineer Intern — tiket.com</div>
+          <div class="exp-company">Jakarta, Indonesia</div>
+        </div>
+        <div class="exp-period">Feb 2022 – Jan 2023</div>
+      </div>
+      <ul class="bullets">
+        <li>Built a custom data-extraction framework by analyzing complex client-side applications, cutting third-party data-acquisition costs.</li>
+        <li>Shipped a Next.js Progressive Web App that improved mobile accessibility and lifted return-user engagement by ~15%.</li>
+        <li>Established a Storybook-based design system with Cypress end-to-end tests to guarantee reliable UI deployments.</li>
+      </ul>
+    </div>
+
+    <div class="exp-entry">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Full-Stack Engineer — PT Elnusa Tbk</div>
+          <div class="exp-company">Jakarta, Indonesia</div>
         </div>
         <div class="exp-period">Apr 2021 – Feb 2023</div>
       </div>
-      <ul class="bullets" style="margin-top:5px;">
-        <li>Solely built enterprise risk management system using React Redux Saga (frontend) + Laravel (backend).</li>
-        <li>Managed 1,000+ physical asset records across the company using VueJS + Express + Node.js.</li>
-        <li>Won <strong>Gold (1st place)</strong> among ~100 participants at CIP Forum Elnusa 2021.</li>
-      </ul>
-    </div>
-
-    <div class="exp-entry">
-      <div class="exp-header">
-        <div class="exp-title-company">
-          <div class="exp-role">Software Engineer — PT Agni</div>
-          <div class="exp-company">Jakarta, Indonesia</div>
-        </div>
-        <div class="exp-period">Oct 2021 – Dec 2021</div>
-      </div>
-      <ul class="bullets" style="margin-top:5px;">
-        <li>Built responsive UI with VueJS 3.0 Composition API and backend APIs with Express.js.</li>
+      <ul class="bullets">
+        <li>Built and maintained an enterprise asset-tracking platform managing 1,000+ physical assets (Vue.js, Node.js, Express).</li>
+        <li>Developed an Enterprise Risk Management (ERM) system using React, Redux Saga, and Laravel.</li>
+        <li>Awarded 1st Place (Gold) among ~100 participants at CIP Forum Elnusa 2021 for internal software architecture.</li>
       </ul>
     </div>
   </div>
 
-  <!-- SKILLS -->
+  <!-- SELECTED PROJECTS -->
   <div class="section">
-    <div class="section-title">Technical Skills</div>
-    <div class="skills-grid">
-      <div class="skill-row"><span class="skill-label">Frontend:</span> React.js, Next.js, Vue.js 3, TypeScript, JavaScript, Storybook, Figma</div>
-      <div class="skill-row"><span class="skill-label">Backend:</span> Node.js, Express.js, PHP, Laravel, REST APIs</div>
-      <div class="skill-row"><span class="skill-label">Data / Cloud:</span> BigQuery, GCP, Docker, Terraform, ETL Pipelines, Web Scraping</div>
-      <div class="skill-row"><span class="skill-label">Databases:</span> MySQL, PostgreSQL, Firebase, MongoDB</div>
-      <div class="skill-row"><span class="skill-label">Testing:</span> Cypress E2E, Unit Testing</div>
-      <div class="skill-row"><span class="skill-label">Languages:</span> English (Professional), Indonesian (Native), Japanese (Elementary)</div>
-    </div>
-  </div>
+    <div class="section-title">Selected Projects</div>
 
-  <!-- CERTIFICATIONS -->
-  <div class="section">
-    <div class="section-title">Licenses &amp; Certifications</div>
-    <div class="certs-grid">
-      <div class="cert-entry"><strong>Android Dev with Kotlin (Beginners)</strong> — LinkedIn · Mar 2026</div>
-      <div class="cert-entry"><strong>Spring Boot 2.0 Essential Training</strong> — LinkedIn · Feb 2026</div>
-      <div class="cert-entry"><strong>Python — Data Science</strong> — SanberCode · Sep 2021</div>
-      <div class="cert-entry"><strong>Javascript &amp; NodeJS Super Bootcamp</strong> — SanberCode · Feb 2021</div>
-      <div class="cert-entry"><strong>Managing Cloud Infrastructure with Terraform</strong> — Qwiklabs · Mar 2021</div>
-      <div class="cert-entry"><strong>Anthos: Service Mesh</strong> — Qwiklabs · Mar 2021</div>
-      <div class="cert-entry"><strong>Build Apps &amp; Websites with Firebase</strong> — Qwiklabs · Mar 2021</div>
-      <div class="cert-entry"><strong>Serverless Firebase Development</strong> — Qwiklabs · Mar 2021</div>
-      <div class="cert-entry"><strong>Kubernetes in Google Cloud</strong> — Qwiklabs · Dec 2019</div>
-      <div class="cert-entry"><strong>Google Cloud Essentials</strong> — Qwiklabs · Nov 2019</div>
-      <div class="cert-entry"><strong>Memulai Pemrograman Dengan Python</strong> — Dicoding Indonesia · Oct 2020</div>
-      <div class="cert-entry"><strong>Path Pengembangan Web (Node.js)</strong> — Progate · Jun 2020</div>
-      <div class="cert-entry"><strong>Kursus SQL, JavaScript, React, Node.JS, HTML&amp;CSS, GIT</strong> — Progate · Jun 2020</div>
+    <div class="proj-entry">
+      <div class="proj-title">Notula / WAHA Team-Intel (Multi-Tenant AI Assistant)</div>
+      <div class="proj-desc">A multi-tenant SaaS that turns WhatsApp group activity into searchable team intelligence: message capture (WAHA) to LLM summarization to an Obsidian knowledge memory to RAG question-answering, orchestrated in n8n. Built as a single generic workflow that resolves per-tenant config at runtime (true multi-tenancy, not cloned instances), with automated PDF/PRD ingestion into the vault.</div>
+      <div class="proj-tech">Tech: n8n, WAHA (Docker), OpenAI-compatible LLMs, SvelteKit, Supabase</div>
+    </div>
+
+    <div class="proj-entry">
+      <div class="proj-title">Artle — "Art of Battle" (Realtime Tactical Auto-Battler)</div>
+      <div class="proj-desc">Built on one framework-agnostic deterministic engine as the single source of truth, driving two frontends: a local PvE game loop and an authoritative Colyseus PvP server with full client/server parity, plus replays. Wrapped for Android via Capacitor.</div>
+      <div class="proj-tech">Tech: Next.js, React, TypeScript, Colyseus, Firebase, Capacitor, Tone.js</div>
+    </div>
+
+    <div class="proj-entry">
+      <div class="proj-title">AKTUDINUS Ledger (Web-Based General Ledger)</div>
+      <div class="proj-desc">Modernized a legacy VB6 accounting system into a web general-ledger platform: 9 transaction types, 8 financial reports (trial balance, balance sheet, income statement, cash flow), posting with monthly/member closing, and role-based access. Handles a real dataset of 52,700+ posted transactions across 10 branches, balancing to 0.00.</div>
+      <div class="proj-tech">Tech: React 18, TypeScript, Kotlin, Spring Boot 3, PostgreSQL 16, Flyway, JWT</div>
+    </div>
+
+    <div class="proj-entry">
+      <div class="proj-title">AI Development Platform (MCP · AI Agents · Spec-Driven Development)</div>
+      <div class="proj-desc">An AI-assisted development platform integrating LLMs, Model Context Protocol (MCP), and spec-driven development to automate the cycle from requirements to implementation — covering code generation, architecture generation, and automated documentation.</div>
+      <div class="proj-tech">Tech: TypeScript, Node.js, MCP, OpenAI, Next.js</div>
+    </div>
+
+    <div class="proj-entry">
+      <div class="proj-title">ComfyUI Game Asset Generation Pipeline</div>
+      <div class="proj-desc">An automated pipeline producing consistent 2D pixel-art game assets — characters across races, equipment, poses, animations, and sprite sheets — without losing character identity, using diffusion models and ComfyUI.</div>
+      <div class="proj-tech">Tech: ComfyUI, Stable Diffusion, LoRA, ControlNet, Python</div>
     </div>
   </div>
 
@@ -278,24 +278,11 @@
     <div class="section-title">Education</div>
     <div class="edu-entry">
       <div class="edu-left">
-        <div class="edu-degree">S1 Informatics (Computer Science)</div>
-        <div class="edu-school">Universitas Pembangunan Nasional Veteran Yogyakarta</div>
+        <div class="edu-degree">Bachelor of Informatics — UPN Veteran Yogyakarta</div>
+        <div class="edu-school">Yogyakarta, Indonesia · Cumulative GPA: 3.86 / 4.00</div>
       </div>
-      <div class="edu-period">Aug 2019 – Mar 2024</div>
+      <div class="edu-period">2019 – 2024</div>
     </div>
-    <div class="edu-entry">
-      <div class="edu-left">
-        <div class="edu-degree">SMA — IPA (Science)</div>
-        <div class="edu-school">SMA Negeri 4 Semarang</div>
-      </div>
-      <div class="edu-period">2016 – 2019</div>
-    </div>
-  </div>
-
-  <!-- PUBLICATION -->
-  <div class="section">
-    <div class="section-title">Publication</div>
-    <p style="font-size:9.5pt;color:#333;">"<strong>Is PWA still relevant in 2022?</strong>" — Annas Adharuqudni</p>
   </div>
 
 </div>
