@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="tiket.com — paper plane">
+  <rect width="96" height="96" fill="#BFE0FF"/>
+  <!-- dashed flight trail -->
+  <path d="M12 80 Q30 86 40 64" fill="none" stroke="#23233B" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 8"/>
+  <!-- paper plane -->
+  <g stroke="#23233B" stroke-width="3.5" stroke-linejoin="round">
+    <path d="M18 50 L82 22 L60 76 L47 57 Z" fill="#FFFFFF"/>
+    <path d="M47 57 L82 22 L51 64 Z" fill="#5BA8FF"/>
+  </g>
+  <!-- clouds -->
+  <g fill="#FFFFFF" stroke="#23233B" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M14 26a5 5 0 0 1 5-5 6 6 0 0 1 11 2 4.5 4.5 0 0 1-1 8.8H19a5 5 0 0 1-5-5.8z"/>
+    <path d="M66 82a4 4 0 0 1 4-4 5 5 0 0 1 9 1.6 3.8 3.8 0 0 1-.8 7.2H70a4 4 0 0 1-4-4.8z"/>
+  </g>
+</svg>

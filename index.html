@@ -4,6 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>document.documentElement.classList.add('js');</script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+    "animejs": "https://esm.sh/animejs@4"
+  }
+}
+</script>
 
 <!-- ═══════════════════════════════════════
      PRIMARY SEO
@@ -27,8 +36,8 @@
 <meta property="og:site_name" content="Annas Adharuqudni" />
 <meta property="og:title" content="Annas Adharuqudni — Platform Software Engineer" />
 <meta property="og:description" content="5+ years across Samsung R&D, tiket.com, and Elnusa. Cross-platform frameworks, distributed data-mining pipelines, and AI-powered developer tooling (MCP, spec-driven development)." />
-<meta property="og:image" content="https://adharuqudni.github.io/static/profile.png" />
-<meta property="og:image:alt" content="Annas Adharuqudni — Software Engineer" />
+<meta property="og:image" content="https://adharuqudni.github.io/static/og-card.png" />
+<meta property="og:image:alt" content="Annas Adharuqudni — Platform Software Engineer, cartoon portfolio card" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="en_US" />
@@ -39,7 +48,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Annas Adharuqudni — Platform Software Engineer" />
 <meta name="twitter:description" content="5+ years across Samsung R&D, tiket.com, and Elnusa. Cross-platform frameworks, distributed data pipelines, and AI developer tooling." />
-<meta name="twitter:image" content="https://adharuqudni.github.io/static/profile.png" />
+<meta name="twitter:image" content="https://adharuqudni.github.io/static/og-card.png" />
 <meta name="twitter:image:alt" content="Annas Adharuqudni — Software Engineer" />
 
 <!-- ═══════════════════════════════════════
@@ -111,6 +120,9 @@
      ═══════════════════════════════════════ -->
 <meta name="theme-color" content="#FFF4DC" />
 <meta name="color-scheme" content="light" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="preconnect" href="https://esm.sh" crossorigin />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Baloo+2:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -156,6 +168,7 @@
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="about" aria-label="Introduction">
+  <canvas id="hero-bg-canvas" aria-hidden="true"></canvas>
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
   <div class="hero-inner">
@@ -172,7 +185,7 @@
 
     <div class="hero-bubble-row">
       <div class="hero-portrait">
-        <img src="static/profile.png" alt="Annas Adharuqudni" />
+        <img src="static/profile.png" alt="Annas Adharuqudni" width="500" height="500" fetchpriority="high" decoding="async" />
         <div class="hero-portrait-tag">that's me!</div>
       </div>
       <div class="speech-bubble hero-bubble">
@@ -182,7 +195,7 @@
 
     <div class="hero-cta">
       <a href="#contact" class="btn btn-yellow">👋 Say hello</a>
-      <a href="Annas Resume.html" target="_blank" class="btn btn-white">📄 View resume</a>
+      <a href="Annas Resume.html" target="_blank" rel="noopener" class="btn btn-white">📄 View resume</a>
     </div>
 
     <div class="hero-stats" role="list">
@@ -218,10 +231,37 @@
 
 <!-- ═══════════ JOURNEY ═══════════ -->
 <section id="journey" class="section section-journey" aria-label="Professional journey">
-  <canvas id="journey-canvas" aria-hidden="true"></canvas>
   <div class="section-head">
     <div class="section-kicker reveal">★ The adventure so far</div>
     <h2 class="section-title reveal reveal-d1">Five years.<br/>Five companies.<br/><em>One epic quest.</em></h2>
+    <p class="journey-lead reveal reveal-d2">🎮 My whole portfolio is playable — walk to the flags to relive each job, raid the chests for projects, visit the toolbox camp for skills. <b>Space</b> to jump!</p>
+  </div>
+
+  <div class="journey-stage" id="journey-stage" role="region" tabindex="0"
+       aria-label="Playable career map" aria-describedby="journey-hint"
+       aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight W A S D Space Escape">
+    <canvas id="journey-canvas" aria-hidden="true"></canvas>
+    <div class="journey-ui">
+      <div class="journey-xpbar" id="journey-xpbar">
+        <span class="jxp-lv">Lv.0</span>
+        <b class="jxp-track"><i></i></b>
+        <span class="jxp-stat" id="journey-coins">🪙 0/12</span>
+        <span class="jxp-stat" id="journey-flags">🚩 0/5</span>
+      </div>
+      <button class="journey-fs" id="journey-fs" type="button" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
+      <div class="journey-hint" id="journey-hint">▶ Focus or tap the map, then use <b>WASD</b> or arrows to walk · <b>Space</b> to jump · <b>Escape</b> to stop</div>
+      <div class="journey-level" id="journey-level" aria-live="polite"></div>
+      <div class="journey-card" id="journey-card" aria-live="polite"></div>
+      <div class="play-dpad" role="group" aria-label="Career map movement controls">
+        <button type="button" data-d="up" aria-label="Move up">▲</button>
+        <div class="play-dpad-mid">
+          <button type="button" data-d="left" aria-label="Move left">◀</button>
+          <button type="button" data-d="down" aria-label="Move down">▼</button>
+          <button type="button" data-d="right" aria-label="Move right">▶</button>
+        </div>
+      </div>
+      <button class="play-jump" type="button" data-d="jump" aria-label="Jump">A</button>
+    </div>
   </div>
 
   <div class="timeline">
@@ -231,7 +271,7 @@
     <article class="tl-card tl-left reveal">
       <div class="tl-pin" aria-hidden="true">01</div>
       <div class="tl-year pill pill-green">Feb 2026 — Present</div>
-      <div class="tl-logo"><img src="static/journey-samsung.png" alt="Samsung R&D" /></div>
+      <div class="tl-logo"><img src="static/emblem-samsung.svg" alt="Samsung R&D emblem — office tower" width="96" height="96" loading="lazy" decoding="async" /></div>
       <h3 class="tl-title">Samsung R&amp;D <span class="badge badge-green">NOW!</span></h3>
       <div class="tl-role">Software Engineer · Jakarta</div>
       <p class="tl-desc">Building a reusable cross-platform framework consumed by multiple Samsung apps — strict feature parity across Android, iOS &amp; WebView, porting native behavior (including E2EE security) between platforms.</p>
@@ -242,7 +282,7 @@
     <article class="tl-card tl-right reveal">
       <div class="tl-pin" aria-hidden="true">02</div>
       <div class="tl-year pill pill-blue">Feb 2022 — Feb 2026 · 4 yrs</div>
-      <div class="tl-logo"><img src="static/journey-tiket.png" alt="tiket.com" /></div>
+      <div class="tl-logo"><img src="static/emblem-tiket.svg" alt="tiket.com emblem — paper plane" width="96" height="96" loading="lazy" decoding="async" /></div>
       <h3 class="tl-title">tiket.com</h3>
       <div class="tl-role">Intern → Software Engineer I</div>
       <p class="tl-desc">Four years powering Indonesia's biggest travel platform — a distributed data-mining platform feeding pricing algorithms, enterprise-scale ETL through GCS &amp; BigQuery, and reverse-engineering for resilient data acquisition.</p>
@@ -253,7 +293,7 @@
     <article class="tl-card tl-left reveal">
       <div class="tl-pin" aria-hidden="true">03</div>
       <div class="tl-year pill pill-purple">Aug 2022 — Apr 2024</div>
-      <div class="tl-logo"><img src="static/journey-decorps.png" alt="decorps" /></div>
+      <div class="tl-logo"><img src="static/emblem-decorps.svg" alt="decorps emblem — rocket" width="96" height="96" loading="lazy" decoding="async" /></div>
       <h3 class="tl-title">decorps <span class="badge badge-purple">FOUNDER</span></h3>
       <div class="tl-role">Founder &amp; Lead Engineer · Yogyakarta</div>
       <p class="tl-desc">Founded a software studio and mentored 20+ PMs and developers. Shipped task-management, inventory, and POS SaaS products.</p>
@@ -264,7 +304,7 @@
     <article class="tl-card tl-right reveal">
       <div class="tl-pin" aria-hidden="true">04</div>
       <div class="tl-year pill pill-orange">Apr 2021 — Feb 2023</div>
-      <div class="tl-logo"><img src="static/journey-elnusa.png" alt="PT Elnusa Tbk" /></div>
+      <div class="tl-logo"><img src="static/emblem-elnusa.svg" alt="PT Elnusa emblem — oil derrick" width="96" height="96" loading="lazy" decoding="async" /></div>
       <h3 class="tl-title">PT Elnusa Tbk <span class="badge badge-yellow">🥇 GOLD</span></h3>
       <div class="tl-role">Fullstack Engineer · Oil &amp; Gas</div>
       <p class="tl-desc">Built the enterprise asset-tracking platform managing 1,000+ physical assets (Vue + Node + Express) and the Enterprise Risk Management system (React Redux Saga + Laravel).</p>
@@ -275,7 +315,7 @@
     <article class="tl-card tl-left reveal">
       <div class="tl-pin" aria-hidden="true">05</div>
       <div class="tl-year pill pill-pink">Oct 2021 — Dec 2021</div>
-      <div class="tl-logo"><img src="static/journey-agni.png" alt="PT Agni" /></div>
+      <div class="tl-logo"><img src="static/emblem-agni.svg" alt="PT Agni emblem — flame" width="96" height="96" loading="lazy" decoding="async" /></div>
       <h3 class="tl-title">PT Agni</h3>
       <div class="tl-role">Frontend Engineer · 3-month sprint</div>
       <p class="tl-desc">A short &amp; sharp engagement: efficient website routing architecture and a clean UI layer with Vue 3 Composition API on Express.js.</p>
@@ -380,7 +420,7 @@ async function scrapeWithEvasion(url) {
         <div class="tags"><span class="tag">YOLO v11</span><span class="tag">BoT-SORT</span><span class="tag">FastAPI</span><span class="tag">Next.js</span><span class="tag">WebSocket</span></div>
       </div>
       <div class="featured-visual">
-        <img class="featured-img" src="static/dashboard.jpeg" alt="CCTV monitoring dashboard with live people counting" />
+        <img class="featured-img" src="static/dashboard.jpeg" alt="CCTV monitoring dashboard with live people counting" width="1280" height="722" loading="lazy" decoding="async" />
       </div>
     </article>
 
@@ -526,8 +566,8 @@ fun evaluate(input, spent, limit) =
     <h2 class="section-title reveal reveal-d1">Proof I did<br/><em>the homework.</em></h2>
   </div>
   <div class="marquee-wrapper">
-    <div class="marquee-track" id="marquee"></div>
-    <div class="marquee-track reverse" id="marquee2"></div>
+    <div class="marquee-track" id="marquee" role="list" aria-label="Professional certificates, first group"></div>
+    <div class="marquee-track reverse" id="marquee2" role="list" aria-label="Professional certificates, second group"></div>
   </div>
   <button class="quest-coin" data-coin="certs" aria-label="Collect hidden coin" style="bottom:26px;right:8%">A</button>
 </section>
@@ -566,24 +606,26 @@ fun evaluate(input, spent, limit) =
   <div class="contact-inner">
     <div class="section-kicker kicker-light reveal">★ Open to new opportunities</div>
     <h2 class="contact-title reveal reveal-d1">Let's build<br/>something <em>great!</em></h2>
-    <div class="boss-ui reveal reveal-d2" aria-hidden="true">
+    <div class="boss-ui reveal reveal-d2">
       <div class="boss-name" id="boss-name">☠️ FINAL BOSS — "The Job Hunt"</div>
-      <div class="boss-hp"><div class="boss-hp-fill" id="boss-hp"></div></div>
-      <div class="boss-hint" id="boss-hint">every click is an attack — finish it with an email ⚔️</div>
+      <button class="boss-hp" id="boss-bar" type="button" aria-label="Attack the boss"><span class="boss-hp-fill" id="boss-hp"></span></button>
+      <div class="boss-combo" id="boss-combo" aria-hidden="true"></div>
+      <button class="btn btn-white btn-sm boss-attack" id="boss-attack" type="button">⚔️ Attack!</button>
+      <div class="boss-hint" id="boss-hint">tap ⚔️ to attack — land the killing blow with an email ⚔️</div>
     </div>
     <a href="mailto:annas.adharuqudni@gmail.com" class="btn btn-yellow btn-big reveal reveal-d2">✉️ annas.adharuqudni@gmail.com</a>
     <div class="contact-links reveal reveal-d3">
       <a href="https://linkedin.com/in/adharuqudni" class="btn btn-white" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/adharuqudni" class="btn btn-white" target="_blank" rel="noopener">GitHub</a>
       <a href="Annas Resume.html" target="_blank" class="btn btn-white" rel="noopener">Resume</a>
+      <button class="btn btn-white" id="share-card-btn" type="button">📸 Share card</button>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- QUEST HUD -->
-<div id="coin-hud" aria-live="polite">🪙 <span id="coin-count">0</span>/5</div>
+<!-- QUEST HUD (player panel + quest log are built by js/ui/hud.js) -->
 <div id="quest-toast" role="status"></div>
 
 <!-- FOOTER -->
@@ -592,8 +634,7 @@ fun evaluate(input, spent, limit) =
   <div class="footer-r">SOFTWARE ENGINEER · PLATFORM · FOUNDER</div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie_light.min.js" defer></script>
-<script src="app.js" defer></script>
-<script type="module" src="three-scene.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie_light.min.js"></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+{
+  "name": "annas-portfolio",
+  "private": true,
+  "scripts": {
+    "test": "node tests/site-audit.mjs"
+  }
+}

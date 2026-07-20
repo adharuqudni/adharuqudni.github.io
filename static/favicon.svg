@@ -1,5 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Annas Dev">
-  <rect width="64" height="64" rx="14" fill="#0d0c0a"/>
-  <path d="M15 49 28 15h8l13 34h-8l-2.6-7.6H25.2L22.8 49H15Zm12.7-14.8h8.4L32 21.6l-4.3 12.6Z" fill="#f5f0e8"/>
-  <circle cx="49" cy="49" r="5" fill="#c9382a"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Annas — quest coin">
+  <circle cx="32" cy="32" r="30" fill="#23233B"/>
+  <circle cx="32" cy="32" r="26.5" fill="#FFC93C"/>
+  <circle cx="32" cy="32" r="21" fill="none" stroke="#FFE08A" stroke-width="3"/>
+  <path d="M32 15 L45 49 H37.6 L35.2 42 H28.8 L26.4 49 H19 Z M32 27.5 L34.1 36 H29.9 Z"
+        fill="#23233B" fill-rule="evenodd" stroke="#23233B" stroke-width="2" stroke-linejoin="round"/>
+  <ellipse cx="22" cy="18.5" rx="6" ry="3.4" fill="#FFF4DC" opacity="0.85" transform="rotate(-32 22 18.5)"/>
 </svg>
