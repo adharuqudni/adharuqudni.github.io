@@ -2,6 +2,7 @@
   "name": "annas-portfolio",
   "private": true,
   "scripts": {
-    "test": "node tests/site-audit.mjs"
+    "test": "node tests/site-audit.mjs",
+    "test:browser": "node tests/browser-audit.mjs"
   }
 }

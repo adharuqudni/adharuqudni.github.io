@@ -1,640 +1,223 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script>document.documentElement.classList.add('js');</script>
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
-    "animejs": "https://esm.sh/animejs@4"
-  }
-}
-</script>
-
-<!-- ═══════════════════════════════════════
-     PRIMARY SEO
-     ═══════════════════════════════════════ -->
-<title>Annas Adharuqudni — Platform Software Engineer | Samsung R&D Indonesia</title>
-<meta name="description" content="Portfolio of Annas Adharuqudni — Platform Software Engineer at Samsung R&D Institute Indonesia. 5+ years building cross-platform frameworks, distributed data pipelines, and AI developer tooling across Samsung, tiket.com, and Elnusa." />
-<meta name="keywords" content="Annas Adharuqudni, software engineer, platform engineer, developer tooling, distributed systems, cross-platform, Indonesia, Samsung R&D, tiket.com, TypeScript, Node.js, React, Kotlin, BigQuery, GCP, MCP, applied AI, reverse engineering" />
-<meta name="author" content="Annas Adharuqudni" />
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-<link rel="canonical" href="https://adharuqudni.github.io/" />
-<link rel="icon" type="image/svg+xml" href="static/favicon.svg" />
-<link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32.png" />
-<link rel="alternate icon" href="static/favicon.ico" />
-<link rel="apple-touch-icon" href="static/apple-touch-icon.png" />
-
-<!-- ═══════════════════════════════════════
-     OPEN GRAPH (Facebook, LinkedIn, WhatsApp)
-     ═══════════════════════════════════════ -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://adharuqudni.github.io/" />
-<meta property="og:site_name" content="Annas Adharuqudni" />
-<meta property="og:title" content="Annas Adharuqudni — Platform Software Engineer" />
-<meta property="og:description" content="5+ years across Samsung R&D, tiket.com, and Elnusa. Cross-platform frameworks, distributed data-mining pipelines, and AI-powered developer tooling (MCP, spec-driven development)." />
-<meta property="og:image" content="https://adharuqudni.github.io/static/og-card.png" />
-<meta property="og:image:alt" content="Annas Adharuqudni — Platform Software Engineer, cartoon portfolio card" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:locale" content="en_US" />
-
-<!-- ═══════════════════════════════════════
-     TWITTER / X CARD
-     ═══════════════════════════════════════ -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Annas Adharuqudni — Platform Software Engineer" />
-<meta name="twitter:description" content="5+ years across Samsung R&D, tiket.com, and Elnusa. Cross-platform frameworks, distributed data pipelines, and AI developer tooling." />
-<meta name="twitter:image" content="https://adharuqudni.github.io/static/og-card.png" />
-<meta name="twitter:image:alt" content="Annas Adharuqudni — Software Engineer" />
-
-<!-- ═══════════════════════════════════════
-     STRUCTURED DATA — Person + WebSite
-     ═══════════════════════════════════════ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://adharuqudni.github.io/#person",
-      "name": "Annas Adharuqudni",
-      "url": "https://adharuqudni.github.io/",
-      "image": {
-        "@type": "ImageObject",
-        "url": "https://adharuqudni.github.io/static/profile.png",
-        "caption": "Annas Adharuqudni — Software Engineer"
-      },
-      "jobTitle": "Software Engineer",
-      "description": "Platform Software Engineer with 5+ years of experience in developer tooling, distributed systems, and cross-platform architecture. Currently building reusable cross-platform frameworks at Samsung R&D Institute Indonesia.",
-      "email": "annas.adharuqudni@gmail.com",
-      "sameAs": [
-        "https://linkedin.com/in/adharuqudni",
-        "https://github.com/adharuqudni"
-      ],
-      "knowsAbout": [
-        "TypeScript", "JavaScript", "Java", "Kotlin", "Python", "C++",
-        "Node.js", "React.js", "Next.js", "Vue.js", "Jetpack Compose", "Spring Boot",
-        "BigQuery", "Google Cloud Platform", "Docker", "Terraform", "Firebase", "Supabase",
-        "Platform Engineering", "Developer Tooling", "Distributed Systems",
-        "Cross-Platform Architecture", "Reverse Engineering", "Data Pipelines",
-        "Model Context Protocol", "LLM Tooling", "PostgreSQL"
-      ],
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Universitas Pembangunan Nasional Veteran Yogyakarta",
-        "sameAs": "https://www.upnyk.ac.id/"
-      },
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Samsung R&D Institute Indonesia",
-        "url": "https://research.samsung.com/sri-indonesia"
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://adharuqudni.github.io/#website",
-      "url": "https://adharuqudni.github.io/",
-      "name": "Annas Adharuqudni — Portfolio",
-      "description": "Personal portfolio of Annas Adharuqudni, Fullstack Software Engineer at Samsung R&D Indonesia.",
-      "author": { "@id": "https://adharuqudni.github.io/#person" },
-      "inLanguage": "en-US"
-    },
-    {
-      "@type": "ProfilePage",
-      "@id": "https://adharuqudni.github.io/#profilepage",
-      "url": "https://adharuqudni.github.io/",
-      "name": "Annas Adharuqudni — Fullstack Software Engineer Portfolio",
-      "about": { "@id": "https://adharuqudni.github.io/#person" },
-      "mainEntity": { "@id": "https://adharuqudni.github.io/#person" }
-    }
-  ]
-}
-</script>
-
-<!-- ═══════════════════════════════════════
-     PERFORMANCE & BROWSER HINTS
-     ═══════════════════════════════════════ -->
-<meta name="theme-color" content="#FFF4DC" />
-<meta name="color-scheme" content="light" />
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-<link rel="preconnect" href="https://esm.sh" crossorigin />
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Baloo+2:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Annas Adharuqudni — Fullstack Software Engineer</title>
+  <meta name="description" content="Annas Adharuqudni is a fullstack software engineer at Samsung R&amp;D Indonesia. Data-driven engineering, web scraping, and AI collaboration — from distributed systems to Cognito, an AI learning companion." />
+  <meta name="author" content="Annas Adharuqudni" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#f5f5f7" />
+  <meta name="color-scheme" content="light" />
+  <link rel="canonical" href="https://adharuqudni.github.io/" />
+  <link rel="icon" type="image/svg+xml" href="static/favicon.svg" />
+  <link rel="alternate icon" href="static/favicon.ico" />
+  <link rel="apple-touch-icon" href="static/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adharuqudni.github.io/" />
+  <meta property="og:site_name" content="Annas Adharuqudni" />
+  <meta property="og:title" content="Annas Adharuqudni — Built end to end. Driven by data." />
+  <meta property="og:description" content="Fullstack engineering, web scraping, data systems, and AI collaboration. Selected work by Annas Adharuqudni." />
+  <meta property="og:image" content="https://adharuqudni.github.io/static/og-card.png" />
+  <meta property="og:image:alt" content="Annas Adharuqudni — Fullstack Software Engineer" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Annas Adharuqudni — Fullstack Software Engineer" />
+  <meta name="twitter:description" content="Built end to end. Driven by data. Fullstack engineering, data-driven systems, and AI collaboration." />
+  <meta name="twitter:image" content="https://adharuqudni.github.io/static/og-card.png" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://adharuqudni.github.io/#person","name":"Annas Adharuqudni","url":"https://adharuqudni.github.io/","image":"https://adharuqudni.github.io/static/profile.png","jobTitle":"Fullstack Software Engineer","email":"annas.adharuqudni@gmail.com","sameAs":["https://linkedin.com/in/adharuqudni","https://github.com/adharuqudni"],"worksFor":{"@type":"Organization","name":"Samsung R&D Institute Indonesia"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Universitas Pembangunan Nasional Veteran Yogyakarta"},"knowsAbout":["Platform Engineering","Distributed Systems","Cross-Platform Architecture","TypeScript","Kotlin","BigQuery","Model Context Protocol"]},{"@type":"WebSite","url":"https://adharuqudni.github.io/","name":"Annas Adharuqudni — Portfolio","author":{"@id":"https://adharuqudni.github.io/#person"}},{"@type":"ProfilePage","url":"https://adharuqudni.github.io/","mainEntity":{"@id":"https://adharuqudni.github.io/#person"}}]}
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="js/main.js" defer></script>
+  <script type="module" src="js/scroll-story.js"></script>
 </head>
 <body>
-
-<a class="skip-link" href="#about">Skip to content</a>
-<button id="back-top" class="back-top" aria-label="Back to top">↑</button>
-
-<!-- NAV -->
-<header>
-<nav id="nav" aria-label="Primary navigation">
-  <a href="#" class="nav-logo" aria-label="Annas Adharuqudni — Home">ANNAS<span>.DEV</span></a>
-  <ul class="nav-links" role="list">
-    <li><a href="#journey">Journey</a></li>
-    <li><a href="#skills">Toolbox</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact" class="nav-cta">Say hi!</a></li>
-  </ul>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-</header>
-
-<!-- MOBILE MENU OVERLAY -->
-<div class="nav-mobile-menu" id="nav-mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
-  <nav aria-label="Mobile navigation">
-    <a href="#journey"><em>01</em>Journey</a>
-    <a href="#skills"><em>02</em>Toolbox</a>
-    <a href="#projects"><em>03</em>Projects</a>
-    <a href="#contact"><em>04</em>Say hi!</a>
-  </nav>
-  <div class="nav-mobile-social">
-    <a href="https://github.com/adharuqudni" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://linkedin.com/in/adharuqudni" target="_blank" rel="noopener">LinkedIn</a>
-  </div>
-</div>
-
-<main>
-
-<!-- ═══════════ HERO ═══════════ -->
-<section class="hero" id="about" aria-label="Introduction">
-  <canvas id="hero-bg-canvas" aria-hidden="true"></canvas>
-  <canvas id="hero-canvas" aria-hidden="true"></canvas>
-
-  <div class="hero-inner">
-    <div class="hero-badge reveal-now">
-      <span class="hero-badge-star" id="lottie-star" aria-hidden="true"></span>
-      Open to new challenges!
-    </div>
-
-    <h1 class="hero-title">
-      <span class="hero-hi">Hi! I'm</span>
-      <span class="hero-name">ANNAS</span>
-      <span class="hero-name hero-name-2">ADHARUQUDNI</span>
-    </h1>
-
-    <div class="hero-bubble-row">
-      <div class="hero-portrait">
-        <img src="static/profile.png" alt="Annas Adharuqudni" width="500" height="500" fetchpriority="high" decoding="async" />
-        <div class="hero-portrait-tag">that's me!</div>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="wordmark" href="#about" aria-label="Annas Adharuqudni, home"><svg class="brand-symbol" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 46 23 17Q24 15 25 17L40 46M20 46 35 17Q36 15 37 17L52 46M14 35H46" /></svg><span class="brand-name">Annas</span></a>
+      <div class="nav-right">
+        <button id="nav-toggle" class="nav-toggle" type="button" aria-controls="primary-links" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+        <div id="primary-links" class="nav-links"><a href="#projects">Work</a><a href="#journey">Experience</a><a href="#approach">About</a><a href="#contact">Contact</a></div>
+        <a class="nav-resume" href="Annas Resume.html" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="speech-bubble hero-bubble">
-        <p>Platform engineer at <strong>Samsung R&amp;D Indonesia</strong> — I build <strong>cross-platform frameworks</strong> (Android / iOS / WebView), wrangle <strong>distributed data pipelines</strong>, and ship <strong>AI dev tooling</strong> with MCP for breakfast. 5+ years across Samsung, tiket.com &amp; Elnusa.</p>
+    </nav>
+  </header>
+  <main id="main-content">
+    <section id="about" class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy shell">
+        <p class="hero-intro">Annas Adharuqudni <span>·</span> Fullstack Engineer</p>
+        <h1 id="hero-title">Built end to end.<br /><span>Driven by data.</span></h1>
+        <p class="hero-description">I build across the stack, turn raw data into useful systems,<br class="desktop-break" /> and collaborate with AI to take ideas further.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↓</span></a><a class="text-link" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></div>
       </div>
-    </div>
-
-    <div class="hero-cta">
-      <a href="#contact" class="btn btn-yellow">👋 Say hello</a>
-      <a href="Annas Resume.html" target="_blank" rel="noopener" class="btn btn-white">📄 View resume</a>
-    </div>
-
-    <div class="hero-stats" role="list">
-      <div class="stat-card stat-tilt-l reveal" role="listitem">
-        <div class="stat-num" data-target="5" data-suffix="+">5+</div>
-        <div class="stat-label">years of experience</div>
+      <div class="platform-art" aria-hidden="true">
+        <div class="platform-shadow"></div>
+        <div class="platform-scene">
+          <div class="platform-layer layer-base"><div class="circuit-line circuit-one"></div><div class="circuit-line circuit-two"></div></div>
+          <div class="platform-layer layer-middle"><div class="layer-etch"></div></div>
+          <div class="platform-layer layer-top"><svg class="core-emblem" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 46 23 17Q24 15 25 17L40 46M20 46 35 17Q36 15 37 17L52 46M14 35H46" /></svg><span class="core-caption">BUILT END TO END</span></div>
+        </div>
+        <div class="art-label label-left"><span class="label-line"></span>Data at the core.</div>
+        <div class="art-label label-right">AI in the process.<span class="label-line"></span></div>
+        <div class="platform-caption">FULLSTACK <span>·</span> DATA <span>·</span> AI</div>
       </div>
-      <div class="stat-card stat-tilt-r reveal reveal-d1" role="listitem">
-        <div class="stat-num" data-target="20" data-suffix="+">20+</div>
-        <div class="stat-label">team members led</div>
-      </div>
-      <div class="stat-card stat-tilt-l reveal reveal-d2" role="listitem">
-        <div class="stat-num" data-target="18" data-suffix="+">18+</div>
-        <div class="stat-label">certifications</div>
-      </div>
-      <div class="stat-card stat-tilt-r reveal reveal-d3" role="listitem">
-        <div class="stat-num">🥇</div>
-        <div class="stat-label">CIP Forum Elnusa gold</div>
-      </div>
-    </div>
-  </div>
+      <div class="hero-footer shell"><p><span class="status-dot"></span> Currently building at <strong>Samsung R&amp;D Indonesia</strong></p><a href="#projects" class="scroll-link">Scroll to discover <span aria-hidden="true">↓</span></a></div>
+    </section>
 
-  <button class="quest-coin" data-coin="hero" aria-label="Collect hidden coin" style="top:24%;right:7%">A</button>
-  <div class="hero-scroll" id="lottie-scroll" aria-hidden="true"></div>
-</section>
-
-<!-- ═══════════ MARQUEE STRIP ═══════════ -->
-<div class="strip" aria-hidden="true">
-  <div class="strip-track">
-    <span>Platform Engineer ✦ Developer Tooling ✦ Distributed Systems ✦ Cross-Platform ✦ Applied AI ✦ Founder ✦&nbsp;</span><span>Platform Engineer ✦ Developer Tooling ✦ Distributed Systems ✦ Cross-Platform ✦ Applied AI ✦ Founder ✦&nbsp;</span>
-  </div>
-</div>
-
-<!-- ═══════════ JOURNEY ═══════════ -->
-<section id="journey" class="section section-journey" aria-label="Professional journey">
-  <div class="section-head">
-    <div class="section-kicker reveal">★ The adventure so far</div>
-    <h2 class="section-title reveal reveal-d1">Five years.<br/>Five companies.<br/><em>One epic quest.</em></h2>
-    <p class="journey-lead reveal reveal-d2">🎮 My whole portfolio is playable — walk to the flags to relive each job, raid the chests for projects, visit the toolbox camp for skills. <b>Space</b> to jump!</p>
-  </div>
-
-  <div class="journey-stage" id="journey-stage" role="region" tabindex="0"
-       aria-label="Playable career map" aria-describedby="journey-hint"
-       aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight W A S D Space Escape">
-    <canvas id="journey-canvas" aria-hidden="true"></canvas>
-    <div class="journey-ui">
-      <div class="journey-xpbar" id="journey-xpbar">
-        <span class="jxp-lv">Lv.0</span>
-        <b class="jxp-track"><i></i></b>
-        <span class="jxp-stat" id="journey-coins">🪙 0/12</span>
-        <span class="jxp-stat" id="journey-flags">🚩 0/5</span>
+    <section id="approach" class="scroll-story" aria-labelledby="story-title">
+      <div class="story-stage">
+        <div class="story-topline shell"><h2 id="story-title">A closer look at how I build.</h2><a href="#projects">Skip to the work <span aria-hidden="true">↗</span></a></div>
+        <div class="story-visual" aria-hidden="true">
+          <div class="story-poster"><div class="poster-layer poster-back"></div><div class="poster-layer poster-mid"></div><div class="poster-layer poster-front"><span>AA</span></div></div>
+        </div>
+        <div class="story-chapters shell">
+          <article class="story-chapter" data-chapter="0">
+            <p class="story-kicker">01 / The whole stack</p><h3>Every layer.<br /><span>One connected idea.</span></h3>
+            <p>I’m Annas, a fullstack engineer. I connect what people see with the services and infrastructure that make it work.</p>
+            <div class="story-evidence"><span>Interface → Services → Data</span><strong>React · Kotlin · Node.js · PostgreSQL</strong></div>
+          </article>
+          <article class="story-chapter" data-chapter="1">
+            <p class="story-kicker">02 / Data with a purpose</p><h3>Find the signal.<br /><span>Build on it.</span></h3>
+            <p>My work at tiket.com connected distributed scraping, reverse engineering, and cloud pipelines to the decisions behind pricing.</p>
+            <div class="story-evidence"><span>Web sources → BigQuery → Pricing</span><strong>Roughly 2× faster data exploration</strong></div>
+          </article>
+          <article class="story-chapter" data-chapter="2">
+            <p class="story-kicker">03 / A curious collaborator</p><h3>Build with AI.<br /><span>Keep asking why.</span></h3>
+            <p>I work with AI to explore ideas and develop software. I also built Cognito, a learning companion that helps people turn curiosity into understanding.</p>
+            <div class="story-evidence"><span>Learn → Experiment → Build</span><strong>Cognito · MCP · AI-assisted development</strong></div>
+          </article>
+        </div>
+        <div class="story-bottom shell">
+          <div class="story-navigation" role="group" aria-label="Explore the three chapters"><button type="button" data-story-jump="0" aria-pressed="true"><span>01</span> Fullstack</button><button type="button" data-story-jump="1" aria-pressed="false"><span>02</span> Data</button><button type="button" data-story-jump="2" aria-pressed="false"><span>03</span> AI &amp; curiosity</button></div>
+          <button type="button" id="story-motion" aria-pressed="false">Pause motion <span aria-hidden="true">Ⅱ</span></button>
+        </div>
+        <div class="story-progress" aria-hidden="true"><span></span></div>
       </div>
-      <button class="journey-fs" id="journey-fs" type="button" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button>
-      <div class="journey-hint" id="journey-hint">▶ Focus or tap the map, then use <b>WASD</b> or arrows to walk · <b>Space</b> to jump · <b>Escape</b> to stop</div>
-      <div class="journey-level" id="journey-level" aria-live="polite"></div>
-      <div class="journey-card" id="journey-card" aria-live="polite"></div>
-      <div class="play-dpad" role="group" aria-label="Career map movement controls">
-        <button type="button" data-d="up" aria-label="Move up">▲</button>
-        <div class="play-dpad-mid">
-          <button type="button" data-d="left" aria-label="Move left">◀</button>
-          <button type="button" data-d="down" aria-label="Move down">▼</button>
-          <button type="button" data-d="right" aria-label="Move right">▶</button>
+    </section>
+    <section id="projects" class="work-section section-space" aria-labelledby="work-title">
+      <div class="shell">
+        <div class="section-heading"><h2 id="work-title">Fullstack engineering.<br /><span>Powered by data &amp; AI.</span></h2><p>From collecting the right data<br />to building the whole experience.</p></div>
+        <article class="feature feature-data">
+          <div class="feature-copy">
+            <p class="project-context">Web scraping &amp; data engineering · tiket.com</p><h3>Scraping.<br /><span>At scale.</span></h3>
+            <p class="project-description">A distributed data platform built on resilient web scraping. Collecting hotel and flight data, then turning it into pricing intelligence.</p><p class="project-stack">Scraping · Reverse engineering · Node.js · BigQuery</p>
+            <details class="project-details"><summary>Inside the scraping platform <span class="plus" aria-hidden="true"></span></summary><div class="detail-copy">Built distributed scraping and custom extraction frameworks, with reverse engineering to keep data acquisition resilient. Enterprise-scale ETL carries the results through Google Cloud Storage and BigQuery. An ad-hoc exploration service roughly doubled data-exploration speed while the platform reduced third-party data costs.<span class="detail-note">Proprietary work at tiket.com.</span></div></details>
+          </div>
+          <div class="data-art" role="img" aria-label="Distributed scraping workflow from hotel and flight websites through an extraction engine into pricing data">
+            <div class="data-orbit orbit-one"></div><div class="data-orbit orbit-two"></div><div class="data-orbit orbit-three"></div><div class="data-path path-one"></div><div class="data-path path-two"></div>
+            <div class="data-node node-source"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 26V8h12v18M19 13h6v13M4 26h24M11 12h4M11 17h4M11 22h4M22 17v2" /></svg><span>Web sources</span></div>
+            <div class="data-core"><div class="core-bars"><i></i><i></i><i></i><i></i></div><span>Scraping engine</span></div>
+            <div class="data-node node-output"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 7v19h21M11 20l6-6 4 3 6-9M22 8h5v5" /></svg><span>Pricing data</span></div>
+            <p class="visual-caption">EXTRACT. PROCESS. PUT DATA TO WORK.</p>
+          </div>
+        </article>
+
+        <article class="feature feature-cognito" aria-labelledby="cognito-title">
+          <div class="feature-copy">
+            <p class="project-context"><span class="live-indicator"></span> Cognito · My AI learning companion</p>
+            <h3 id="cognito-title">Curiosity.<br /><span>Meet clarity.</span></h3>
+            <p class="project-description">An idea you want to understand. A path to get there. I built Cognito to make learning feel a little less overwhelming — with AI alongside you.</p>
+            <p class="project-stack">Personal learning paths · AI tutoring · Quizzes · Progress</p>
+            <a class="button button-dark" href="https://cognito.web.id/" target="_blank" rel="noopener">Explore Cognito <span aria-hidden="true">↗</span></a>
+            <a class="cognito-domain" href="https://cognito.web.id/" target="_blank" rel="noopener">cognito.web.id <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="cognito-art" role="img" aria-label="Cognito learning path preview: choose a topic, find your starting point, build a mental model, practice, and check your understanding with an AI tutor and quizzes.">
+            <div class="learning-window">
+              <div class="learning-window-top"><span class="cognito-wordmark"><span class="cognito-brand-mark"><svg viewBox="0 0 48 48" width="18" height="18" fill="none" aria-hidden="true"><path fill="currentColor" d="M34.15 11.28C31.19 9.05 27.78 7.92 24 7.92c-8.99 0-16.27 7.2-16.27 16.08S15.01 40.08 24 40.08c3.78 0 7.19-1.13 10.15-3.36l-5.15-5.15c-1.51.79-3.19 1.2-5 1.2-4.82 0-8.73-3.92-8.73-8.77s3.91-8.77 8.73-8.77c1.81 0 3.49.41 5 1.2l5.15-5.15Z"/><path stroke="currentColor" stroke-linecap="round" stroke-width="5.8" d="M27.3 24h12.1"/><circle cx="33.75" cy="24" r="2.2" fill="currentColor"/></svg></span>Cognito</span><span>Learning path preview</span></div>
+              <div class="learning-topic"><span>I want to learn</span><strong>Public speaking</strong><span class="topic-arrow" aria-hidden="true">↗</span></div>
+              <div class="learning-path-head"><span>Your path to understanding.</span><small>4 steps · At your pace</small></div>
+              <ol class="learning-steps">
+                <li class="step-complete"><span>✓</span><div>Find your starting point<small>Begin with what you know.</small></div></li>
+                <li class="step-active"><span>2</span><div>Build the mental model<small>Make the ideas click.</small></div><i>Next up</i></li>
+                <li><span>3</span><div>Practice with a small project</div></li>
+                <li><span>4</span><div>Check what you know</div></li>
+              </ol>
+              <div class="learning-support"><div><span class="tutor-dot"></span><strong>AI tutor</strong><small>Explanations at your level</small></div><div><strong>Quiz &amp; progress</strong><small>Understanding you can see</small></div></div>
+            </div>
+          </div>
+        </article>
+        <div class="product-pair">
+          <article class="feature feature-vision">
+            <div class="feature-copy"><p class="project-context">Computer vision · Personal project</p><h3>A clearer picture.<br /><span>In real time.</span></h3><p class="project-description">Live people tracking. From a CCTV stream to a dashboard that makes every movement count.</p><p class="project-stack">YOLO v11 · BoT-SORT · FastAPI · Next.js</p><details class="project-details"><summary>Explore the project <span class="plus" aria-hidden="true"></span></summary><div class="detail-copy">Processes a live HLS feed with YOLO v11 and BoT-SORT. Tracks entry and exit across a polygon zone and streams updates to the dashboard over WebSocket.</div></details></div>
+            <div class="dashboard-art"><div class="display-frame"><div class="display-camera"></div><img src="static/dashboard.jpeg" width="1280" height="722" alt="Real CCTV monitoring dashboard showing people tracking, zone counts, and timestamped activity" loading="lazy" decoding="async" /></div><div class="display-foot"></div></div>
+          </article>
+          <article class="feature feature-chaching">
+            <div class="feature-copy"><p class="project-context">Android · ChaChing</p><h3>A little pause.<br /><span>A better decision.</span></h3><p class="project-description">A moment of intention before your next purchase. Private by design. Built entirely on-device.</p><p class="project-stack">Kotlin · Jetpack Compose · Room</p><a class="text-link" href="https://github.com/adharuqudni/Chaching" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a></div>
+            <div class="phone-art" role="img" aria-label="Illustrative ChaChing interface with a pause before spending. The app evaluates daily limits entirely on the device."><div class="phone"><div class="phone-camera"></div><div class="phone-screen"><span class="phone-brand">ChaChing<span>◌</span></span><div class="pause-symbol"><i></i><i></i></div><h4>A moment<br />for yourself.</h4><p>Is this purchase part<br />of your plan?</p><div class="phone-action">Take a breath</div><span class="phone-private">Your budget. Your device.</span></div></div><span class="phone-caption">Interface concept · 52+ unit tests · Zero server calls</span></div>
+          </article>
+        </div>
+        <details class="project-archive" id="project-archive">
+          <summary><span>There’s more to explore.<small>Experiments, tools, and other things I’ve shipped.</small></span><span class="archive-count">9 projects <span class="plus" aria-hidden="true"></span></span></summary>
+          <div class="archive-content">
+            <div class="filter-bar" role="group" aria-label="Filter projects"><button type="button" data-filter="all" aria-pressed="true">All work</button><button type="button" data-filter="ai" aria-pressed="false">AI &amp; Vision</button><button type="button" data-filter="platform" aria-pressed="false">Platform &amp; Data</button><button type="button" data-filter="games" aria-pressed="false">Games &amp; Creative</button></div><p id="filter-status" class="sr-only" role="status" aria-live="polite"></p>
+            <div class="archive-grid">
+              <article class="archive-project" data-category="ai"><p class="project-context">AI &amp; team intelligence</p><h3>Notula</h3><p>WhatsApp activity transformed into searchable team knowledge with LLM summaries, Obsidian memory, and RAG Q&amp;A.</p><span class="archive-stack">n8n · WAHA · SvelteKit · Supabase</span><a href="mailto:annas.adharuqudni@gmail.com?subject=Notula">Ask about Notula <span aria-hidden="true">↗</span></a></article>
+              <article class="archive-project" data-category="ai"><p class="project-context">Developer tooling</p><h3>AI Development Platform</h3><p>LLMs, MCP, and spec-driven development connected into a workflow from requirements to architecture, code, and documentation.</p><span class="archive-stack">TypeScript · MCP · OpenAI</span><a href="mailto:annas.adharuqudni@gmail.com?subject=AI%20Development%20Platform">Discuss the platform <span aria-hidden="true">↗</span></a></article>
+              <article class="archive-project" data-category="games"><p class="project-context">Realtime multiplayer</p><h3>Artle — Art of Battle</h3><p>A tactical auto-battler with one deterministic engine for local PvE, authoritative online PvP, and replays.</p><span class="archive-stack">Next.js · Colyseus · Capacitor</span><a href="mailto:annas.adharuqudni@gmail.com?subject=Artle">Ask about Artle <span aria-hidden="true">↗</span></a></article>
+              <article class="archive-project" data-category="platform"><p class="project-context">Legacy modernization</p><h3>AKTUDINUS Ledger</h3><p>A VB6 accounting system reimagined for the web. 52,700+ transactions across 10 branches, balancing to 0.00.</p><span class="archive-stack">React · Spring Boot · PostgreSQL</span><a href="mailto:annas.adharuqudni@gmail.com?subject=AKTUDINUS%20Ledger">Discuss the project <span aria-hidden="true">↗</span></a></article>
+              <article class="archive-project" data-category="games"><p class="project-context">Creative automation</p><h3>ComfyUI Game Asset Pipeline</h3><p>A pipeline for consistent pixel-art characters, equipment, poses, animations, and sprite sheets.</p><span class="archive-stack">ComfyUI · Stable Diffusion · LoRA · ControlNet</span><a href="mailto:annas.adharuqudni@gmail.com?subject=Game%20Asset%20Pipeline">Explore the process <span aria-hidden="true">↗</span></a></article>
+              <article class="archive-project" data-category="platform"><p class="project-context">Field operations</p><h3>Merchandiser Attendance</h3><p>GPS and live-camera attendance with server-side geofencing and an offline queue for PT Sari Boga Flour Mill.</p><span class="archive-stack">Next.js · Express · PostgreSQL</span><a href="https://github.com/adharuqudni/merchadiser" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a></article>
+              <article class="archive-project" data-category="platform"><p class="project-context">App instrumentation</p><h3>Android Emulator Farm &amp; Frida</h3><p>Eight KVM-accelerated Android emulators orchestrated with Docker Compose and a Node.js Frida service.</p><span class="archive-stack">Frida · Docker · Node.js</span><a href="https://github.com/adharuqudni/frida-service" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a></article>
+              <article class="archive-project" data-category="platform"><p class="project-context">Autonomous systems</p><h3>Autonomous Ship Ground Control</h3><p>A desktop ground-control station with satellite mapping, waypoint placement, and real-time Arduino telemetry.</p><span class="archive-stack">VB.NET · WPF · Arduino</span><a href="https://github.com/adharuqudni/ship_dosen" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a></article>
+              <article class="archive-project" data-category="ai"><p class="project-context">Computer vision</p><h3>Road Hole Detection</h3><p>Automated detection and classification of potholes in road imagery using a YOLOv8 computer vision model.</p><span class="archive-stack">YOLOv8 · OpenCV · TensorFlow</span><a href="mailto:annas.adharuqudni@gmail.com?subject=Road%20Hole%20Detection">Discuss the model <span aria-hidden="true">↗</span></a></article>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="journey" class="experience-section section-space" aria-labelledby="experience-title">
+      <div class="shell">
+        <div class="experience-heading"><div><p class="eyebrow">5+ years of building, learning, and leading.</p><h2 id="experience-title">Different challenges.<br /><span>Measurable impact.</span></h2></div><a class="text-link" href="Annas Resume.html" target="_blank" rel="noopener">The full resume <span aria-hidden="true">↗</span></a></div>
+        <article class="career-item career-current">
+          <div class="current-company"><span class="company-name">Samsung R&amp;D Indonesia</span><span class="current-label"><span class="status-dot"></span> Building now</span></div>
+          <div class="current-story"><div><p class="career-date">Software Engineer · Jakarta · Feb 2026 — Present</p><h3>One framework.<br /><span>Three platforms.</span></h3><p>Building a shared foundation for multiple Samsung apps. Bringing native behavior and end-to-end encryption across platforms, with consistent feature parity.</p></div><div class="platform-proof"><span class="platform-proof-number">3</span><div><strong>Platforms. One shared standard.</strong><ul><li>Android</li><li>iOS</li><li>WebView</li></ul></div></div></div>
+        </article>
+        <div class="career-list career-impact-list">
+          <article class="career-item"><div class="career-company"><p class="career-date">Feb 2022 — Feb 2026</p><h3>tiket.com</h3><p class="career-role">Intern → Software Engineer I</p></div><div class="career-story"><h4>Better data. Better decisions.</h4><p>Built distributed scraping and cloud pipelines behind pricing algorithms. Custom extraction reduced reliance on third-party data, while an ad-hoc service made exploration faster.</p></div><div class="career-result"><strong>≈2×</strong><span>faster data exploration</span></div></article>
+          <article class="career-item"><div class="career-company"><p class="career-date">Aug 2022 — Apr 2024</p><h3>decorps</h3><p class="career-role">Founder &amp; Lead Engineer</p></div><div class="career-story"><h4>Built the studio. Grew the team.</h4><p>Founded a software studio in Yogyakarta and shipped task-management, inventory, and POS products. Every mentee secured an internship or full-time role.</p></div><div class="career-result"><strong>20<span>+</span></strong><span>PMs &amp; developers mentored</span></div></article>
+          <article class="career-item"><div class="career-company"><p class="career-date">Apr 2021 — Feb 2023</p><h3>PT Elnusa Tbk</h3><p class="career-role">Fullstack Engineer · Oil &amp; Gas</p></div><div class="career-story"><h4>Enterprise software. Awarded impact.</h4><p>Built asset tracking for 1,000+ physical assets and an enterprise risk-management system. Awarded first place among approximately 100 competitors.</p></div><div class="career-result"><strong>1<span>st</span></strong><span>CIP Forum Elnusa 2021</span></div></article>
+          <article class="career-item"><div class="career-company"><p class="career-date">Oct 2021 — Dec 2021</p><h3>PT Agni</h3><p class="career-role">Frontend Engineer</p></div><div class="career-story"><h4>A focused build, from the ground up.</h4><p>Designed website routing architecture and built the interface with the Vue 3 Composition API and Express.js in a three-month engagement.</p></div><div class="career-result career-result-text"><strong>Vue 3</strong><span>interface &amp; routing architecture</span></div></article>
+        </div>
+        <p class="career-footnote">Full-time roles, independent work, and studio experience. Some engagements ran in parallel.</p>
+      </div>
+    </section>
+    <section id="skills" class="about-section section-space" aria-labelledby="about-title">
+      <div class="shell">
+        <div class="about-heading"><div class="portrait-wrap"><img src="static/profile.png" width="500" height="500" alt="Annas Adharuqudni" loading="lazy" decoding="async" /></div><div><p class="eyebrow">An engineer. A builder. Always curious.</p><h2 id="about-title">The whole system.<br /><span>And the smallest detail.</span></h2></div></div>
+        <p class="about-statement">I’m Annas, a fullstack engineer based in Indonesia. I build the interface, the services, and the data pipelines that connect them. Data guides my decisions; AI is a collaborator in how I explore, develop, and learn.</p>
+        <div class="capabilities">
+          <div><h3>Across the screen.</h3><p>Interfaces and shared foundations that feel at home on every device.</p><p class="capability-tools">TypeScript · React / Next.js · Vue.js · Kotlin · Jetpack Compose · Capacitor</p></div>
+          <div><h3>Behind the scenes.</h3><p>Resilient scraping, services, and data pipelines that turn information into something useful.</p><p class="capability-tools">Web scraping · Reverse engineering · Node.js · PostgreSQL · BigQuery · GCP · Docker</p></div>
+          <div><h3>A little further ahead.</h3><p>Working with AI as a development collaborator, and building products that help people learn and create.</p><p class="capability-tools">MCP · LLMs · Spec-driven development · Python · n8n · Computer vision</p></div>
+        </div>
+
+        <div class="learning-showcase">
+          <div class="learning-heading"><p class="eyebrow">The learning behind the building</p><h2>A strong foundation.<br /><span>An open mind.</span></h2></div>
+          <section id="education" class="education-feature" aria-labelledby="education-title">
+            <div class="degree-story"><p class="degree-label">2019 — 2024 · Bachelor’s degree</p><h3 id="education-title">S1 Informatics.<br />A foundation in computer science.</h3><p>Universitas Pembangunan Nasional<br /><strong>UPN Veteran Yogyakarta</strong></p><span class="degree-discipline">Computer science · Software engineering</span></div>
+            <div class="degree-score"><span>Graduating GPA</span><strong>3.86<span>/4.00</span></strong><p>Five years of study.<br />A foundation I keep building on.</p><div class="degree-score-line" aria-hidden="true"><i></i></div></div>
+            <div class="education-context"><div><span>Earlier studies</span><h4>SMA Negeri 4 Semarang</h4><p>Science Stream · 2016–2019</p></div><div><span>Academic research</span><h4>“Is PWA still relevant in 2022?”</h4><p>Exploring the place of progressive web apps.</p></div></div>
+          </section>
+          <section id="certifications" class="credential-section" aria-labelledby="certifications-title">
+            <div class="credential-heading"><div><h3 id="certifications-title">Learning that goes beyond a degree.</h3><p>18 certifications. Three areas I keep coming back to.</p></div><span class="credential-latest">Latest: March 2026</span></div>
+            <div class="credential-domains">
+              <article><div class="credential-domain-top"><img src="static/linkedin_logo.png" width="200" height="200" alt="LinkedIn" loading="lazy" /><span>10</span></div><h4>Software development</h4><p>From web foundations to Android and backend applications.</p><small>LinkedIn · SanberCode · Progate</small><div class="credential-subjects">Kotlin · Spring Boot · React · Node.js</div></article>
+              <article><div class="credential-domain-top"><img src="static/qwiklabs-logo.jpeg" width="200" height="200" alt="Qwiklabs" loading="lazy" /><span>6</span></div><h4>Cloud infrastructure</h4><p>The infrastructure that turns an application into a reliable service.</p><small>Google Cloud training on Qwiklabs</small><div class="credential-subjects">Terraform · Kubernetes · Firebase · Anthos</div></article>
+              <article><div class="credential-domain-top"><img src="static/sanbercode-logo.jpeg" width="200" height="200" alt="SanberCode" loading="lazy" /><span>2</span></div><h4>Data science</h4><p>Building the programming foundations to explore and work with data.</p><small>SanberCode · Dicoding</small><div class="credential-subjects">Python · Data science foundations</div></article>
+            </div>
+            <details class="certificate-details credential-catalog"><summary><span>Browse all 18 certifications</span><span class="plus" aria-hidden="true"></span></summary><div class="certificate-groups"><section class="certificate-group"><h4>Software development <span>10</span></h4><ul class="certificate-list"><li><span>Android Dev with Kotlin</span><small>LinkedIn · Mar 2026</small></li><li><span>Spring Boot 2.0 Essential Training</span><small>LinkedIn · Feb 2026</small></li><li><span>JavaScript &amp; NodeJS Bootcamp</span><small>SanberCode · Feb 2021</small></li><li><span>Path Pengembangan Web (Node.js)</span><small>Progate · Jun 2020</small></li><li><span>Kursus SQL</span><small>Progate · Jun 2020</small></li><li><span>Kursus React</span><small>Progate · Jun 2020</small></li><li><span>Kursus Node.js</span><small>Progate · Jun 2020</small></li><li><span>Kursus HTML &amp; CSS</span><small>Progate · Jun 2020</small></li><li><span>Kursus GIT</span><small>Progate · Jun 2020</small></li><li><span>Kursus JavaScript</span><small>Progate · Jun 2020</small></li></ul></section><section class="certificate-group"><h4>Cloud infrastructure <span>6</span></h4><ul class="certificate-list"><li><span>Managing Cloud Infrastructure with Terraform</span><small>Qwiklabs · Mar 2021</small></li><li><span>Anthos: Service Mesh</span><small>Qwiklabs · Mar 2021</small></li><li><span>Build Apps &amp; Websites with Firebase</span><small>Qwiklabs · Mar 2021</small></li><li><span>Serverless Firebase Development</span><small>Qwiklabs · Mar 2021</small></li><li><span>Kubernetes in Google Cloud</span><small>Qwiklabs · Dec 2019</small></li><li><span>Google Cloud Essentials</span><small>Qwiklabs · Nov 2019</small></li></ul></section><section class="certificate-group"><h4>Data science <span>2</span></h4><ul class="certificate-list"><li><span>Python — Data Science</span><small>SanberCode · Sep 2021</small></li><li><span>Memulai Pemrograman Dengan Python</span><small>Dicoding · Oct 2020</small></li></ul></section></div></details>
+          </section>
         </div>
       </div>
-      <button class="play-jump" type="button" data-d="jump" aria-label="Jump">A</button>
-    </div>
-  </div>
-
-  <div class="timeline">
-    <div class="timeline-line" aria-hidden="true"></div>
-
-    <!-- 01 SAMSUNG -->
-    <article class="tl-card tl-left reveal">
-      <div class="tl-pin" aria-hidden="true">01</div>
-      <div class="tl-year pill pill-green">Feb 2026 — Present</div>
-      <div class="tl-logo"><img src="static/emblem-samsung.svg" alt="Samsung R&D emblem — office tower" width="96" height="96" loading="lazy" decoding="async" /></div>
-      <h3 class="tl-title">Samsung R&amp;D <span class="badge badge-green">NOW!</span></h3>
-      <div class="tl-role">Software Engineer · Jakarta</div>
-      <p class="tl-desc">Building a reusable cross-platform framework consumed by multiple Samsung apps — strict feature parity across Android, iOS &amp; WebView, porting native behavior (including E2EE security) between platforms.</p>
-      <div class="tl-pow">⚡ One framework, three platforms</div>
-    </article>
-
-    <!-- 02 TIKET -->
-    <article class="tl-card tl-right reveal">
-      <div class="tl-pin" aria-hidden="true">02</div>
-      <div class="tl-year pill pill-blue">Feb 2022 — Feb 2026 · 4 yrs</div>
-      <div class="tl-logo"><img src="static/emblem-tiket.svg" alt="tiket.com emblem — paper plane" width="96" height="96" loading="lazy" decoding="async" /></div>
-      <h3 class="tl-title">tiket.com</h3>
-      <div class="tl-role">Intern → Software Engineer I</div>
-      <p class="tl-desc">Four years powering Indonesia's biggest travel platform — a distributed data-mining platform feeding pricing algorithms, enterprise-scale ETL through GCS &amp; BigQuery, and reverse-engineering for resilient data acquisition.</p>
-      <div class="tl-pow">💥 Cut third-party data costs &amp; doubled data-exploration speed</div>
-    </article>
-
-    <!-- 03 DECORPS -->
-    <article class="tl-card tl-left reveal">
-      <div class="tl-pin" aria-hidden="true">03</div>
-      <div class="tl-year pill pill-purple">Aug 2022 — Apr 2024</div>
-      <div class="tl-logo"><img src="static/emblem-decorps.svg" alt="decorps emblem — rocket" width="96" height="96" loading="lazy" decoding="async" /></div>
-      <h3 class="tl-title">decorps <span class="badge badge-purple">FOUNDER</span></h3>
-      <div class="tl-role">Founder &amp; Lead Engineer · Yogyakarta</div>
-      <p class="tl-desc">Founded a software studio and mentored 20+ PMs and developers. Shipped task-management, inventory, and POS SaaS products.</p>
-      <div class="tl-pow">🚀 100% of mentees landed internships or full-time roles</div>
-    </article>
-
-    <!-- 04 ELNUSA -->
-    <article class="tl-card tl-right reveal">
-      <div class="tl-pin" aria-hidden="true">04</div>
-      <div class="tl-year pill pill-orange">Apr 2021 — Feb 2023</div>
-      <div class="tl-logo"><img src="static/emblem-elnusa.svg" alt="PT Elnusa emblem — oil derrick" width="96" height="96" loading="lazy" decoding="async" /></div>
-      <h3 class="tl-title">PT Elnusa Tbk <span class="badge badge-yellow">🥇 GOLD</span></h3>
-      <div class="tl-role">Fullstack Engineer · Oil &amp; Gas</div>
-      <p class="tl-desc">Built the enterprise asset-tracking platform managing 1,000+ physical assets (Vue + Node + Express) and the Enterprise Risk Management system (React Redux Saga + Laravel).</p>
-      <div class="tl-pow">🏆 First place at CIP Forum Elnusa 2021 — out of ~100 competitors</div>
-    </article>
-
-    <!-- 05 AGNI -->
-    <article class="tl-card tl-left reveal">
-      <div class="tl-pin" aria-hidden="true">05</div>
-      <div class="tl-year pill pill-pink">Oct 2021 — Dec 2021</div>
-      <div class="tl-logo"><img src="static/emblem-agni.svg" alt="PT Agni emblem — flame" width="96" height="96" loading="lazy" decoding="async" /></div>
-      <h3 class="tl-title">PT Agni</h3>
-      <div class="tl-role">Frontend Engineer · 3-month sprint</div>
-      <p class="tl-desc">A short &amp; sharp engagement: efficient website routing architecture and a clean UI layer with Vue 3 Composition API on Express.js.</p>
-      <div class="tl-pow">✨ Clean routing + Composition API UI in a single sprint</div>
-    </article>
-  </div>
-  <button class="quest-coin" data-coin="journey" aria-label="Collect hidden coin" style="top:42%;left:6%">A</button>
-</section>
-
-<!-- ═══════════ SKILLS / TOOLBOX ═══════════ -->
-<section id="skills" class="section section-skills" aria-label="Skills and technologies">
-  <div class="section-head">
-    <div class="section-kicker reveal">★ The toolbox</div>
-    <h2 class="section-title reveal reveal-d1">Stuff I'm<br/><em>really good at.</em></h2>
-  </div>
-
-  <div class="skills-grid">
-    <div class="skill-panel panel-yellow reveal">
-      <h3 class="skill-panel-title">🎨 Frontend &amp; Mobile</h3>
-      <div class="chips">
-        <span class="chip chip-hot">React / Next.js</span>
-        <span class="chip chip-hot">TypeScript</span>
-        <span class="chip">Vue.js</span>
-        <span class="chip">Jetpack Compose</span>
-        <span class="chip">Zustand</span>
-        <span class="chip">Capacitor</span>
-        <span class="chip">Framer Motion</span>
-        <span class="chip">PWA</span>
-      </div>
-    </div>
-    <div class="skill-panel panel-blue reveal reveal-d1">
-      <h3 class="skill-panel-title">⚙️ Backend, Data &amp; Cloud</h3>
-      <div class="chips">
-        <span class="chip chip-hot">Node.js</span>
-        <span class="chip chip-hot">Reverse Engineering</span>
-        <span class="chip">Spring Boot</span>
-        <span class="chip">Express.js</span>
-        <span class="chip">Prisma</span>
-        <span class="chip">PostgreSQL</span>
-        <span class="chip">BigQuery / GCP</span>
-        <span class="chip">Docker</span>
-        <span class="chip">Terraform</span>
-        <span class="chip">Firebase</span>
-        <span class="chip">Supabase</span>
-        <span class="chip">Colyseus</span>
-      </div>
-    </div>
-    <div class="skill-panel panel-pink reveal reveal-d2">
-      <h3 class="skill-panel-title">🤖 AI, Languages &amp; Tools</h3>
-      <div class="chips">
-        <span class="chip chip-hot">MCP</span>
-        <span class="chip">LLMs / OpenAI</span>
-        <span class="chip">Spec-Driven Development</span>
-        <span class="chip">ComfyUI · Stable Diffusion</span>
-        <span class="chip">n8n</span>
-        <span class="chip">Cypress</span>
-        <span class="chip">Java · Kotlin · Python · C++</span>
-        <span class="chip">English · Indonesian · 日本語</span>
-      </div>
-    </div>
-  </div>
-  <button class="quest-coin" data-coin="skills" aria-label="Collect hidden coin" style="top:110px;right:5%">A</button>
-</section>
-
-<!-- ═══════════ PROJECTS ═══════════ -->
-<section id="projects" class="section section-projects" aria-label="Selected projects">
-  <div class="section-head">
-    <div class="section-kicker reveal">★ Loot collected along the way — with love (and caffeine)</div>
-    <h2 class="section-title reveal reveal-d1">Projects that<br/><em>actually shipped.</em></h2>
-  </div>
-
-  <div class="tier-label reveal">⭐ Main quests</div>
-
-  <!-- FEATURED -->
-  <div class="featured-list">
-    <article class="featured panel-blue reveal">
-      <div class="featured-text">
-        <div class="badge badge-yellow">⭐ Featured · tiket.com</div>
-        <h3 class="featured-title">Distributed Data-Mining Platform</h3>
-        <p>Distributed platform acquiring hotel &amp; flight data from multiple external sources, directly feeding tiket.com's pricing algorithms — enterprise-scale ETL through <strong>GCS &amp; BigQuery</strong>, sustained by <strong>reverse-engineering</strong> and resilient scraping, plus an ad-hoc exploration service that <strong>doubled data-exploration speed</strong>.</p>
-        <div class="tags"><span class="tag">Node.js</span><span class="tag">BigQuery</span><span class="tag">GCP</span><span class="tag">Terraform</span><span class="tag">Docker</span><span class="tag tag-lock">🔒 proprietary · tiket.com</span></div>
-      </div>
-      <div class="featured-visual">
-        <div class="code-sticker" aria-hidden="true">
-          <div class="code-sticker-bar"><span></span><span></span><span></span></div>
-          <pre>// Resilient scraping layer
-async function scrapeWithEvasion(url) {
-  const browser = await puppeteer
-    .launch({ stealth: true });
-  await page.setUserAgent(rotate());
-  return await page.evaluate(extract);
-}</pre>
-        </div>
-      </div>
-    </article>
-
-    <article class="featured panel-green reveal">
-      <div class="featured-text">
-        <div class="badge badge-yellow">⭐ Personal · 2025</div>
-        <h3 class="featured-title">Real-Time CCTV People Tracking</h3>
-        <p>Live HLS CCTV feed processed with <strong>YOLO v11</strong> + BoT-SORT tracking. Counts people entering and exiting a polygon zone in real time, streaming to a Next.js + FastAPI dashboard over WebSocket.</p>
-        <div class="tags"><span class="tag">YOLO v11</span><span class="tag">BoT-SORT</span><span class="tag">FastAPI</span><span class="tag">Next.js</span><span class="tag">WebSocket</span></div>
-      </div>
-      <div class="featured-visual">
-        <img class="featured-img" src="static/dashboard.jpeg" alt="CCTV monitoring dashboard with live people counting" width="1280" height="722" loading="lazy" decoding="async" />
-      </div>
-    </article>
-
-    <article class="featured panel-pink reveal">
-      <div class="featured-text">
-        <div class="badge badge-yellow">⭐ Android · 2025</div>
-        <h3 class="featured-title">ChaChing — Financial Pause</h3>
-        <p>Android app that intercepts BCA, GoPay, OVO &amp; ShopeePay launches via AccessibilityService — a pause screen with a budget rule engine, daily limits, streaks &amp; insights. <strong>52+ unit tests, zero server calls.</strong></p>
-        <div class="tags"><span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">MVVM</span><span class="tag">Room</span></div>
-        <a href="https://github.com/adharuqudni/Chaching" target="_blank" rel="noopener" class="btn btn-white btn-sm">View on GitHub →</a>
-      </div>
-      <div class="featured-visual">
-        <div class="code-sticker" aria-hidden="true">
-          <div class="code-sticker-bar"><span></span><span></span><span></span></div>
-          <pre>// Budget rule engine — 3 states
-fun evaluate(input, spent, limit) =
-  when {
-    spent >= limit        -> HARD_BLOCK
-    input > limit - spent -> SOFT_WARNING
-    else                  -> ALLOWED
-  }</pre>
-        </div>
-      </div>
-    </article>
-  </div>
-
-  <div class="tier-label reveal">🗡️ Side quests</div>
-
-  <div class="filter-chips reveal" role="group" aria-label="Filter side-quest projects">
-    <button class="filter-chip active" data-filter="all" aria-pressed="true">All</button>
-    <button class="filter-chip" data-filter="ai" aria-pressed="false">🤖 AI &amp; Vision</button>
-    <button class="filter-chip" data-filter="platform" aria-pressed="false">⚙️ Platform &amp; Data</button>
-    <button class="filter-chip" data-filter="games" aria-pressed="false">🎮 Games &amp; Creative</button>
-  </div>
-
-  <div class="projects-grid">
-    <article class="project-card reveal" data-cat="ai">
-      <div class="project-emoji" aria-hidden="true">💬</div>
-      <h3 class="project-title">Notula — WhatsApp Team-Intel</h3>
-      <p class="project-desc">Multi-tenant SaaS turning WhatsApp group activity into searchable team intelligence — WAHA capture → LLM summaries → Obsidian memory → RAG Q&amp;A, orchestrated in n8n.</p>
-      <div class="project-pow">🧠 One generic workflow, every tenant — true multi-tenancy</div>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">n8n</span><span class="tag">WAHA</span><span class="tag">SvelteKit</span><span class="tag">Supabase</span></div>
-        <a href="#contact" class="project-link" aria-label="Ask me about Notula">💬</a>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d1" data-cat="ai">
-      <div class="project-emoji" aria-hidden="true">🧠</div>
-      <h3 class="project-title">AI Development Platform</h3>
-      <p class="project-desc">AI-assisted development platform integrating LLMs, MCP, and spec-driven development — automating the cycle from requirements to implementation.</p>
-      <div class="project-pow">🤖 Requirements in, code + architecture + docs out</div>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">TypeScript</span><span class="tag">MCP</span><span class="tag">OpenAI</span></div>
-        <a href="#contact" class="project-link" aria-label="Ask me about the AI Development Platform">💬</a>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d2" data-cat="games">
-      <div class="project-emoji" aria-hidden="true">⚔️</div>
-      <h3 class="project-title">Artle — "Art of Battle"</h3>
-      <p class="project-desc">Realtime tactical auto-battler built on one framework-agnostic deterministic engine — local PvE and an authoritative Colyseus PvP server, plus replays. Android via Capacitor.</p>
-      <div class="project-pow">⚔️ One deterministic engine, two frontends, full parity</div>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">Next.js</span><span class="tag">Colyseus</span><span class="tag">Capacitor</span></div>
-        <a href="#contact" class="project-link" aria-label="Ask me about Artle">💬</a>
-      </div>
-    </article>
-
-    <article class="project-card reveal" data-cat="platform">
-      <div class="project-emoji" aria-hidden="true">📒</div>
-      <h3 class="project-title">AKTUDINUS Ledger</h3>
-      <p class="project-desc">Legacy VB6 accounting system modernized into a web general ledger — 9 transaction types, 8 financial reports, monthly/member closing, role-based access.</p>
-      <div class="project-pow">📊 52,700+ real transactions, 10 branches, balancing to 0.00</div>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">React 18</span><span class="tag">Spring Boot 3</span><span class="tag">PostgreSQL 16</span></div>
-        <a href="#contact" class="project-link" aria-label="Ask me about AKTUDINUS Ledger">💬</a>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d1" data-cat="games">
-      <div class="project-emoji" aria-hidden="true">🎮</div>
-      <h3 class="project-title">ComfyUI Game Asset Pipeline</h3>
-      <p class="project-desc">Automated pipeline producing consistent 2D pixel-art game assets — characters across races, equipment, poses, animations &amp; sprite sheets.</p>
-      <div class="project-pow">🎨 Same character, every pose — identity never drifts</div>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">ComfyUI</span><span class="tag">Stable Diffusion</span><span class="tag">LoRA · ControlNet</span></div>
-        <a href="#contact" class="project-link" aria-label="Ask me about the asset pipeline">💬</a>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d2" data-cat="platform">
-      <div class="project-emoji" aria-hidden="true">📍</div>
-      <h3 class="project-title">Merchandiser Attendance System</h3>
-      <p class="project-desc">Field attendance validation for PT Sari Boga Flour Mill — GPS + live camera, server-side geofencing, offline IndexedDB queue.</p>
-      <div class="project-pow">🛡️ Three-layer anti-fraud, offline-first in the field</div>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">Next.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span></div>
-        <a href="https://github.com/adharuqudni/merchadiser" target="_blank" rel="noopener" class="project-link" aria-label="View merchadiser on GitHub">→</a>
-      </div>
-    </article>
-
-    <article class="project-card reveal" data-cat="platform">
-      <div class="project-emoji" aria-hidden="true">🤖</div>
-      <h3 class="project-title">Android Emulator Farm &amp; Frida</h3>
-      <p class="project-desc">Docker Compose orchestrating KVM-accelerated Android emulators with a Node.js Frida service — built for app instrumentation and anti-bot research.</p>
-      <div class="project-pow">📱 8 emulators, one compose file, full instrumentation</div>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">Frida</span><span class="tag">Docker</span><span class="tag">Node.js</span></div>
-        <a href="https://github.com/adharuqudni/frida-service" target="_blank" rel="noopener" class="project-link" aria-label="View frida-service on GitHub">→</a>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d1" data-cat="platform">
-      <div class="project-emoji" aria-hidden="true">🚢</div>
-      <h3 class="project-title">Autonomous Ship Ground Control</h3>
-      <p class="project-desc">WPF desktop GCS in VB.NET — Google Satellite map with waypoint placement, Arduino command relay.</p>
-      <div class="project-pow">🛰️ Real-time telemetry over serial, click-to-set waypoints</div>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">VB.NET</span><span class="tag">WPF</span><span class="tag">Arduino</span></div>
-        <a href="https://github.com/adharuqudni/ship_dosen" target="_blank" rel="noopener" class="project-link" aria-label="View ship_dosen on GitHub">→</a>
-      </div>
-    </article>
-
-    <article class="project-card reveal reveal-d2" data-cat="ai">
-      <div class="project-emoji" aria-hidden="true">🕳️</div>
-      <h3 class="project-title">Road Hole Detection</h3>
-      <p class="project-desc">Computer vision model using YOLOv8 to detect and classify potholes in road imagery.</p>
-      <div class="project-pow">🕳️ Manual road inspection → automated computer vision</div>
-      <div class="project-foot">
-        <div class="tags"><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">TensorFlow</span></div>
-        <a href="#contact" class="project-link" aria-label="Ask me about Road Hole Detection">💬</a>
-      </div>
-    </article>
-  </div>
-  <button class="quest-coin" data-coin="projects" aria-label="Collect hidden coin" style="top:70px;left:4%">A</button>
-</section>
-
-<!-- ═══════════ CERTIFICATIONS ═══════════ -->
-<section id="certifications" class="section section-certs" aria-label="Certifications">
-  <div class="section-head">
-    <div class="section-kicker reveal">★ 18+ certificates and counting</div>
-    <h2 class="section-title reveal reveal-d1">Proof I did<br/><em>the homework.</em></h2>
-  </div>
-  <div class="marquee-wrapper">
-    <div class="marquee-track" id="marquee" role="list" aria-label="Professional certificates, first group"></div>
-    <div class="marquee-track reverse" id="marquee2" role="list" aria-label="Professional certificates, second group"></div>
-  </div>
-  <button class="quest-coin" data-coin="certs" aria-label="Collect hidden coin" style="bottom:26px;right:8%">A</button>
-</section>
-
-<!-- ═══════════ EDUCATION ═══════════ -->
-<section id="education" class="section section-edu" aria-label="Education">
-  <div class="section-head">
-    <div class="section-kicker reveal">★ Where the brain got trained</div>
-    <h2 class="section-title reveal reveal-d1">School<br/><em>stories.</em></h2>
-  </div>
-  <div class="edu-grid">
-    <div class="edu-card panel-yellow reveal">
-      <div class="edu-emoji" aria-hidden="true">🎓</div>
-      <div class="edu-year pill pill-blue">2019 — 2024</div>
-      <h3 class="edu-degree">S1 Informatics — Computer Science</h3>
-      <div class="edu-school">UPN Veteran Yogyakarta · GPA 3.86 / 4.00</div>
-    </div>
-    <div class="edu-card panel-blue reveal reveal-d1">
-      <div class="edu-emoji" aria-hidden="true">🔬</div>
-      <div class="edu-year pill pill-pink">2016 — 2019</div>
-      <h3 class="edu-degree">SMA — Science Stream</h3>
-      <div class="edu-school">SMA Negeri 4 Semarang</div>
-    </div>
-    <div class="edu-card panel-pink reveal reveal-d2">
-      <div class="edu-emoji" aria-hidden="true">📚</div>
-      <div class="edu-year pill pill-green">Publication</div>
-      <h3 class="edu-degree">"Is PWA still relevant in 2022?"</h3>
-      <div class="edu-school">Academic research</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ CONTACT ═══════════ -->
-<section id="contact" class="section section-contact" aria-label="Contact">
-  <canvas id="contact-canvas" aria-hidden="true"></canvas>
-  <div class="contact-inner">
-    <div class="section-kicker kicker-light reveal">★ Open to new opportunities</div>
-    <h2 class="contact-title reveal reveal-d1">Let's build<br/>something <em>great!</em></h2>
-    <div class="boss-ui reveal reveal-d2">
-      <div class="boss-name" id="boss-name">☠️ FINAL BOSS — "The Job Hunt"</div>
-      <button class="boss-hp" id="boss-bar" type="button" aria-label="Attack the boss"><span class="boss-hp-fill" id="boss-hp"></span></button>
-      <div class="boss-combo" id="boss-combo" aria-hidden="true"></div>
-      <button class="btn btn-white btn-sm boss-attack" id="boss-attack" type="button">⚔️ Attack!</button>
-      <div class="boss-hint" id="boss-hint">tap ⚔️ to attack — land the killing blow with an email ⚔️</div>
-    </div>
-    <a href="mailto:annas.adharuqudni@gmail.com" class="btn btn-yellow btn-big reveal reveal-d2">✉️ annas.adharuqudni@gmail.com</a>
-    <div class="contact-links reveal reveal-d3">
-      <a href="https://linkedin.com/in/adharuqudni" class="btn btn-white" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/adharuqudni" class="btn btn-white" target="_blank" rel="noopener">GitHub</a>
-      <a href="Annas Resume.html" target="_blank" class="btn btn-white" rel="noopener">Resume</a>
-      <button class="btn btn-white" id="share-card-btn" type="button">📸 Share card</button>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- QUEST HUD (player panel + quest log are built by js/ui/hud.js) -->
-<div id="quest-toast" role="status"></div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-l">© 2026 <span>Annas Adharuqudni</span> — drawn &amp; coded with 💛</div>
-  <div class="footer-r">SOFTWARE ENGINEER · PLATFORM · FOUNDER</div>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie_light.min.js"></script>
-<script type="module" src="js/main.js"></script>
+    </section>
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <div class="shell contact-inner"><p class="contact-availability"><span class="status-dot"></span> Open to thoughtful conversations</p><h2 id="contact-title">Great things start<br />with <span>a conversation.</span></h2><p>Have a challenging problem, an interesting idea,<br class="desktop-break" /> or a team that cares about the craft? Let’s talk.</p><a class="button button-primary" href="mailto:annas.adharuqudni@gmail.com">Get in touch <span aria-hidden="true">↗</span></a><div class="email-row"><a href="mailto:annas.adharuqudni@gmail.com">annas.adharuqudni@gmail.com</a><button id="copy-email" type="button" aria-label="Copy email address" title="Copy email address"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="12" rx="2" /><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3" /></svg></button></div><p id="contact-status" class="contact-status" role="status" aria-live="polite"></p></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="shell footer-inner"><a class="wordmark" href="#about" aria-label="Back to Annas home"><svg class="brand-symbol" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 46 23 17Q24 15 25 17L40 46M20 46 35 17Q36 15 37 17L52 46M14 35H46" /></svg><span class="brand-name">Annas</span></a><p>© 2026 Annas Adharuqudni</p><div class="footer-links"><a href="https://github.com/adharuqudni" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a><a href="https://linkedin.com/in/adharuqudni" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a><a href="Annas Resume.html" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span></a></div></div></footer>
 </body>
 </html>
