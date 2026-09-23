@@ -1,45 +1,33 @@
-# Annas portfolio design
+# Portfolio design — space revision
 
-Apple-inspired restraint: generous space, clear typography, silver surfaces, and graphite project presentations. The signature object is a layered metal core carrying an interlocking AA monogram for Annas Adharuqudni.
+The latest user direction supersedes the aerospace dashboard guide: literal space imagery, no neon theme, no monospaced text, and straightforward writing.
 
-## Foundation
+## Appearance
 
-| Role | Value |
-| --- | --- |
-| Canvas | #f5f5f7 |
-| Content surface | #ffffff |
-| Text | #1d1d1f |
-| Secondary text | #6e6e73 |
-| Dividers | #dcdce0 |
-| Actions | #0071e3 |
-| Dark project surface | #08090b |
+The hero uses a generated, photographic-style Earth against distant stars. A lightweight local star field continues behind the other sections. Charcoal surfaces and warm off-white accents replace cyan UI accents. Space Grotesk and Inter are the only type families; labels use sentence case without technical numbering or simulated telemetry.
 
-System sans typography uses Apple system fonts where available, with Helvetica Neue, Segoe UI, and Arial fallbacks. Headlines use a large fluid scale and tight tracking. No external font requests.
+`styles.css` holds the responsive layout; `project-previews.css` retains product illustrations; `space.css` applies the current atmospheric direction. The photographic Earth remains a preloaded fallback. The hero progressively loads a Three.js globe with day/night lighting and cloud maps, six satellites on inclined LEO paths, and three GEO satellites. GEO shares the Earth's equatorial plane and rotation speed. Distances are compressed, satellite sizes exaggerated, and time accelerated for an illustrative view, not live tracking.
 
-## Page
+Drag or use arrow keys to rotate the camera; Reset view restores the camera. Pause motion stops animation. Rendering suspends offscreen and in hidden tabs. Reduced motion and unavailable/lost WebGL use the static background. Only one canvas loads, pixel ratio is capped at 1.5, and all texture/geometry/material resources are disposed on teardown. Texture credits and licensing are shown below the scene and documented in `static/earth/ATTRIBUTION.md`.
 
-- Compact sticky navigation, blue primary action, direct resume access.
-- Centered hero with silver platform sculpture, built with CSS transforms.
-- Data-driven fullstack positioning with AI as a collaborator.
-- A scroll-driven 3D story introduces the full stack, data engineering, and building with AI. A silver assembly separates into layers, carries data, and reconnects as the reader moves through three chapters.
-- Dark distributed-scraping showcase, a dedicated Cognito feature linking to cognito.web.id, then paired CCTV and ChaChing projects.
-- Cognito’s roadmap preview uses verified public product capabilities and its existing logo.
-- Current Samsung role is a three-platform spotlight; remaining career rows foreground documented outcomes.
-- Native disclosure for nine additional projects. URL filters retain shareable query state.
-- Career chronology retains overlapping source dates. Skills, education, and all eighteen certificates remain in HTML.
-- Education pairs the Informatics degree with the documented 3.86 GPA. Certification summaries cover software development (10), cloud infrastructure (6), and data science (2); the full catalog expands across the page.
-- Dark contact section with direct email, accessible clipboard feedback, and social links.
+## Content
 
-## Interaction and accessibility
+### Satellite models
 
-Content and navigation remain usable without JavaScript. Disclosures use native details/summary. Mobile navigation is a nonmodal disclosure that closes on Escape, navigation, outside click, and breakpoint change. Keyboard focus is visible; section links have header offsets. Reduced-motion preferences disable entrance and perspective motion.
+`js/satellite-models.js` builds distinct generic LEO observation and GEO communications spacecraft. Features include segmented solar-cell arrays, panel hinges and frames, insulation bump detail, radiator surfaces, parabolic reflectors with feed struts, optical instrumentation, antenna masts, and engine/thruster nozzles. The models are illustrative rather than exact mission replicas. Their size is enlarged relative to Earth and disclosed beside the scene. Parts are merged by material and geometry is shared between instances to limit draw calls.
 
-The story lazily imports locally hosted Three.js 0.160.0 only when it approaches the viewport and motion is allowed. Its MIT license is retained in static/vendor. There is no scroll interception or continuous idle render loop. Rendering stops offscreen, in hidden tabs, and when paused. Chapter buttons work alongside normal scrolling. Reduced motion, short viewports, unavailable JavaScript, or a failed WebGL context expose all three chapters with a CSS illustration. Text is always semantic HTML; the decorative canvas is hidden from assistive technology.
+Construction reference: [ESA satellite modules](https://resilience.esa.int/archives/projects/modular-design-telecommunication-satellites-mdts); [ESA thermal control](https://www.esa.int/Enabling_Support/Space_Engineering_Technology/Thermal_Control).
 
-The CCTV dashboard is a real supplied screenshot. The phone is explicitly an interface concept. Professional claims come from the supplied portfolio and resume. Do not invent client logos, results, verification links, or production screenshots.
+Navigation and section names use About, Experience, Projects, Skills, and Contact. Project titles name the actual work instead of slogans. Project descriptions, career facts, links, education and all 18 certifications remain. The learning section distinguishes space-related interests from professional experience. All nine archive projects remain filterable, alongside four featured projects.
 
-## Validation
+## Verification
 
-Run npm test for HTML/assets/content and JavaScript syntax. Run npm run test:browser -- /path/to/playwright-core/index.mjs with an installed Playwright runtime for responsive interactions, no-JavaScript fallback, and screenshots. The browser audit also checks real WebGL rendering, chapter navigation, paused draw calls, live motion preferences, mobile composition, short viewports, and context-loss fallback. Screenshots go to ignored static/qa/minimal/.
+`npm test` checks assets, factual content, links, accessible structure, and JavaScript syntax. `npm run test:browser -- /path/to/playwright/index.mjs` checks responsive layouts from 320 to 1440px, filters and browser history, email copying, keyboard/mobile navigation, no-JavaScript content, reduced motion, and absence of monospaced fonts. `BROWSER_CHANNEL=msedge` selects an installed Edge browser. Screenshots: `static/qa/aerospace/`.
 
-The printable resume remains a separate document. Older game modules are retained as unloaded files so earlier work remains recoverable.
+## Artwork provenance
+
+Generated using the built-in image-generation tool. Optimized asset: `static/space-earth.webp`. Original retained at `C:/Users/annas/.codex/generated_images/01a0cf19-b3a1-7443-b31b-aa206e4229b0/exec-29238454-b5c5-4dfb-92ed-f41ee8945e8e.png`.
+
+Final generation prompt:
+
+> Create a cinematic photorealistic space background image for a software engineer portfolio website, wide landscape 1536x1024 or wider. A large shadowed Earth occupying the right half, lit by restrained pale blue-white sunlight from upper right, visible natural cloud swirls and tiny warm city lights near terminator. Deep near-black space with a visible fine field of distant stars across entire image, very subtle dusty Milky Way haze. Left half mostly dark stars to allow white text overlay. Serious astronomical photography aesthetic, desaturated natural colors, immense depth and silence. No neon, no saturated cyan, no purple nebula, no HUD, no text, no diagram, no orbit lines, no frames, no logos. Earth fully within frame on right with black space around. This is background artwork, not a screenshot or website mockup. Save generated file for integration into local website.

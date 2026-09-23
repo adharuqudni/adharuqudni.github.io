@@ -20,6 +20,7 @@
     toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     navigation.classList.toggle('is-open', open);
   });
+  document.querySelector('.site-header .wordmark').addEventListener('click', () => closeNavigation());
   navigation.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       closeNavigation();
@@ -94,18 +95,19 @@
     }
   });
 
-  // A small change of perspective on pointer movement. No render loop or GPU canvas.
-  const art = document.querySelector('.platform-art');
-  const sculpture = document.querySelector('.platform-scene');
-  const motionAllowed = window.matchMedia('(prefers-reduced-motion: no-preference) and (hover: hover) and (min-width: 761px)');
-  art.addEventListener('pointermove', event => {
-    if (!motionAllowed.matches) return;
-    const bounds = art.getBoundingClientRect();
-    const x = (event.clientX - bounds.left) / bounds.width - .5;
-    const y = (event.clientY - bounds.top) / bounds.height - .5;
-    sculpture.style.transform = 'rotateX(' + (57 - y * 7) + 'deg) rotateZ(' + (-36 + x * 7) + 'deg)';
-  });
-  const resetSculpture = () => sculpture.style.removeProperty('transform');
-  art.addEventListener('pointerleave', resetSculpture);
-  motionAllowed.addEventListener('change', resetSculpture);
+  // Reflect the section currently being read without changing browser history.
+  const navLinks = [...navigation.querySelectorAll('a')];
+  const sections = [...document.querySelectorAll('main > section[id]')];
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        navLinks.forEach(link => {
+          if (link.hash === '#' + entry.target.id) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
+      }
+    }, { rootMargin: '-15% 0px -55% 0px', threshold: 0 });
+    sections.forEach(section => observer.observe(section));
+  }
 })();

@@ -11,7 +11,7 @@ const runtime = process.argv[2] ? pathToFileURL(resolve(process.argv[2])).href :
 const { chromium } = await import(runtime).catch(error => {
   throw new Error('Browser audit needs Playwright. Pass an existing playwright-core/index.mjs path as the first argument.', { cause: error });
 });
-const screenshots = resolve(root, 'static/qa/minimal');
+const screenshots = resolve(root, 'static/qa/aerospace');
 await mkdir(screenshots, { recursive: true });
 const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpeg': 'image/jpeg', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.woff2': 'font/woff2' };
 const server = createServer(async (request, response) => {
@@ -25,7 +25,7 @@ const server = createServer(async (request, response) => {
 });
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const url = `http://127.0.0.1:${server.address().port}`;
-const browser = await chromium.launch({ headless: true });
+const browser = await chromium.launch({ headless: true, ...(process.env.BROWSER_CHANNEL ? { channel: process.env.BROWSER_CHANNEL } : {}) });
 const errors = [];
 const messages = [];
 const record = description => messages.push(description);
@@ -160,70 +160,75 @@ try {
   await Promise.all(contexts.map(context => context.close()));
   contexts.length = 0;
 
-  const immersive = await newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'no-preference' });
-  await immersive.addInitScript(() => {
-    window.__webglDraws = 0;
+  const orbital = await newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'no-preference' });
+  await orbital.addInitScript(() => {
+    window.__earthDraws = 0;
     for (const type of [window.WebGLRenderingContext, window.WebGL2RenderingContext]) {
       if (!type) continue;
-      for (const name of ['drawArrays', 'drawElements', 'drawArraysInstanced', 'drawElementsInstanced']) {
-        const original = type.prototype[name];
-        if (typeof original !== 'function') continue;
-        type.prototype[name] = function(...args) { window.__webglDraws++; return original.apply(this, args); };
-      }
+      const original = type.prototype.drawElements;
+      type.prototype.drawElements = function(...args) { window.__earthDraws++; return original.apply(this, args); };
     }
   });
-  const storyPage = await immersive.newPage();
-  await storyPage.goto(url, { waitUntil: 'networkidle' });
-  await storyPage.locator('#approach').scrollIntoViewIfNeeded();
-  await storyPage.waitForFunction(() => document.querySelector('#approach').classList.contains('is-immersive'), null, { timeout: 15000 });
-  const canvas = storyPage.locator('.story-visual canvas');
-  assert.equal(await canvas.count(), 1, 'The story must have a real 3D canvas.');
-  for (const chapter of [0, 1, 2, 0]) {
-    await storyPage.locator('[data-story-jump="' + chapter + '"]').click();
-    await storyPage.waitForFunction(chapter => document.querySelector('[data-story-jump="' + chapter + '"]').getAttribute('aria-pressed') === 'true', chapter);
-    assert.equal(await storyPage.locator('.story-chapter[data-chapter="' + chapter + '"]').isVisible(), true);
-  }
-  await storyPage.screenshot({ path: join(screenshots, 'story-fullstack.png') });
-  await storyPage.locator('#story-motion').click();
-  assert.equal(await storyPage.locator('#story-motion').getAttribute('aria-pressed'), 'true');
-  const frozenDrawCount = await storyPage.evaluate(() => window.__webglDraws);
-  assert.ok(frozenDrawCount > 0, 'The scene must make real WebGL drawing calls.');
-  await storyPage.locator('[data-story-jump="1"]').click();
-  await storyPage.waitForFunction(() => document.querySelector('[data-story-jump="1"]').getAttribute('aria-pressed') === 'true');
-  assert.equal(await storyPage.evaluate(() => window.__webglDraws), frozenDrawCount, 'Pausing motion must stop WebGL drawing while keeping chapters usable.');
-  await storyPage.locator('#story-motion').click();
-  await storyPage.locator('[data-story-jump="2"]').click();
-  await storyPage.waitForFunction(() => document.querySelector('[data-story-jump="2"]').getAttribute('aria-pressed') === 'true');
-  await storyPage.screenshot({ path: join(screenshots, 'story-ai.png') });
-  await storyPage.emulateMedia({ reducedMotion: 'reduce' });
-  await storyPage.waitForFunction(() => !document.querySelector('#approach').classList.contains('is-immersive'));
-  assert.equal(await storyPage.locator('.story-chapter:visible').count(), 3, 'Reduced motion must expose the complete static story.');
-  record('Real 3D story, chapter navigation, reverse scrolling, pause, and live reduced-motion fallback');
-  await storyPage.emulateMedia({ reducedMotion: 'no-preference' });
-  await storyPage.locator('#approach').scrollIntoViewIfNeeded();
-  await storyPage.waitForFunction(() => document.querySelector('#approach').classList.contains('is-immersive'));
-  for (const size of [{ width: 390, height: 844 }, { width: 320, height: 740 }]) {
-    await storyPage.setViewportSize(size);
-    for (const chapter of [0, 1, 2]) {
-      await storyPage.locator(`[data-story-jump="${chapter}"]`).click();
-      await storyPage.waitForFunction(chapter => document.querySelector(`[data-story-jump="${chapter}"]`).getAttribute('aria-pressed') === 'true', chapter);
-      const bounds = await storyPage.locator(`[data-chapter="${chapter}"]`).boundingBox();
-      const controls = await storyPage.locator('.story-bottom').boundingBox();
-      assert.ok(bounds.y >= 60 && bounds.y + bounds.height < controls.y, 'Mobile story text must fit above controls.');
-      await noOverflow(storyPage);
-      await storyPage.screenshot({ path: join(screenshots, `story-${size.width}-${chapter}.png`) });
+  const orbitPage = await orbital.newPage();
+  orbitPage.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  await orbitPage.goto(url, { waitUntil: 'networkidle' });
+  assert.equal(await orbitPage.locator('.orbit-map').count(), 0);
+  await orbitPage.waitForSelector('.has-earth canvas');
+  await orbitPage.waitForFunction(() => window.__earthDraws > 20);
+  assert.equal(await orbitPage.locator('#earth-canvas canvas').count(), 1);
+  await orbitPage.locator('#earth-pause').click();
+  assert.equal(await orbitPage.locator('#earth-pause').getAttribute('aria-pressed'), 'true');
+  await orbitPage.waitForTimeout(100);
+  const draws = await orbitPage.evaluate(() => window.__earthDraws);
+  await orbitPage.waitForTimeout(200);
+  assert.equal(await orbitPage.evaluate(() => window.__earthDraws), draws, 'Pause must stop rendering.');
+  await orbitPage.locator('#earth-canvas canvas').focus();
+  await orbitPage.keyboard.press('ArrowRight');
+  assert.ok(await orbitPage.evaluate(() => window.__earthDraws) > draws, 'Keyboard interaction must redraw a paused globe.');
+  await orbitPage.locator('#earth-reset').click();
+  await orbitPage.screenshot({ path: join(screenshots, 'earth-desktop.png') });
+  for (const width of [320,390,768,1024,1440]) {
+    await orbitPage.setViewportSize({ width, height: 900 });
+    await noOverflow(orbitPage);
+    const globe = await orbitPage.locator('#earth-canvas').boundingBox();
+    const copy = await orbitPage.locator('.hero-copy').boundingBox();
+    assert.ok(globe.width > 250 && globe.height > 250);
+    if(width <= 760) assert.ok(globe.y >= copy.y+copy.height, 'Mobile globe must not overlap hero copy.');
+    if(width===390) {
+      await orbitPage.locator('#earth-canvas').scrollIntoViewIfNeeded();
+      await orbitPage.screenshot({ path: join(screenshots, 'earth-mobile.png') });
     }
   }
-  await storyPage.setViewportSize({ width: 844, height: 390 });
-  await storyPage.waitForFunction(() => !document.querySelector('#approach').classList.contains('is-immersive'));
-  assert.equal(await storyPage.locator('.story-chapter:visible').count(), 3, 'Short viewports must expose all chapters.');
-  await storyPage.setViewportSize({ width: 1440, height: 900 });
-  await storyPage.locator('#approach').scrollIntoViewIfNeeded();
-  await storyPage.waitForFunction(() => document.querySelector('#approach').classList.contains('is-immersive'));
-  await canvas.evaluate(element => element.dispatchEvent(new Event('webglcontextlost', { cancelable: true })));
-  assert.equal(await canvas.count(), 0, 'A lost WebGL context must release its canvas.');
-  assert.equal(await storyPage.locator('.story-chapter:visible').count(), 3, 'WebGL failure must expose all chapters.');
-  record('Motion re-enable, mobile 3D at 390px and 320px, short viewport, and WebGL loss fallback');
+  await orbitPage.locator('#earth-pause').click();
+  const monoText = await orbitPage.locator('body *').evaluateAll(elements => elements.filter(el => el.textContent.trim() && /monospace|JetBrains/i.test(getComputedStyle(el).fontFamily)).map(el => el.tagName));
+  assert.deepEqual(monoText, [], 'No monospaced text should remain.');
+  assert.equal(await orbitPage.locator('canvas').count(), 1, 'Only the Earth scene should load.');
+  assert.equal(await orbitPage.locator('.story-chapter:visible').count(), 3);
+  await orbitPage.emulateMedia({ reducedMotion: 'reduce' });
+  await orbitPage.waitForFunction(() => !document.querySelector('.has-earth'));
+  assert.equal(await orbitPage.locator('canvas').count(), 0);
+  assert.match(await orbitPage.locator('.hero').evaluate(el => getComputedStyle(el, '::before').backgroundImage), /space-earth\.webp/);
+  assert.equal(await orbitPage.locator('.hero').evaluate(el => getComputedStyle(el).animationName), 'none');
+  for (const width of [320, 390, 768, 1024, 1440]) {
+    await orbitPage.setViewportSize({ width, height: 900 });
+    await noOverflow(orbitPage);
+    assert.equal(await orbitPage.locator('.story-chapter:visible').count(), 3);
+  }
+  await orbitPage.setViewportSize({ width: 1440, height: 900 });
+  await orbitPage.locator('#primary-links a[href="#journey"]').click();
+  await orbitPage.waitForFunction(() => document.querySelector('#primary-links a[href="#journey"]').getAttribute('aria-current') === 'location');
+  await orbitPage.locator('header .wordmark').click();
+  await orbitPage.waitForFunction(() => !document.querySelector('#primary-links a[aria-current]'));
+  await orbitPage.locator('.trajectory-link').click();
+  await assertFilter(orbitPage, 'platform', 4);
+  assert.equal(await orbitPage.locator('#project-archive').evaluate(el => el.open), true);
+  await orbitPage.emulateMedia({ reducedMotion: 'no-preference' });
+  await orbitPage.locator('header .wordmark').click();
+  await orbitPage.waitForSelector('.has-earth canvas');
+  await orbitPage.locator('#earth-canvas canvas').evaluate(el => el.dispatchEvent(new Event('webglcontextlost', { cancelable:true })));
+  await orbitPage.waitForFunction(() => !document.querySelector('.has-earth'));
+  assert.equal(await orbitPage.locator('canvas').count(), 0);
+  record('3D Earth rendering, pause, keyboard rotation, responsive framing, reduced motion, context loss, and navigation');
   assert.deepEqual(errors, [], 'No page exceptions or failed local requests.');
   console.log(`Browser audit passed (${messages.length} groups):\n${messages.map(message => `- ${message}`).join('\n')}\nScreenshots: ${screenshots}`);
 } finally {
